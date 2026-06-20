@@ -3,634 +3,565 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus — The issue tracker built for high-velocity teams</title>
-  <meta name="description" content="Nexus is a purpose-built issue tracker and sprint planner for modern engineering teams. Plan, track, and ship your best work.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/style.css">
+  <meta name="description" content="Klar — The modern project management platform for high-velocity teams. Plan, track, and ship with clarity.">
+  <meta name="theme-color" content="#5b5fe3">
+  <title>Klar — Project management for high-velocity teams</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235b5fe3'/><text x='8' y='24' font-size='22' font-weight='bold' fill='white' font-family='sans-serif'>K</text></svg>">
 </head>
 <body>
-
-  <!-- ================= HEADER / NAV ================= -->
-  <header class="site-header">
-    <div class="container nav">
-      <a href="/" class="brand" aria-label="Nexus Home">
-        <span class="brand-mark">N</span>
-        Nexus
+  <!-- ── Site Header / Navigation ── -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a href="#" class="site-header__logo" aria-label="Klar home">
+        <span class="site-header__logo-icon" aria-hidden="true">K</span>
+        Klar
       </a>
 
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="/docs.html">Docs</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#changelog">Changelog</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#features" class="site-nav__link">Features</a>
+        <a href="#benefits" class="site-nav__link">Benefits</a>
+        <a href="#pricing" class="site-nav__link">Pricing</a>
+        <a href="#testimonials" class="site-nav__link">Customers</a>
+        <a href="#faq" class="site-nav__link">FAQ</a>
       </nav>
 
-      <div class="nav-actions">
-        <button class="nav-search" id="open-cmd-nav" aria-label="Open command palette">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-          Search...
-          <span class="kbd">⌘K</span>
+      <div class="site-header__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <!-- Sun icon (visible in light mode) -->
+          <svg class="theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <!-- Moon icon (visible in dark mode) -->
+          <svg class="theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
         </button>
-        <a href="#" class="btn btn-ghost">Sign in</a>
-        <a href="#" class="btn btn-primary">Open App</a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <a href="#pricing" class="btn btn--primary btn--sm site-header__cta">Get started</a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
         </button>
       </div>
-    </div>
-    <div class="nav-drawer" id="nav-drawer" data-open="false">
-      <a href="#features">Features</a>
-      <a href="/docs.html">Docs</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#changelog">Changelog</a>
-      <a href="#">Open App</a>
     </div>
   </header>
 
+  <!-- ── Mobile Menu Overlay ── -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#features" class="mobile-menu__link">Features</a>
+    <a href="#benefits" class="mobile-menu__link">Benefits</a>
+    <a href="#pricing" class="mobile-menu__link">Pricing</a>
+    <a href="#testimonials" class="mobile-menu__link">Customers</a>
+    <a href="#faq" class="mobile-menu__link">FAQ</a>
+    <a href="#pricing" class="btn btn--primary btn--block mobile-menu__cta">Get started free</a>
+  </div>
+
   <main>
-    <!-- ================= HERO ================= -->
-    <section class="hero">
-      <div class="hero-grid-bg"></div>
-      <div class="container hero-inner">
-        <div class="hero-eyebrow reveal">
-          <span class="dot"></span>
-          v2.4 is live — Sprint velocity insights
-        </div>
-        <h1 class="reveal">The issue tracker built for <span class="grad">high-velocity</span> teams</h1>
-        <p class="lead reveal">Nexus brings planning, tracking, and shipping into a single, lightning-fast interface. Built by developers, for developers.</p>
-        <div class="hero-cta reveal">
-          <a href="#" class="btn btn-primary">
-            Get started for free
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="/docs.html" class="btn btn-ghost">View Docs</a>
-        </div>
-        <div class="hero-meta reveal">
-          <span><strong>Free</strong> for up to 10 users</span>
-          <span><strong>No credit card</strong> required</span>
-          <span><strong>SOC 2</strong> Type II compliant</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= DASHBOARD PREVIEW ================= -->
-    <section class="preview">
-      <div class="preview-shell reveal">
-        <div class="preview-bar">
-          <div class="preview-dots"><span></span><span></span><span></span></div>
-          <div class="preview-url">app.nexus.io/sprints/current</div>
-        </div>
-        <div class="preview-body">
-          
-          <!-- Sidebar -->
-          <aside class="dash-side">
-            <div class="dash-team">
-              <div class="avatar">AC</div>
-              Acme Corp
-            </div>
-            <h4>Workspace</h4>
-            <nav class="dash-nav">
-              <a href="#" class="active">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                My Issues
-              </a>
-              <a href="#">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                Boards
-              </a>
-              <a href="#">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                Roadmap
-              </a>
-              <a href="#">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                Inbox
-              </a>
-            </nav>
-            
-            <div class="dash-divider"></div>
-            
-            <h4>Projects</h4>
-            <div class="dash-projects">
-              <a href="#"><span class="icon p"></span> Core API</a>
-              <a href="#"><span class="icon b"></span> Mobile App</a>
-              <a href="#"><span class="icon g"></span> Design System</a>
-              <a href="#"><span class="icon a"></span> Marketing Site</a>
-            </div>
-          </aside>
-
-          <!-- Main Content -->
-          <div class="dash-main">
-            <div class="dash-cards">
-              <div class="mini-card">
-                <span class="label">Active Issues</span>
-                <span class="num">142</span>
-                <span class="delta up">↑ 12% vs last week</span>
-              </div>
-              <div class="mini-card">
-                <span class="label">In Review</span>
-                <span class="num">28</span>
-                <span class="delta down">↓ 4% vs last week</span>
-              </div>
-              <div class="mini-card">
-                <span class="label">Shipped</span>
-                <span class="num">64</span>
-                <span class="delta up">↑ 22% vs last week</span>
-              </div>
-              <div class="mini-card">
-                <span class="label">Cycle Time</span>
-                <span class="num">2.4d</span>
-                <span class="delta up">↓ 0.5d faster</span>
-              </div>
-            </div>
-
-            <div class="dash-toolbar">
-              <h2 class="dash-title">Sprint 24 — Current</h2>
-              <button class="dash-filter">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-                Filter
-              </button>
-              <button class="dash-filter">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M6 12h12M10 18h4"></path></svg>
-                Status: All
-              </button>
-              <button class="dash-new">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                New Issue
-              </button>
-            </div>
-
-            <div class="dash-tabs">
-              <button class="active">List <span class="count">24</span></button>
-              <button>Board <span class="count">24</span></button>
-              <button>Timeline <span class="count">24</span></button>
-            </div>
-
-            <div class="issues">
-              <!-- Issue 1 -->
-              <div class="issue">
-                <div class="status">
-                  <span class="chip" style="color: var(--color-accent-blue);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                  </span>
-                </div>
-                <span class="id">NX-1024</span>
-                <span class="title">Implement OAuth2 integration for GitHub</span>
-                <span class="label"><span class="dot" style="background: var(--color-accent-purple);"></span> Backend</span>
-                <span class="assignee"><span class="avatar">JD</span> Jane Doe</span>
-                <div class="priority">
-                  <svg viewBox="0 0 24 24" fill="var(--color-accent-red)" stroke="var(--color-accent-red)" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
-                </div>
-              </div>
-              <!-- Issue 2 -->
-              <div class="issue">
-                <div class="status">
-                  <span class="chip" style="color: var(--color-accent-amber);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                  </span>
-                </div>
-                <span class="id">NX-1023</span>
-                <span class="title">Refactor database connection pooling logic</span>
-                <span class="label"><span class="dot" style="background: var(--color-accent-blue);"></span> Infrastructure</span>
-                <span class="assignee"><span class="avatar">SM</span> Sam Smith</span>
-                <div class="priority">
-                  <svg viewBox="0 0 24 24" fill="var(--color-accent-amber)" stroke="var(--color-accent-amber)" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
-                </div>
-              </div>
-              <!-- Issue 3 -->
-              <div class="issue">
-                <div class="status">
-                  <span class="chip" style="color: var(--color-text-muted);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle></svg>
-                  </span>
-                </div>
-                <span class="id">NX-1022</span>
-                <span class="title">Design system: Add dark mode variants for buttons</span>
-                <span class="label"><span class="dot" style="background: var(--color-accent-green);"></span> Design</span>
-                <span class="assignee"><span class="avatar">AL</span> Alex Lee</span>
-                <div class="priority">
-                  <svg viewBox="0 0 24 24" fill="var(--color-accent-blue)" stroke="var(--color-accent-blue)" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
-                </div>
-              </div>
-              <!-- Issue 4 -->
-              <div class="issue">
-                <div class="status">
-                  <span class="chip" style="color: var(--color-accent-green);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </span>
-                </div>
-                <span class="id">NX-1021</span>
-                <span class="title">Fix race condition in real-time sync engine</span>
-                <span class="label"><span class="dot" style="background: var(--color-accent-purple);"></span> Backend</span>
-                <span class="assignee"><span class="avatar">JD</span> Jane Doe</span>
-                <div class="priority">
-                  <svg viewBox="0 0 24 24" fill="var(--color-accent-red)" stroke="var(--color-accent-red)" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
-                </div>
-              </div>
-              <!-- Issue 5 -->
-              <div class="issue">
-                <div class="status">
-                  <span class="chip" style="color: var(--color-text-muted);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle></svg>
-                  </span>
-                </div>
-                <span class="id">NX-1020</span>
-                <span class="title">Write documentation for Webhooks API v2</span>
-                <span class="label"><span class="dot" style="background: var(--color-accent-amber);"></span> Docs</span>
-                <span class="assignee"><span class="avatar">RK</span> Riley Kim</span>
-                <div class="priority">
-                  <svg viewBox="0 0 24 24" fill="var(--color-text-dim)" stroke="var(--color-text-dim)" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
-                </div>
-              </div>
-            </div>
-
+    <!-- ── Hero Section ── -->
+    <section class="hero" id="hero" aria-labelledby="hero-headline">
+      <div class="container container--tight">
+        <div class="hero__content">
+          <span class="hero__badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Trusted by 10,000+ teams worldwide
+          </span>
+          <h1 class="hero__headline" id="hero-headline">Projects that move<br>at the speed of&nbsp;thought</h1>
+          <p class="hero__subhead">Klar gives your team one place to plan, track, and ship work — without the chaos. Purpose-built for modern product teams that refuse to slow down.</p>
+          <div class="hero__actions">
+            <a href="#pricing" class="btn btn--primary btn--lg">Start building free</a>
+            <a href="#benefits" class="btn btn--secondary btn--lg">See how it works</a>
           </div>
+          <p class="hero__trust">No credit card required · Free 14-day trial · Cancel anytime</p>
         </div>
       </div>
     </section>
 
-    <!-- ================= FEATURES ================= -->
-    <section id="features" class="section">
+    <!-- ── Features Section ── -->
+    <section class="section features" id="features" aria-labelledby="features-title">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Features</span>
-          <h2 class="section-title">Everything you need to ship faster</h2>
-          <p class="section-sub">A focused toolkit that eliminates friction. No bloat, no clutter—just pure execution power for your engineering team.</p>
-        </div>
-
-        <div class="features-grid">
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        <span class="section__label">Features</span>
+        <h2 class="section__title" id="features-title">Everything your team needs to ship faster</h2>
+        <p class="section__subtitle">From roadmap planning to release tracking, Klar brings clarity to every stage of your workflow.</p>
+        <div class="features__grid">
+          <!-- Feature 1 -->
+          <article class="feature-card animate-on-scroll">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="3" x2="9" y2="21"/>
+              </svg>
             </div>
-            <h3>Real-time Sync</h3>
-            <p>Changes propagate instantly across all connected clients. Built on a CRDT engine ensuring zero conflicts and zero latency.</p>
-            <span class="tag">/ sync-engine</span>
+            <h3 class="feature-card__title">Kanban boards</h3>
+            <p class="feature-card__description">Visualise your workflow with drag-and-drop boards. Spot bottlenecks before they slow you down.</p>
           </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <!-- Feature 2 -->
+          <article class="feature-card animate-on-scroll animate-on-scroll--delay-1">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
             </div>
-            <h3>Native Git Integrations</h3>
-            <p>Deep two-way sync with GitHub, GitLab, and Bitbucket. Automatically close issues from commit messages and track PR status.</p>
-            <span class="tag">/ integrations</span>
+            <h3 class="feature-card__title">Collaborative docs</h3>
+            <p class="feature-card__description">Write, share, and discuss specs and proposals right where work happens. No more silos.</p>
           </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+          <!-- Feature 3 -->
+          <article class="feature-card animate-on-scroll animate-on-scroll--delay-2">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
             </div>
-            <h3>Visual Roadmaps</h3>
-            <p>Plan quarters and track dependencies visually. Drag-and-drop timelines that sync directly with your sprint backlog.</p>
-            <span class="tag">/ roadmap</span>
+            <h3 class="feature-card__title">Timeline & roadmaps</h3>
+            <p class="feature-card__description">Plan sprints and quarters with precision. Keep stakeholders aligned with shareable roadmaps.</p>
           </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          <!-- Feature 4 -->
+          <article class="feature-card animate-on-scroll animate-on-scroll--delay-3">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
             </div>
-            <h3>Developer API & Webhooks</h3>
-            <p>Automate your workflow with a fully typed REST API and granular webhooks. Build custom integrations in minutes.</p>
-            <span class="tag">/ api-v2</span>
+            <h3 class="feature-card__title">Powerful integrations</h3>
+            <p class="feature-card__description">Connect with GitHub, Figma, Slack, and 50+ tools. Your stack, unified in one place.</p>
           </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"></path></svg>
+          <!-- Feature 5 -->
+          <article class="feature-card animate-on-scroll animate-on-scroll--delay-4">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
             </div>
-            <h3>Keyboard First</h3>
-            <p>Navigate your entire workspace without touching a mouse. Command palette, shortcuts, and vim-mode built-in.</p>
-            <span class="tag">/ shortcuts</span>
+            <h3 class="feature-card__title">Real-time dashboards</h3>
+            <p class="feature-card__description">Track progress, velocity, and team health with live dashboards that update in real time.</p>
           </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+          <!-- Feature 6 -->
+          <article class="feature-card animate-on-scroll animate-on-scroll--delay-5">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
             </div>
-            <h3>Velocity Insights</h3>
-            <p>Track cycle time, throughput, and sprint burndown. Identify bottlenecks before they impact your release.</p>
-            <span class="tag">/ analytics</span>
+            <h3 class="feature-card__title">Enterprise-grade security</h3>
+            <p class="feature-card__description">SOC 2 Type II certified, SSO, granular permissions, and end-to-end encryption by default.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ================= PRICING ================= -->
-    <section id="pricing" class="section">
+    <!-- ── Benefits Section ── -->
+    <section class="section" id="benefits" aria-labelledby="benefits-title">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Pricing</span>
-          <h2 class="section-title">Simple, transparent pricing</h2>
-          <p class="section-sub">Start free, scale as you grow. No hidden fees, no per-module add-ons.</p>
-        </div>
+        <span class="section__label">Why Klar</span>
+        <h2 class="section__title text--center" id="benefits-title">Built for the way modern teams actually work</h2>
+        <p class="section__subtitle text--center">Stop fighting your tools. Start shipping work that matters.</p>
 
-        <div class="price-grid">
-          <div class="price-card reveal">
-            <div class="price-tier">Free</div>
-            <p class="price-desc">For small teams and side projects just getting started.</p>
-            <div class="price-amount">$0 <span class="per">/ forever</span></div>
-            <a href="#" class="btn btn-ghost price-cta">Get started</a>
-            <ul class="price-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 10 members</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> 3 Projects</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Basic Git Sync</li>
-              <li class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Roadmaps</li>
-              <li class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Velocity Insights</li>
+        <!-- Benefit Row 1 -->
+        <div class="benefit-row" style="margin-top: var(--space-16);">
+          <div class="benefit-row__content">
+            <h3 class="benefit-row__title">From chaos to clarity in minutes</h3>
+            <p class="benefit-row__text">Import your existing projects from Jira, Asana, or Trello with one click. Klar auto-organizes your backlog so you can start shipping on day one — no migration headaches.</p>
+            <ul class="benefit-row__list">
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                One-click imports from 8 platforms
+              </li>
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Smart auto-categorisation of tasks
+              </li>
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Zero-downtime migration
+              </li>
             </ul>
           </div>
+          <div class="benefit-row__visual">
+            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop&auto=format&q=80" alt="Clean project dashboard interface showing task board and progress metrics" loading="lazy" width="600" height="400">
+          </div>
+        </div>
 
-          <div class="price-card featured reveal">
-            <div class="price-tier">Pro <span class="badge status-progress">Popular</span></div>
-            <p class="price-desc">For growing teams that need advanced planning and analytics.</p>
-            <div class="price-amount">$12 <span class="per">/ user / mo</span></div>
-            <a href="#" class="btn btn-primary price-cta">Start 14-day trial</a>
-            <ul class="price-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited members</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited projects</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced Git Sync</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Visual Roadmaps</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Velocity Insights</li>
+        <!-- Benefit Row 2 (reversed) -->
+        <div class="benefit-row benefit-row--reverse" style="margin-top: var(--space-24);">
+          <div class="benefit-row__content">
+            <h3 class="benefit-row__title">Move faster with AI-powered workflows</h3>
+            <p class="benefit-row__text">Klar's automation engine learns how your team works and suggests optimisations — from auto-assigning pull request reviewers to flagging at-risk deadlines before they become problems.</p>
+            <ul class="benefit-row__list">
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Smart sprint planning suggestions
+              </li>
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Automated PR reviewer assignment
+              </li>
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Predictive deadline risk detection
+              </li>
             </ul>
           </div>
+          <div class="benefit-row__visual">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format&q=80" alt="Analytics dashboard showing velocity charts and AI-powered sprint insights" loading="lazy" width="600" height="400">
+          </div>
+        </div>
 
-          <div class="price-card reveal">
-            <div class="price-tier">Enterprise</div>
-            <p class="price-desc">For organizations requiring scale, security, and dedicated support.</p>
-            <div class="price-amount">Custom</div>
-            <a href="#" class="btn btn-ghost price-cta">Contact sales</a>
-            <ul class="price-features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Pro</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> SSO & SAML</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Audit Logs</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated support</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> 99.99% SLA</li>
+        <!-- Benefit Row 3 -->
+        <div class="benefit-row" style="margin-top: var(--space-24);">
+          <div class="benefit-row__content">
+            <h3 class="benefit-row__title">Real-time collaboration that just works</h3>
+            <p class="benefit-row__text">Comment, discuss, and resolve issues without leaving your workflow. Every discussion is tied to a task, a PR, or a document — context is never lost.</p>
+            <ul class="benefit-row__list">
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Threaded discussions on every task
+              </li>
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Live cursors in shared docs
+              </li>
+              <li class="benefit-row__list-item">
+                <svg class="benefit-row__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Deep GitHub & GitLab sync
+              </li>
             </ul>
           </div>
+          <div class="benefit-row__visual">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&auto=format&q=80" alt="Team collaboration interface with real-time comments and document sharing" loading="lazy" width="600" height="400">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= CHANGELOG ================= -->
-    <section id="changelog" class="section">
+    <!-- ── Testimonials / Social Proof ── -->
+    <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Changelog</span>
-          <h2 class="section-title">What's new in Nexus</h2>
-          <p class="section-sub">We ship constantly. Here are the latest improvements to your workflow.</p>
+        <span class="section__label">Testimonials</span>
+        <h2 class="section__title" id="testimonials-title">Loved by teams that ship</h2>
+        <p class="section__subtitle">Don't take our word for it. Here's what product and engineering leaders are saying.</p>
+        <div class="testimonials__grid">
+          <!-- Testimonial 1 -->
+          <figure class="testimonial-card animate-on-scroll">
+            <blockquote class="testimonial-card__quote">
+              Klar replaced three tools for us. We went from scattered Jira boards, Notion docs, and Slack threads to one place where everything just clicks. Our sprint velocity is up 40%.
+            </blockquote>
+            <figcaption class="testimonial-card__author">
+              <img class="testimonial-card__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format&q=80" alt="Portrait of James Chen" loading="lazy" width="40" height="40">
+              <div class="testimonial-card__author-info">
+                <span class="testimonial-card__name">James Chen</span>
+                <span class="testimonial-card__role">VP Engineering, Vantage</span>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- Testimonial 2 -->
+          <figure class="testimonial-card animate-on-scroll animate-on-scroll--delay-1">
+            <blockquote class="testimonial-card__quote">
+              The best thing about Klar is how fast it is. Every interaction feels instant. Our team actually looks forward to sprint planning now — I never thought I'd say that.
+            </blockquote>
+            <figcaption class="testimonial-card__author">
+              <img class="testimonial-card__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face&auto=format&q=80" alt="Portrait of Sarah Okonkwo" loading="lazy" width="40" height="40">
+              <div class="testimonial-card__author-info">
+                <span class="testimonial-card__name">Sarah Okonkwo</span>
+                <span class="testimonial-card__role">Head of Product, Arcade</span>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- Testimonial 3 -->
+          <figure class="testimonial-card animate-on-scroll animate-on-scroll--delay-2">
+            <blockquote class="testimonial-card__quote">
+              We evaluated 12 tools before choosing Klar. The AI sprint planning feature alone saves us 6 hours every two weeks. It's like having an extra PM on the team.
+            </blockquote>
+            <figcaption class="testimonial-card__author">
+              <img class="testimonial-card__avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face&auto=format&q=80" alt="Portrait of Marcus Rivera" loading="lazy" width="40" height="40">
+              <div class="testimonial-card__author-info">
+                <span class="testimonial-card__name">Marcus Rivera</span>
+                <span class="testimonial-card__role">CTO, Lumin</span>
+              </div>
+            </figcaption>
+          </figure>
         </div>
 
-        <div class="timeline">
-          <div class="tl-item reveal">
-            <div class="tl-dot"></div>
-            <div class="tl-version">
-              <span class="tag">v2.4.0</span>
-              <span class="date">Oct 12, 2023</span>
-            </div>
-            <h3 class="tl-title">Sprint Velocity Insights</h3>
-            <div class="tl-changes">
-              <div class="tl-change">
-                <span class="kind new">New</span>
-                <p>Added a dedicated <strong>Insights tab</strong> to track cycle time, throughput, and sprint burndown charts.</p>
-              </div>
-              <div class="tl-change">
-                <span class="kind improved">Improved</span>
-                <p>Command palette now supports fuzzy search for projects and files.</p>
-              </div>
-              <div class="tl-change">
-                <span class="kind fixed">Fixed</span>
-                <p>Resolved an issue where Webhooks would occasionally duplicate payloads on retry.</p>
-              </div>
-            </div>
+        <!-- Social proof stats -->
+        <div class="social-proof">
+          <div class="social-proof__item">
+            <span class="social-proof__number">10K+</span>
+            <span class="social-proof__label">Teams use Klar daily</span>
           </div>
-
-          <div class="tl-item reveal">
-            <div class="tl-dot"></div>
-            <div class="tl-version">
-              <span class="tag">v2.3.0</span>
-              <span class="date">Sep 28, 2023</span>
-            </div>
-            <h3 class="tl-title">GitLab Integration & Keyboard Shortcuts</h3>
-            <div class="tl-changes">
-              <div class="tl-change">
-                <span class="kind new">New</span>
-                <p>Native <strong>GitLab integration</strong> is now available. Sync issues, PRs, and branches automatically.</p>
-              </div>
-              <div class="tl-change">
-                <span class="kind improved">Improved</span>
-                <p>Expanded keyboard shortcuts. Press <code>?</code> anywhere in the app to see the full cheat sheet.</p>
-              </div>
-            </div>
+          <div class="social-proof__item">
+            <span class="social-proof__number">99.9%</span>
+            <span class="social-proof__label">Uptime SLA</span>
           </div>
-
-          <div class="tl-item reveal">
-            <div class="tl-dot"></div>
-            <div class="tl-version">
-              <span class="tag">v2.2.1</span>
-              <span class="date">Sep 14, 2023</span>
-            </div>
-            <h3 class="tl-title">Performance Patch</h3>
-            <div class="tl-changes">
-              <div class="tl-change">
-                <span class="kind fixed">Fixed</span>
-                <p>Reduced initial load time by 40% by optimizing bundle splitting and lazy-loading dashboard widgets.</p>
-              </div>
-              <div class="tl-change">
-                <span class="kind fixed">Fixed</span>
-                <p>Fixed a rendering bug causing flickering on Safari 16 when switching board views.</p>
-              </div>
-            </div>
+          <div class="social-proof__item">
+            <span class="social-proof__number">4.9/5</span>
+            <span class="social-proof__label">G2 rating</span>
+          </div>
+          <div class="social-proof__item">
+            <span class="social-proof__number">40%</span>
+            <span class="social-proof__label">Avg. velocity gain</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= FAQ ================= -->
-    <section id="faq" class="section">
+    <!-- ── Pricing Section ── -->
+    <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
       <div class="container">
-        <div class="section-head reveal" style="text-align: center; margin-inline: auto;">
-          <span class="eyebrow">FAQ</span>
-          <h2 class="section-title">Frequently asked questions</h2>
+        <span class="section__label">Pricing</span>
+        <h2 class="section__title" id="pricing-title">Plans that scale with your team</h2>
+        <p class="section__subtitle">Start free, upgrade when you're ready. No hidden fees, no surprises.</p>
+        <div class="pricing__grid">
+          <!-- Starter Plan -->
+          <article class="pricing-card animate-on-scroll">
+            <h3 class="pricing-card__name">Starter</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__currency">$</span>0<span class="pricing-card__period">/month</span>
+            </div>
+            <p class="pricing-card__description">Perfect for individuals and small teams getting started.</p>
+            <ul class="pricing-card__features">
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Up to 5 team members
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited tasks & projects
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Kanban board view
+              </li>
+              <li class="pricing-card__feature pricing-card__feature--muted">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                AI-powered workflows
+              </li>
+              <li class="pricing-card__feature pricing-card__feature--muted">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Advanced analytics
+              </li>
+            </ul>
+            <a href="#" class="btn btn--secondary btn--block pricing-card__cta">Get started</a>
+          </article>
+
+          <!-- Pro Plan (Popular) -->
+          <article class="pricing-card pricing-card--popular animate-on-scroll animate-on-scroll--delay-1">
+            <span class="pricing-card__badge">Most popular</span>
+            <h3 class="pricing-card__name">Pro</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__currency">$</span>12<span class="pricing-card__period">/seat/month</span>
+            </div>
+            <p class="pricing-card__description">For growing teams that need more power and insight.</p>
+            <ul class="pricing-card__features">
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited team members
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Timeline & roadmap views
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                AI-powered workflows
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Advanced analytics & dashboards
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                50+ integrations
+              </li>
+            </ul>
+            <a href="#" class="btn btn--primary btn--block pricing-card__cta">Start free trial</a>
+          </article>
+
+          <!-- Enterprise Plan -->
+          <article class="pricing-card animate-on-scroll animate-on-scroll--delay-2">
+            <h3 class="pricing-card__name">Enterprise</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__currency">$</span>29<span class="pricing-card__period">/seat/month</span>
+            </div>
+            <p class="pricing-card__description">For large organisations with advanced security needs.</p>
+            <ul class="pricing-card__features">
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Everything in Pro
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                SSO & SAML
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Custom roles & permissions
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Audit log & compliance reports
+              </li>
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Dedicated support & SLA
+              </li>
+            </ul>
+            <a href="#" class="btn btn--secondary btn--block pricing-card__cta">Contact sales</a>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <div class="faq-list">
-          <div class="faq-item reveal" data-open="false">
-            <button class="faq-q" aria-expanded="false">
-              How does the free tier work?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    <!-- ── FAQ Section ── -->
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container container--tight">
+        <span class="section__label">FAQ</span>
+        <h2 class="section__title text--center" id="faq-title">Got questions? We've got answers.</h2>
+        <div class="faq__list">
+          <!-- FAQ Item 1 -->
+          <div class="faq__item faq__item--open" data-faq-item>
+            <button class="faq__question" data-faq-toggle aria-expanded="true">
+              <span>Can I import my existing projects from another tool?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-a">
-              <div class="faq-a-inner">
-                The Free tier is free forever for teams up to 10 members. It includes core issue tracking, 3 projects, and basic Git synchronization. No credit card is required to sign up.
-              </div>
+            <div class="faq__answer">
+              <p>Absolutely. Klar supports one-click imports from Jira, Asana, Trello, Linear, Monday.com, Notion, ClickUp, and Shortcut. Your tasks, labels, assignees, and comments all come over intact. The migration typically completes in under 10 minutes.</p>
             </div>
           </div>
-
-          <div class="faq-item reveal" data-open="false">
-            <button class="faq-q" aria-expanded="false">
-              Can I migrate from Jira or Linear?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <!-- FAQ Item 2 -->
+          <div class="faq__item" data-faq-item>
+            <button class="faq__question" data-faq-toggle aria-expanded="false">
+              <span>Is there a free plan? What are the limits?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-a">
-              <div class="faq-a-inner">
-                Yes. We provide one-click importers for Jira, Linear, and GitHub Issues. Your sprints, labels, and assignees will be automatically mapped to Nexus equivalents.
-              </div>
+            <div class="faq__answer">
+              <p>Yes — the Starter plan is free forever for teams of up to 5 people. You get unlimited tasks, unlimited projects, kanban boards, and 1 GB of file storage. No credit card required to sign up, and you can upgrade to Pro at any time when your team grows.</p>
             </div>
           </div>
-
-          <div class="faq-item reveal" data-open="false">
-            <button class="faq-q" aria-expanded="false">
-              Do you offer discounts for startups?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <!-- FAQ Item 3 -->
+          <div class="faq__item" data-faq-item>
+            <button class="faq__question" data-faq-toggle aria-expanded="false">
+              <span>How does the AI sprint planning work?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-a">
-              <div class="faq-a-inner">
-                We offer a 50% discount for the first year for early-stage startups (under 10 employees, less than $5M funding). Reach out to our sales team with your details to apply.
-              </div>
+            <div class="faq__answer">
+              <p>Klar's AI learns from your team's historical velocity, task complexity patterns, and individual capacity. When you create a new sprint, it suggests an optimal task allocation that balances workload, respects dependencies, and hits your target scope. You can accept, tweak, or override any suggestion. It typically saves teams 3–6 hours per sprint planning cycle.</p>
             </div>
           </div>
-
-          <div class="faq-item reveal" data-open="false">
-            <button class="faq-q" aria-expanded="false">
-              Is my data secure?
-              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <!-- FAQ Item 4 -->
+          <div class="faq__item" data-faq-item>
+            <button class="faq__question" data-faq-toggle aria-expanded="false">
+              <span>What kind of support do you offer?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-a">
-              <div class="faq-a-inner">
-                Security is our top priority. Nexus is SOC 2 Type II compliant. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). Enterprise plans include SSO, SAML, and detailed audit logs.
-              </div>
+            <div class="faq__answer">
+              <p>All plans include email support with a guaranteed 4-hour response time during business hours. Pro plans get priority chat support. Enterprise plans include a dedicated account manager, 99.9% uptime SLA, and phone support. We also maintain an extensive help centre with video walkthroughs, API docs, and best-practice guides.</p>
+            </div>
+          </div>
+          <!-- FAQ Item 5 -->
+          <div class="faq__item" data-faq-item>
+            <button class="faq__question" data-faq-toggle aria-expanded="false">
+              <span>Is Klar SOC 2 compliant? How do you handle data?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq__answer">
+              <p>Yes. Klar is SOC 2 Type II certified and GDPR compliant. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). We host on AWS with data centre options in the US, EU, and APAC. Enterprise customers can request a dedicated VPC and on-premise deployment options. We never use your data to train our AI models.</p>
+            </div>
+          </div>
+          <!-- FAQ Item 6 -->
+          <div class="faq__item" data-faq-item>
+            <button class="faq__question" data-faq-toggle aria-expanded="false">
+              <span>Can I cancel my subscription anytime?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq__answer">
+              <p>Yes, you can cancel anytime with no penalties. If you cancel mid-cycle, you'll retain access through the end of your current billing period. We'll keep your data available for 30 days after cancellation in case you want to export it or reactivate your account. Data exports are available in JSON and CSV formats.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= CTA BAND ================= -->
-    <section class="section-sm">
+    <!-- ── CTA Banner ── -->
+    <section class="section" aria-labelledby="cta-banner-title">
       <div class="container">
-        <div class="cta-band reveal">
-          <h3>Ready to build faster?</h3>
-          <p>Join 4,000+ high-velocity engineering teams already using Nexus.</p>
-          <a href="#" class="btn btn-primary">Get started for free</a>
+        <div class="cta-banner animate-on-scroll">
+          <h2 class="cta-banner__title" id="cta-banner-title">Ready to ship faster?</h2>
+          <p class="cta-banner__text">Join 10,000+ teams already using Klar to plan, build, and ship with clarity. Free forever for teams of 5.</p>
+          <div class="cta-banner__actions">
+            <a href="#" class="btn btn--primary btn--lg">Start free — no credit card</a>
+            <a href="#" class="btn btn--secondary btn--lg">Talk to sales</a>
+          </div>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="/" class="brand">
-            <span class="brand-mark">N</span>
-            Nexus
-          </a>
-          <p>The issue tracker built for high-velocity teams. Plan, track, and ship your best work.</p>
+  <!-- ── Footer ── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div>
+          <div class="site-footer__brand">Klar</div>
+          <p class="site-footer__brand-text">The project management platform for high-velocity teams. Plan, track, and ship with clarity.</p>
         </div>
-        <div class="footer-col">
-          <h4>Product</h4>
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#changelog">Changelog</a></li>
-            <li><a href="#">Integrations</a></li>
+        <div>
+          <h4 class="site-footer__heading">Product</h4>
+          <ul class="site-footer__links">
+            <li><a href="#features" class="site-footer__link">Features</a></li>
+            <li><a href="#pricing" class="site-footer__link">Pricing</a></li>
+            <li><a href="#" class="site-footer__link">Integrations</a></li>
+            <li><a href="#" class="site-footer__link">Changelog</a></li>
+            <li><a href="#" class="site-footer__link">Roadmap</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="/docs.html">Documentation</a></li>
-            <li><a href="#">API Reference</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">Status</a></li>
+        <div>
+          <h4 class="site-footer__heading">Company</h4>
+          <ul class="site-footer__links">
+            <li><a href="#" class="site-footer__link">About</a></li>
+            <li><a href="#" class="site-footer__link">Blog</a></li>
+            <li><a href="#" class="site-footer__link">Careers</a></li>
+            <li><a href="#" class="site-footer__link">Press</a></li>
+            <li><a href="#" class="site-footer__link">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Security</a></li>
-            <li><a href="#">DPA</a></li>
+        <div>
+          <h4 class="site-footer__heading">Legal</h4>
+          <ul class="site-footer__links">
+            <li><a href="#" class="site-footer__link">Privacy Policy</a></li>
+            <li><a href="#" class="site-footer__link">Terms of Service</a></li>
+            <li><a href="#" class="site-footer__link">Security</a></li>
+            <li><a href="#" class="site-footer__link">Cookie Policy</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2023 Nexus Labs, Inc. All rights reserved.</span>
-        <div class="socials">
-          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+      <div class="site-footer__bottom">
+        <span class="site-footer__copyright">&copy; 2026 Klar, Inc. All rights reserved.</span>
+        <div class="site-footer__socials">
+          <a href="#" class="site-footer__social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="site-footer__social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="#" class="site-footer__social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ================= COMMAND PALETTE ================= -->
-  <div class="cmd-overlay" id="cmd-overlay" data-open="false" role="dialog" aria-modal="true" aria-label="Command palette">
-    <div class="cmd-panel">
-      <div class="cmd-input-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-        <input type="text" class="cmd-input" id="cmd-input" placeholder="Type a command or search..." autocomplete="off">
-        <span class="cmd-esc">ESC</span>
-      </div>
-      <div class="cmd-list" id="cmd-list">
-        <div class="cmd-group-label">Navigation</div>
-        <div class="cmd-item" data-active="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-          Go to Home
-          <span class="hint"><span class="kbd">G</span><span class="kbd">H</span></span>
-        </div>
-        <div class="cmd-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-          Go to Docs
-          <span class="hint"><span class="kbd">G</span><span class="kbd">D</span></span>
-        </div>
-        <div class="cmd-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-          Go to Pricing
-          <span class="hint"><span class="kbd">G</span><span class="kbd">P</span></span>
-        </div>
-
-        <div class="cmd-group-label">Actions</div>
-        <div class="cmd-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-          Create new issue
-          <span class="hint"><span class="kbd">C</span></span>
-        </div>
-        <div class="cmd-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-          Change status
-          <span class="hint"><span class="kbd">S</span></span>
-        </div>
-        <div class="cmd-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          Assign to...
-          <span class="hint"><span class="kbd">A</span></span>
-        </div>
-      </div>
-      <div class="cmd-foot">
-        <div class="hints">
-          <span><span class="kbd">↑</span><span class="kbd">↓</span> Navigate</span>
-          <span><span class="kbd">↵</span> Select</span>
-        </div>
-        <span>Nexus Command</span>
-      </div>
-    </div>
-  </div>
-
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

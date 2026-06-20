@@ -1,195 +1,370 @@
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Klar SaaS Landing Page — Interactive Scripts
+ *
+ * Handles:
+ * - Theme toggle (light/dark) with localStorage + OS preference detection
+ * - Mobile menu open/close
+ * - Header scroll shadow
+ * - Scroll-triggered entrance animations (Intersection Observer)
+ * - FAQ accordion (enhanced <details>-like behaviour)
+ * - Smooth anchor scroll offset for sticky header
+ * - Active nav link highlighting on scroll (optional, lightweight)
+ */
 
-  // ===================================================================
-  // Mobile Navigation Toggle
-  // ===================================================================
-  const navToggle = document.getElementById('nav-toggle');
-  const navDrawer = document.getElementById('nav-drawer');
+(function () {
+  'use strict';
 
-  if (navToggle && navDrawer) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = navDrawer.getAttribute('data-open') === 'true';
-      navDrawer.setAttribute('data-open', !isOpen);
-      navToggle.setAttribute('aria-expanded', !isOpen);
-    });
+  /* ─────────────────────────────────────────────
+     1. DOM ELEMENT REFERENCES
+     ───────────────────────────────────────────── */
+  const siteHeader = document.getElementById('site-header');
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const body = document.body;
+  const html = document.documentElement;
 
-    // Close drawer when a link is clicked
-    navDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navDrawer.setAttribute('data-open', 'false');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
+  // FAQ elements
+  const faqItems = document.querySelectorAll('[data-faq-item]');
+
+  // Elements that animate on scroll
+  const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+  // All internal anchor links (for offset scrolling)
+  const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+  // All sections with IDs (for active nav)
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.site-nav__link');
+
+  /* ─────────────────────────────────────────────
+     2. THEME TOGGLE (Light / Dark)
+     ───────────────────────────────────────────── */
+  const THEME_KEY = 'klar-theme-preference';
+
+  /**
+   * Detect the user's OS-level colour scheme preference.
+   * Returns 'dark' if the OS prefers dark, otherwise 'light'.
+   */
+  function getSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
   }
 
-  // ===================================================================
-  // Command Palette (⌘K) Modal Handling
-  // ===================================================================
-  const cmdOverlay = document.getElementById('cmd-overlay');
-  const cmdInput = document.getElementById('cmd-input');
-  const openCmdNav = document.getElementById('open-cmd-nav');
-  const cmdItems = document.querySelectorAll('.cmd-item');
-  let activeCmdIndex = 0;
+  /**
+   * Returns the current theme: checks localStorage first, then system preference.
+   */
+  function getInitialTheme() {
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored === 'dark' || stored === 'light') {
+      return stored;
+    }
+    return getSystemTheme();
+  }
 
-  function updateCmdActive() {
-    cmdItems.forEach((item, i) => {
-      item.setAttribute('data-active', i === activeCmdIndex);
-      if (i === activeCmdIndex) {
-        item.scrollIntoView({ block: 'nearest' });
+  /**
+   * Apply the given theme to the document.
+   */
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      html.setAttribute('data-theme', 'dark');
+      // Update theme-color meta tag for browser chrome
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.setAttribute('content', '#0d0d10');
+      }
+    } else {
+      html.removeAttribute('data-theme');
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.setAttribute('content', '#5b5fe3');
+      }
+    }
+  }
+
+  /**
+   * Toggle between light and dark themes.
+   */
+  function toggleTheme() {
+    const currentTheme = html.hasAttribute('data-theme') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+    localStorage.setItem(THEME_KEY, newTheme);
+  }
+
+  // Initialize theme on page load (before paint, so run immediately)
+  applyTheme(getInitialTheme());
+
+  // Listen for changes to OS-level preference
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+      // Only auto-switch if the user hasn't manually set a preference
+      const stored = localStorage.getItem(THEME_KEY);
+      if (!stored) {
+        applyTheme(e.matches ? 'dark' : 'light');
       }
     });
   }
 
-  function openCmd() {
-    if (!cmdOverlay) return;
-    cmdOverlay.setAttribute('data-open', 'true');
-    activeCmdIndex = 0;
-    updateCmdActive();
-    setTimeout(() => cmdInput && cmdInput.focus(), 50);
+  // Theme toggle button click handler
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
   }
 
-  function closeCmd() {
-    if (!cmdOverlay) return;
-    cmdOverlay.setAttribute('data-open', 'false');
-    if (cmdInput) cmdInput.value = '';
+  /* ─────────────────────────────────────────────
+     3. MOBILE MENU
+     ───────────────────────────────────────────── */
+  let menuOpen = false;
+
+  function openMobileMenu() {
+    menuOpen = true;
+    mobileMenu.classList.add('mobile-menu--open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenuToggle.setAttribute('aria-expanded', 'true');
+    body.classList.add('no-scroll');
   }
 
-  if (cmdOverlay) {
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        if (cmdOverlay.getAttribute('data-open') === 'true') {
-          closeCmd();
+  function closeMobileMenu() {
+    menuOpen = false;
+    mobileMenu.classList.remove('mobile-menu--open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    body.classList.remove('no-scroll');
+  }
+
+  function toggleMobileMenu() {
+    if (menuOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Close mobile menu when a link inside it is clicked
+  if (mobileMenu) {
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeMobileMenu();
+      });
+    });
+  }
+
+  // Close mobile menu on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menuOpen) {
+      closeMobileMenu();
+      mobileMenuToggle.focus(); // Return focus to toggle button
+    }
+  });
+
+  /* ─────────────────────────────────────────────
+     4. HEADER SCROLL SHADOW
+     ───────────────────────────────────────────── */
+  function handleHeaderScroll() {
+    if (!siteHeader) return;
+    const scrollY = window.scrollY || window.pageYOffset;
+    if (scrollY > 8) {
+      siteHeader.classList.add('site-header--scrolled');
+    } else {
+      siteHeader.classList.remove('site-header--scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+  // Run once on load
+  handleHeaderScroll();
+
+  /* ─────────────────────────────────────────────
+     5. SCROLL-TRIGGERED ANIMATIONS
+     ───────────────────────────────────────────── */
+  if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: '0px 0px -60px 0px', // trigger slightly before element enters view
+      threshold: 0.1
+    };
+
+    const animationObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-on-scroll--visible');
+          // Once visible, stop observing this element
+          animationObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    animatedElements.forEach(function (el) {
+      animationObserver.observe(el);
+    });
+  } else if (animatedElements.length > 0) {
+    // Fallback: just show everything immediately if IntersectionObserver isn't available
+    animatedElements.forEach(function (el) {
+      el.classList.add('animate-on-scroll--visible');
+    });
+  }
+
+  /* ─────────────────────────────────────────────
+     6. FAQ ACCORDION
+     ───────────────────────────────────────────── */
+  function initFaq() {
+    faqItems.forEach(function (item) {
+      const toggle = item.querySelector('[data-faq-toggle]');
+      if (!toggle) return;
+
+      toggle.addEventListener('click', function () {
+        const isOpen = item.classList.contains('faq__item--open');
+        const wasExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        // Close all other FAQ items (optional — accordion behaviour)
+        // Comment out the next lines if you want multiple open at once.
+        faqItems.forEach(function (otherItem) {
+          if (otherItem !== item) {
+            otherItem.classList.remove('faq__item--open');
+            const otherToggle = otherItem.querySelector('[data-faq-toggle]');
+            if (otherToggle) {
+              otherToggle.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+
+        // Toggle current item
+        if (isOpen && wasExpanded) {
+          item.classList.remove('faq__item--open');
+          toggle.setAttribute('aria-expanded', 'false');
         } else {
-          openCmd();
+          item.classList.add('faq__item--open');
+          toggle.setAttribute('aria-expanded', 'true');
         }
-      }
-      if (e.key === 'Escape' && cmdOverlay.getAttribute('data-open') === 'true') {
-        closeCmd();
-      }
-
-      // Command palette navigation
-      if (cmdOverlay.getAttribute('data-open') === 'true' && cmdItems.length > 0) {
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          activeCmdIndex = (activeCmdIndex + 1) % cmdItems.length;
-          updateCmdActive();
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          activeCmdIndex = (activeCmdIndex - 1 + cmdItems.length) % cmdItems.length;
-          updateCmdActive();
-        }
-      }
-    });
-
-    // Click handlers
-    if (openCmdNav) openCmdNav.addEventListener('click', openCmd);
-    
-    cmdOverlay.addEventListener('click', (e) => {
-      if (e.target === cmdOverlay) closeCmd();
-    });
-
-    cmdItems.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        // Simulate action
-        closeCmd();
       });
-      item.addEventListener('mouseenter', () => {
-        activeCmdIndex = index;
-        updateCmdActive();
+
+      // Allow keyboard activation with Enter/Space
+      toggle.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle.click();
+        }
       });
     });
   }
 
-  // ===================================================================
-  // FAQ Accordion
-  // ===================================================================
-  const faqItems = document.querySelectorAll('.faq-item');
-  
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-q');
-    if (!button) return;
+  initFaq();
 
-    button.addEventListener('click', () => {
-      const isOpen = item.getAttribute('data-open') === 'true';
-      
-      // Close all other items
-      faqItems.forEach(otherItem => {
-        if (otherItem !== item) {
-          otherItem.setAttribute('data-open', 'false');
-          const otherBtn = otherItem.querySelector('.faq-q');
-          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      // Toggle current item
-      item.setAttribute('data-open', !isOpen);
-      button.setAttribute('aria-expanded', !isOpen);
-    });
-  });
-
-  // ===================================================================
-  // Scroll Reveal Animations
-  // ===================================================================
-  const reveals = document.querySelectorAll('.reveal');
-
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.setAttribute('data-shown', 'true');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    reveals.forEach(el => revealObserver.observe(el));
-  } else {
-    // Fallback for older browsers
-    reveals.forEach(el => el.setAttribute('data-shown', 'true'));
+  /* ─────────────────────────────────────────────
+     7. SMOOTH ANCHOR SCROLL WITH HEADER OFFSET
+     ───────────────────────────────────────────── */
+  function getHeaderHeight() {
+    if (!siteHeader) return 0;
+    return siteHeader.getBoundingClientRect().height;
   }
 
-  // ===================================================================
-  // Feature Card Mouse Glow Tracking
-  // ===================================================================
-  const featureCards = document.querySelectorAll('.feature-card');
+  function scrollToTarget(targetEl) {
+    if (!targetEl) return;
+    const headerHeight = getHeaderHeight();
+    const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = targetPosition - headerHeight - 16; // 16px extra breathing room
 
-  featureCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mx', `${x}px`);
-      card.style.setProperty('--my', `${y}px`);
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+
+  internalLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      const href = link.getAttribute('href');
+      // Only handle internal anchors
+      if (!href || !href.startsWith('#')) return;
+      // Ignore empty hash links
+      if (href === '#') return;
+
+      const targetId = href.substring(1);
+      const targetEl = document.getElementById(targetId);
+
+      if (targetEl) {
+        e.preventDefault();
+        scrollToTarget(targetEl);
+
+        // Update URL hash without jump (after scroll completes)
+        if (history.pushState) {
+          history.pushState(null, null, href);
+        } else {
+          // Fallback for older browsers
+          setTimeout(function () {
+            window.location.hash = href;
+          }, 500);
+        }
+      }
     });
   });
 
-  // ===================================================================
-  // Docs TOC Active State on Scroll
-  // ===================================================================
-  const tocLinks = document.querySelectorAll('.docs-toc a');
-  const headings = document.querySelectorAll('.docs-main h2, .docs-main h1');
+  /* ─────────────────────────────────────────────
+     8. ACTIVE NAV LINK HIGHLIGHTING (on scroll)
+     ───────────────────────────────────────────── */
+  if (sections.length > 0 && navLinks.length > 0 && 'IntersectionObserver' in window) {
+    const navObserverOptions = {
+      root: null,
+      rootMargin: '-80px 0px -40% 0px',
+      threshold: 0
+    };
 
-  if (tocLinks.length > 0 && headings.length > 0 && 'IntersectionObserver' in window) {
-    const headingObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    const sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          tocLinks.forEach(link => {
-            const isActive = link.getAttribute('href') === `#${id}`;
-            link.classList.toggle('active', isActive);
+          const activeId = entry.target.getAttribute('id');
+          navLinks.forEach(function (link) {
+            link.classList.remove('site-nav__link--active');
+            if (link.getAttribute('href') === '#' + activeId) {
+              link.classList.add('site-nav__link--active');
+            }
           });
         }
       });
-    }, {
-      rootMargin: '0px 0px -70% 0px' // Trigger when heading is in top 30%
-    });
+    }, navObserverOptions);
 
-    headings.forEach(h => headingObserver.observe(h));
+    sections.forEach(function (section) {
+      if (section.id) {
+        sectionObserver.observe(section);
+      }
+    });
   }
 
-});
+  /* ─────────────────────────────────────────────
+     9. RESIZE HANDLER (debounced)
+     ───────────────────────────────────────────── */
+  let resizeTimeout;
+  function handleResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function () {
+      // Close mobile menu on desktop breakpoint
+      if (window.innerWidth >= 768 && menuOpen) {
+        closeMobileMenu();
+      }
+    }, 150);
+  }
+
+  window.addEventListener('resize', handleResize, { passive: true });
+
+  /* ─────────────────────────────────────────────
+     10. INITIALISATION COMPLETE
+     ───────────────────────────────────────────── */
+  // Log a subtle welcome for devs who inspect the console
+  if (window.console && window.console.log) {
+    console.log(
+      '%c🚀 Klar %cSaaS Landing Page',
+      'font-weight: bold; font-size: 1.2em; color: #5b5fe3;',
+      'color: #8e8e96;'
+    );
+    console.log(
+      '%cBuilt with vanilla HTML, CSS & JS. No frameworks, no build step.',
+      'font-style: italic; color: #8e8e96;'
+    );
+  }
+})();
