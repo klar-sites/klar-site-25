@@ -1,245 +1,215 @@
-(function () {
-  "use strict";
+/* ==========================================================================
+   Flux — Client-side interactivity
+   ========================================================================== */
 
-  const root = document.documentElement;
-  const body = document.body;
-  const header = document.querySelector("[data-site-header]");
-  const navToggle = document.querySelector("[data-nav-toggle]");
-  const navLinks = document.querySelectorAll("[data-nav-link]");
-  const themeToggle = document.querySelector("[data-theme-toggle]");
-  const billingToggle = document.querySelector("[data-billing-toggle]");
-  const priceNodes = document.querySelectorAll("[data-price]");
-  const faqItems = document.querySelectorAll(".faq-item");
-  const revealNodes = document.querySelectorAll(".reveal");
-  const yearNode = document.querySelector("[data-current-year]");
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbarScroll();
+  initMobileMenu();
+  initSmoothScroll();
+  initCommandPalette();
+  initAccordion();
+  initScrollReveal();
+  initFeatureCardGlow();
+});
 
-  const storageKeys = {
-    theme: "nexaflow-theme",
-    billing: "nexaflow-billing"
+/* --------------------------------------------------------------------------
+   Navbar: add .scrolled class when page is scrolled
+   -------------------------------------------------------------------------- */
+function initNavbarScroll() {
+  const header = document.getElementById('siteHeader');
+  if (!header) return;
+
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
   };
 
-  function getPreferredTheme() {
-    const savedTheme = localStorage.getItem(storageKeys.theme);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // initial state
+}
 
-    if (savedTheme === "light" || savedTheme === "dark") {
-      return savedTheme;
-    }
+/* --------------------------------------------------------------------------
+   Mobile hamburger menu
+   -------------------------------------------------------------------------- */
+function initMobileMenu() {
+  const hamburger = document.getElementById('navbarHamburger');
+  const links = document.getElementById('navbarLinks');
+  const overlay = document.getElementById('mobileMenuOverlay');
+  if (!hamburger || !links || !overlay) return;
 
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
+  const openMenu = () => {
+    links.classList.add('active');
+    overlay.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('no-scroll');
+  };
 
-  function setTheme(theme) {
-    const isDark = theme === "dark";
+  const closeMenu = () => {
+    links.classList.remove('active');
+    overlay.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('no-scroll');
+  };
 
-    root.setAttribute("data-theme", theme);
+  hamburger.addEventListener('click', () => {
+    const isOpen = links.classList.contains('active');
+    isOpen ? closeMenu() : openMenu();
+  });
 
-    if (themeToggle) {
-      themeToggle.setAttribute("aria-pressed", String(isDark));
-      themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
-    }
+  overlay.addEventListener('click', closeMenu);
 
-    localStorage.setItem(storageKeys.theme, theme);
-  }
-
-  function toggleTheme() {
-    const currentTheme = root.getAttribute("data-theme") || "light";
-    setTheme(currentTheme === "dark" ? "light" : "dark");
-  }
-
-  function closeNavigation() {
-    body.classList.remove("nav-open");
-
-    if (navToggle) {
-      navToggle.setAttribute("aria-expanded", "false");
-      navToggle.setAttribute("aria-label", "Open navigation");
-    }
-  }
-
-  function toggleNavigation() {
-    const isOpen = body.classList.toggle("nav-open");
-
-    if (navToggle) {
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-      navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
-    }
-  }
-
-  function updateHeaderState() {
-    if (!header) return;
-    header.classList.toggle("is-scrolled", window.scrollY > 8);
-  }
-
-  function setBillingCycle(isAnnual) {
-    priceNodes.forEach((node) => {
-      const monthlyPrice = node.getAttribute("data-monthly");
-      const yearlyPrice = node.getAttribute("data-yearly");
-      node.textContent = isAnnual ? yearlyPrice : monthlyPrice;
+  // Close menu when a nav link is clicked
+  links.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (links.classList.contains('active')) closeMenu();
     });
+  });
 
-    if (billingToggle) {
-      billingToggle.checked = isAnnual;
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && links.classList.contains('active')) {
+      closeMenu();
     }
+  });
+}
 
-    localStorage.setItem(storageKeys.billing, isAnnual ? "annual" : "monthly");
-  }
+/* --------------------------------------------------------------------------
+   Smooth anchor scrolling
+   -------------------------------------------------------------------------- */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return; // ignore top-of-page links
 
-  function initializeFaq() {
-    faqItems.forEach((item) => {
-      const button = item.querySelector(".faq-question");
-      if (!button) return;
+      const targetEl = document.querySelector(targetId);
+      if (!targetEl) return;
 
-      button.addEventListener("click", () => {
-        const isOpen = item.classList.contains("is-open");
+      e.preventDefault();
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
 
-        faqItems.forEach((otherItem) => {
-          const otherButton = otherItem.querySelector(".faq-question");
-          otherItem.classList.remove("is-open");
-          if (otherButton) otherButton.setAttribute("aria-expanded", "false");
-        });
+/* --------------------------------------------------------------------------
+   Command Palette (⌘K / Ctrl+K)
+   -------------------------------------------------------------------------- */
+function initCommandPalette() {
+  const overlay = document.getElementById('commandPaletteOverlay');
+  const trigger = document.getElementById('cmdKTrigger');
+  const input = document.getElementById('cpInput');
+  if (!overlay || !trigger || !input) return;
 
-        if (!isOpen) {
-          item.classList.add("is-open");
-          button.setAttribute("aria-expanded", "true");
+  const open = () => {
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+    // Focus the input field with a tiny delay for animation
+    setTimeout(() => input.focus(), 100);
+  };
+
+  const close = () => {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+    input.value = '';
+  };
+
+  // Trigger button click
+  trigger.addEventListener('click', open);
+
+  // Keyboard shortcut: Meta+K (Mac) or Ctrl+K (Win/Linux)
+  document.addEventListener('keydown', (e) => {
+    const modKey = e.metaKey || e.ctrlKey;
+    if (modKey && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      // Toggle: if open, close; else open
+      overlay.classList.contains('open') ? close() : open();
+    }
+    // Escape to close
+    if (e.key === 'Escape' && overlay.classList.contains('open')) {
+      e.preventDefault();
+      close();
+    }
+  });
+
+  // Close when clicking overlay background (not the palette itself)
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close();
+  });
+}
+
+/* --------------------------------------------------------------------------
+   FAQ Accordion (single open at a time)
+   -------------------------------------------------------------------------- */
+function initAccordion() {
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  if (!accordionItems.length) return;
+
+  accordionItems.forEach(item => {
+    const trigger = item.querySelector('.accordion-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      // Close all other accordion items
+      accordionItems.forEach(other => {
+        if (other !== item) {
+          other.classList.remove('open');
+          other.querySelector('.accordion-trigger')?.setAttribute('aria-expanded', 'false');
         }
       });
+
+      // Toggle current
+      item.classList.toggle('open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
     });
-  }
+  });
+}
 
-  function initializeRevealAnimations() {
-    if (!revealNodes.length) return;
+/* --------------------------------------------------------------------------
+   Scroll reveal animation (Intersection Observer)
+   -------------------------------------------------------------------------- */
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal');
+  if (!revealElements.length) return;
 
-    if (!("IntersectionObserver" in window)) {
-      revealNodes.forEach((node) => node.classList.add("is-visible"));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries, revealObserver) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        });
-      },
-      {
-        root: null,
-        threshold: 0.14,
-        rootMargin: "0px 0px -60px 0px"
-      }
-    );
-
-    revealNodes.forEach((node, index) => {
-      node.style.transitionDelay = `${Math.min(index % 6, 5) * 55}ms`;
-      observer.observe(node);
-    });
-  }
-
-  function initializeAnchorLinks() {
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener("click", () => {
-        closeNavigation();
-      });
-    });
-  }
-
-  function initializeKeyboardControls() {
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeNavigation();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Once revealed, stop observing to save resources
+        observer.unobserve(entry.target);
       }
     });
-  }
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -30px 0px',
+  });
 
-  function initializeOutsideClick() {
-    document.addEventListener("click", (event) => {
-      if (!body.classList.contains("nav-open")) return;
-      if (!navToggle) return;
+  revealElements.forEach(el => observer.observe(el));
+}
 
-      const nav = document.getElementById(navToggle.getAttribute("aria-controls"));
-      const clickedInsideNav = nav && nav.contains(event.target);
-      const clickedToggle = navToggle.contains(event.target);
+/* --------------------------------------------------------------------------
+   Feature card mouse-tracking glow
+   -------------------------------------------------------------------------- */
+function initFeatureCardGlow() {
+  const cards = document.querySelectorAll('.feature-card');
+  if (!cards.length || !window.matchMedia('(pointer: fine)').matches) return;
 
-      if (!clickedInsideNav && !clickedToggle) {
-        closeNavigation();
-      }
-    });
-  }
-
-  function initializeResponsiveNav() {
-    const desktopQuery = window.matchMedia("(min-width: 64rem)");
-
-    function handleViewportChange(event) {
-      if (event.matches) {
-        closeNavigation();
-      }
-    }
-
-    if (desktopQuery.addEventListener) {
-      desktopQuery.addEventListener("change", handleViewportChange);
-    } else {
-      desktopQuery.addListener(handleViewportChange);
-    }
-
-    handleViewportChange(desktopQuery);
-  }
-
-  function initializeTheme() {
-    setTheme(getPreferredTheme());
-
-    if (themeToggle) {
-      themeToggle.addEventListener("click", toggleTheme);
-    }
-  }
-
-  function initializePricing() {
-    const savedBilling = localStorage.getItem(storageKeys.billing);
-    const isAnnual = savedBilling === "annual";
-
-    setBillingCycle(isAnnual);
-
-    if (billingToggle) {
-      billingToggle.addEventListener("change", (event) => {
-        setBillingCycle(event.target.checked);
-      });
-    }
-  }
-
-  function initializeHeader() {
-    updateHeaderState();
-    window.addEventListener("scroll", updateHeaderState, { passive: true });
-  }
-
-  function initializeYear() {
-    if (yearNode) {
-      yearNode.textContent = String(new Date().getFullYear());
-    }
-  }
-
-  function initializeNavigation() {
-    if (navToggle) {
-      navToggle.addEventListener("click", toggleNavigation);
-    }
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", closeNavigation);
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mouse-x', `${x}%`);
+      card.style.setProperty('--mouse-y', `${y}%`);
     });
 
-    initializeAnchorLinks();
-    initializeKeyboardControls();
-    initializeOutsideClick();
-    initializeResponsiveNav();
-  }
-
-  function init() {
-    initializeTheme();
-    initializeYear();
-    initializeHeader();
-    initializeNavigation();
-    initializePricing();
-    initializeFaq();
-    initializeRevealAnimations();
-  }
-
-  init();
-})();
+    // Reset on mouse leave to avoid stale values
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', '50%');
+      card.style.setProperty('--mouse-y', '50%');
+    });
+  });
+}
