@@ -1,772 +1,702 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Velocity — Ship Products Faster</title>
-  <meta name="description" content="Velocity is the all-in-one platform that helps modern teams design, build, and scale software at the speed of thought. Start your free trial today." />
-  <link rel="stylesheet" href="/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaFlow — AI Workflow Automation for High-Growth Teams</title>
+  <meta name="description" content="NexaFlow is a premium AI workflow automation platform that helps revenue and operations teams launch, measure, and optimize critical work in minutes.">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ======================================================
-       HEADER
-       ====================================================== -->
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a href="index.html" class="brand">
-        <span class="brand__icon">V</span>
-        Velocity
+  <header class="site-header" data-site-header>
+    <div class="container-wide header-inner">
+      <a class="brand" href="#hero" aria-label="NexaFlow home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" role="img">
+            <path d="M5 12.7C5 8.4 8.4 5 12.7 5H19v6.3c0 4.3-3.4 7.7-7.7 7.7H5v-6.3Z" fill="currentColor" opacity=".92"/>
+            <path d="M9 14.8 15.8 8M14.8 8h1v1" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-name">NexaFlow</span>
       </a>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#benefits" class="nav-link">Benefits</a>
-        <a href="#testimonials" class="nav-link">Testimonials</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#faq" class="nav-link">FAQ</a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a class="nav-link" data-nav-link href="#features">Features</a>
+        <a class="nav-link" data-nav-link href="#benefits">Benefits</a>
+        <a class="nav-link" data-nav-link href="#testimonials">Customers</a>
+        <a class="nav-link" data-nav-link href="#pricing">Pricing</a>
+        <a class="nav-link" data-nav-link href="#faq">FAQ</a>
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4V2m0 20v-2M4 12H2m20 0h-2m-2.34-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 14.2A8.5 8.5 0 0 1 9.8 3a8.5 8.5 0 1 0 11.2 11.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
         </button>
-        <a href="#pricing" class="btn btn-primary btn-sm md:hidden">Get Started</a>
-        <a href="#pricing" class="btn btn-primary hidden md:flex">Get Started Free</a>
-        <button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        <a class="btn btn-secondary mobile-hidden" href="#pricing">View plans</a>
+        <a class="btn btn-primary mobile-hidden" href="#cta">Start free</a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Open navigation">
+          <span class="nav-toggle-line" aria-hidden="true"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile nav overlay -->
-  <div class="mobile-nav" aria-label="Mobile navigation">
-    <a href="#features" class="nav-link">Features</a>
-    <a href="#benefits" class="nav-link">Benefits</a>
-    <a href="#testimonials" class="nav-link">Testimonials</a>
-    <a href="#pricing" class="nav-link">Pricing</a>
-    <a href="#faq" class="nav-link">FAQ</a>
-    <a href="#pricing" class="btn btn-primary btn-lg w-full mt-4">Start Free Trial</a>
-  </div>
-
-  <main>
-
-    <!-- ======================================================
-         HERO
-         ====================================================== -->
-    <section class="hero" id="hero">
-      <div class="container flex flex-col items-center text-center gap-6">
-        <span class="badge hero__badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14v-3"/><path d="M14 14v-3"/><path d="M11 19c-1.7 0-3-1.3-3-3v-2h8v2c0 1.7-1.3 3-3 3Z"/><path d="M12 22v-3"/></svg>
-          Now in Public Beta
-        </span>
-
-        <h1 class="hero__title">Ship products faster<br/>with Velocity</h1>
-
-        <p class="hero__lead">The all-in-one platform that helps modern teams design, build, and scale software at the speed of thought. No more tool-switching, no more bottlenecks.</p>
-
-        <div class="hero__actions">
-          <a href="#pricing" class="btn btn-primary btn-xl">
-            Start Free Trial
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-          <a href="#features" class="btn btn-outline btn-xl">See How It Works</a>
+  <main id="main">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container-wide hero-grid">
+        <div class="hero-content reveal">
+          <div class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Trusted by 4,800+ scaling teams
+          </div>
+          <h1 class="hero-title" id="hero-title">Automate revenue work with <span class="gradient-text">AI precision.</span></h1>
+          <p class="hero-description">NexaFlow turns fragmented processes into self-optimizing workflows across sales, success, finance, and operations — so teams move faster without adding headcount.</p>
+          <div class="hero-actions" aria-label="Hero actions">
+            <a class="btn btn-primary btn-large" href="#pricing">
+              Start 14-day trial
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="btn btn-secondary btn-large" href="#features">See how it works</a>
+          </div>
+          <div class="hero-proof" aria-label="Customer rating">
+            <div class="avatar-stack" aria-hidden="true">
+              <span class="avatar">AL</span>
+              <span class="avatar">MK</span>
+              <span class="avatar">SP</span>
+              <span class="avatar">JR</span>
+            </div>
+            <span>4.9/5 from operators at Series A to IPO</span>
+          </div>
         </div>
 
-        <div class="hero__proof">
-          <div class="hero__stat">
-            <span class="hero__stat-value">12,000+</span>
-            <span class="hero__stat-label">Teams</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-value">99.9%</span>
-            <span class="hero__stat-label">Uptime</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-value">4.9 ★</span>
-            <span class="hero__stat-label">Rating</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-value">50M+</span>
-            <span class="hero__stat-label">API Calls / Day</span>
+        <div class="hero-visual reveal" aria-label="NexaFlow product dashboard preview">
+          <div class="dashboard-shell">
+            <div class="dashboard-topbar">
+              <div class="window-dots" aria-hidden="true">
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+              </div>
+              <div class="dashboard-status">
+                <span class="hero-badge-dot" aria-hidden="true"></span>
+                Live automation
+              </div>
+            </div>
+
+            <div class="dashboard-body">
+              <div class="metric-row">
+                <article class="metric-card">
+                  <p class="metric-label">Pipeline velocity</p>
+                  <div class="metric-value">42% <span class="metric-change">+18%</span></div>
+                  <div class="metric-chart" aria-hidden="true">
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                  </div>
+                </article>
+
+                <article class="metric-card">
+                  <p class="metric-label">Hours reclaimed</p>
+                  <div class="metric-value">1,284 <span class="metric-change">this month</span></div>
+                  <div class="metric-chart" aria-hidden="true">
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                    <span class="metric-bar"></span>
+                  </div>
+                </article>
+              </div>
+
+              <article class="pipeline-card">
+                <div class="pipeline-header">
+                  <div>
+                    <h2 class="card-title">Priority workflows</h2>
+                    <p class="card-kicker">AI-ranked by impact</p>
+                  </div>
+                  <span class="pipeline-score">98%</span>
+                </div>
+
+                <ul class="pipeline-list">
+                  <li class="pipeline-item">
+                    <span class="pipeline-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M4 7h16M7 12h10M10 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                    <div class="pipeline-copy">
+                      <p class="pipeline-name">Enterprise handoff</p>
+                      <p class="pipeline-meta">Sales to success · 12 tasks</p>
+                    </div>
+                    <span class="pipeline-score">Active</span>
+                  </li>
+                  <li class="pipeline-item">
+                    <span class="pipeline-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v18m7-9H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                    <div class="pipeline-copy">
+                      <p class="pipeline-name">Expansion signals</p>
+                      <p class="pipeline-meta">CSM alerts · 8 sources</p>
+                    </div>
+                    <span class="pipeline-score">New</span>
+                  </li>
+                  <li class="pipeline-item">
+                    <span class="pipeline-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div class="pipeline-copy">
+                      <p class="pipeline-name">Renewal readiness</p>
+                      <p class="pipeline-meta">Finance sync · 31 accounts</p>
+                    </div>
+                    <span class="pipeline-score">Done</span>
+                  </li>
+                </ul>
+              </article>
+
+              <article class="insight-card">
+                <div class="insight-header">
+                  <h2 class="card-title">AI recommendations</h2>
+                  <p class="card-kicker">Updated 2m ago</p>
+                </div>
+                <ul class="insight-list">
+                  <li class="insight-item"><span class="insight-dot" aria-hidden="true"></span> Route 17 at-risk deals to senior reps.</li>
+                  <li class="insight-item"><span class="insight-dot" aria-hidden="true"></span> Automate approval for low-risk discounts.</li>
+                  <li class="insight-item"><span class="insight-dot" aria-hidden="true"></span> Trigger onboarding plan after legal redlines.</li>
+                </ul>
+              </article>
+
+              <article class="automation-card">
+                <div class="automation-header">
+                  <h2 class="card-title">Next best action</h2>
+                  <p class="card-kicker">Confidence 94%</p>
+                </div>
+                <p class="text-muted">Launch a renewal play for accounts with usage growth over 30% and unresolved executive sponsor gaps.</p>
+              </article>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================
-         LOGO CLOUD
-         ====================================================== -->
-    <section class="py-12 bg-section-alt" aria-label="Trusted by">
-      <div class="container">
-        <p class="text-center text-sm text-muted-foreground mb-6">Trusted by forward-thinking companies worldwide</p>
-        <div class="logo-cloud">
-          <span class="logo-cloud__item">Stripe</span>
-          <span class="logo-cloud__item">Vercel</span>
-          <span class="logo-cloud__item">Linear</span>
-          <span class="logo-cloud__item">Notion</span>
-          <span class="logo-cloud__item">Figma</span>
-          <span class="logo-cloud__item">GitHub</span>
-          <span class="logo-cloud__item">Shopify</span>
+    <section class="logo-strip" aria-label="Companies using NexaFlow">
+      <div class="container-wide logo-strip-inner reveal">
+        <p>Built for modern operators at</p>
+        <div class="logo-grid">
+          <div class="logo-item">Asteria</div>
+          <div class="logo-item">Northstar</div>
+          <div class="logo-item">Lumora</div>
+          <div class="logo-item">VantaCore</div>
+          <div class="logo-item">HelioBank</div>
+          <div class="logo-item">Orbital</div>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================
-         FEATURES
-         ====================================================== -->
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="badge">Features</span>
-          <h2 class="section-header__title">Everything you need to ship with confidence</h2>
-          <p class="section-header__text">Velocity gives your team a unified toolkit — from rapid prototyping to production deployment — so nothing slows you down.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card card-feature reveal">
-            <div class="card-feature__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14v-3"/><path d="M14 14v-3"/><path d="M11 19c-1.7 0-3-1.3-3-3v-2h8v2c0 1.7-1.3 3-3 3Z"/><path d="M12 22v-3"/></svg>
-            </div>
-            <h4 class="card-feature__title">Blazing Performance</h4>
-            <p class="card-feature__text">Edge-optimized infrastructure ensures sub-100ms response times globally. Your users never wait.</p>
-          </div>
-
-          <div class="card card-feature reveal">
-            <div class="card-feature__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            </div>
-            <h4 class="card-feature__title">Modular Components</h4>
-            <p class="card-feature__text">A library of production-ready components that snap together like building blocks. Customize everything to match your brand.</p>
-          </div>
-
-          <div class="card card-feature reveal">
-            <div class="card-feature__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-            </div>
-            <h4 class="card-feature__title">Enterprise Security</h4>
-            <p class="card-feature__text">SOC 2 Type II certified with end-to-end encryption, SSO, and granular role-based access controls built in.</p>
-          </div>
-
-          <div class="card card-feature reveal">
-            <div class="card-feature__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-            </div>
-            <h4 class="card-feature__title">Real-Time Analytics</h4>
-            <p class="card-feature__text">Track user behavior, conversion funnels, and product health with dashboards that update in real time.</p>
-          </div>
-
-          <div class="card card-feature reveal">
-            <div class="card-feature__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            </div>
-            <h4 class="card-feature__title">Flexible Integrations</h4>
-            <p class="card-feature__text">Connect with 200+ tools your team already uses — Slack, Jira, GitHub, Figma, and many more.</p>
-          </div>
-
-          <div class="card card-feature reveal">
-            <div class="card-feature__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h4 class="card-feature__title">Team Collaboration</h4>
-            <p class="card-feature__text">Real-time multiplayer editing, inline comments, and shared workspaces keep your entire team aligned and productive.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================
-         BENEFITS
-         ====================================================== -->
-    <section class="section bg-section-alt" id="benefits">
-      <div class="container flex flex-col gap-16 lg:gap-24">
-
-        <!-- Benefit 1 -->
-        <div class="benefit-row reveal">
-          <div class="benefit-row__content">
-            <span class="badge">Workflow</span>
-            <h3 class="benefit-row__title">Automate the busywork, focus on what matters</h3>
-            <p class="benefit-row__text">Velocity's intelligent workflow engine handles repetitive tasks so your team can spend time on creative, high-impact work that moves the needle.</p>
-            <div class="benefit-row__list">
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Automated deployments on every push</span>
-              </div>
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Smart test selection saves 60% CI time</span>
-              </div>
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>One-click rollbacks with zero downtime</span>
-              </div>
-            </div>
-            <a href="#pricing" class="cta-link mt-2">Start automating →</a>
-          </div>
-          <div class="benefit-row__visual">
-            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop" alt="Team working on laptops in a modern office" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Benefit 2 -->
-        <div class="benefit-row benefit-row--reverse reveal">
-          <div class="benefit-row__content">
-            <span class="badge">Insights</span>
-            <h3 class="benefit-row__title">Data-driven decisions at your fingertips</h3>
-            <p class="benefit-row__text">Understand how users interact with every feature. Velocity surfaces the metrics that move the needle — no data science degree required.</p>
-            <div class="benefit-row__list">
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Funnel analysis with cohort breakdowns</span>
-              </div>
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Anomaly detection alerts you proactively</span>
-              </div>
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Exportable reports for stakeholders</span>
-              </div>
-            </div>
-            <a href="#pricing" class="cta-link mt-2">Explore analytics →</a>
-          </div>
-          <div class="benefit-row__visual">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="Analytics dashboard on a screen" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Benefit 3 -->
-        <div class="benefit-row reveal">
-          <div class="benefit-row__content">
-            <span class="badge">Scale</span>
-            <h3 class="benefit-row__title">Built for teams of 5 — and 5,000</h3>
-            <p class="benefit-row__text">Whether you're a startup or an enterprise, Velocity scales with you. Granular permissions, SSO, audit logs, and SLAs come standard on higher tiers.</p>
-            <div class="benefit-row__list">
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Global edge network with 99.99% SLA</span>
-              </div>
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Role-based access and SAML SSO</span>
-              </div>
-              <div class="benefit-row__item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Dedicated account manager on Enterprise</span>
-              </div>
-            </div>
-            <a href="#pricing" class="cta-link mt-2">See Enterprise plan →</a>
-          </div>
-          <div class="benefit-row__visual">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="Large team collaborating around a table" loading="lazy" />
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======================================================
-         TESTIMONIALS
-         ====================================================== -->
-    <section class="section" id="testimonials">
+    <section class="section" id="features" aria-labelledby="features-title">
       <div class="container">
         <div class="section-header reveal">
-          <span class="badge">Social Proof</span>
-          <h2 class="section-header__title">Loved by teams who ship fast</h2>
-          <p class="section-header__text">Don't take our word for it — hear from the engineering leaders and product teams using Velocity every day.</p>
+          <span class="section-eyebrow">Platform</span>
+          <h2 class="section-title" id="features-title">Everything your team needs to ship smarter workflows.</h2>
+          <p class="section-description">Design, deploy, monitor, and improve mission-critical automations from one elegant workspace.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card card-testimonial reveal">
-            <div class="card-testimonial__stars">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="card-testimonial__text">"Velocity transformed how our team ships product. We went from monthly releases to weekly, and our customers noticed the difference immediately."</p>
-            <div class="card-testimonial__author">
-              <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen" loading="lazy" />
-              <div>
-                <div class="card-testimonial__name">Sarah Chen</div>
-                <div class="card-testimonial__role">VP Engineering, Acme Corp</div>
-              </div>
-            </div>
-          </div>
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3 4 8l8 5 8-5-8-5Zm-8 9 8 5 8-5M4 16l8 5 8-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h3>Visual workflow builder</h3>
+            <p>Map complex processes with branching logic, approvals, owners, SLAs, and AI actions — no engineering queue required.</p>
+          </article>
 
-          <div class="card card-testimonial reveal">
-            <div class="card-testimonial__stars">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="card-testimonial__text">"The analytics alone are worth the price of admission. We uncovered a conversion bottleneck in the first week that had been invisible for months."</p>
-            <div class="card-testimonial__author">
-              <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Marcus Johnson" loading="lazy" />
-              <div>
-                <div class="card-testimonial__name">Marcus Johnson</div>
-                <div class="card-testimonial__role">Head of Product, Finwave</div>
-              </div>
-            </div>
-          </div>
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h3>Agentic AI actions</h3>
+            <p>Summarize accounts, draft follow-ups, enrich records, classify intent, and recommend next steps with governed AI agents.</p>
+          </article>
 
-          <div class="card card-testimonial reveal">
-            <div class="card-testimonial__stars">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="card-testimonial__text">"We migrated our entire stack to Velocity in two weeks. The team collaboration features are genuinely best-in-class — it feels like Google Docs for code."</p>
-            <div class="card-testimonial__author">
-              <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Emily Park" loading="lazy" />
-              <div>
-                <div class="card-testimonial__name">Emily Park</div>
-                <div class="card-testimonial__role">CTO, Healthbridge</div>
-              </div>
-            </div>
-          </div>
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 19V5m0 14h16M8 16v-5m4 5V8m4 8v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h3>Impact analytics</h3>
+            <p>Prove ROI with live dashboards for time saved, cycle time, revenue influenced, risk avoided, and team adoption.</p>
+          </article>
 
-          <div class="card card-testimonial reveal">
-            <div class="card-testimonial__stars">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="card-testimonial__text">"The deployment pipeline alone saved us 15 engineering hours a week. That's 15 hours we now spend building features instead of fighting infra."</p>
-            <div class="card-testimonial__author">
-              <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="David Kim" loading="lazy" />
-              <div>
-                <div class="card-testimonial__name">David Kim</div>
-                <div class="card-testimonial__role">Staff Engineer, CloudNova</div>
-              </div>
-            </div>
-          </div>
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="m9 12 2 2 4-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h3>Enterprise governance</h3>
+            <p>Role-based permissions, audit trails, human-in-the-loop checkpoints, and approval controls keep automation safe.</p>
+          </article>
 
-          <div class="card card-testimonial reveal">
-            <div class="card-testimonial__stars">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="card-testimonial__text">"Onboarding new engineers used to take a week. With Velocity's shared workspaces and live comments, our latest hire was productive on day one."</p>
-            <div class="card-testimonial__author">
-              <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face" alt="Priya Sharma" loading="lazy" />
-              <div>
-                <div class="card-testimonial__name">Priya Sharma</div>
-                <div class="card-testimonial__role">Engineering Manager, DataPulse</div>
-              </div>
-            </div>
-          </div>
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8 7a4 4 0 1 1 8 0v2H8V7Zm-2 2h12v11H6V9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M12 14v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h3>Secure by design</h3>
+            <p>Encryption, granular data controls, session policies, and SOC 2-ready practices support demanding security teams.</p>
+          </article>
 
-          <div class="card card-testimonial reveal">
-            <div class="card-testimonial__stars">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="card-testimonial__text">"Security reviews that used to take our compliance team weeks now take hours. The built-in audit logs and SSO integration are chef's kiss."</p>
-            <div class="card-testimonial__author">
-              <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" loading="lazy" />
-              <div>
-                <div class="card-testimonial__name">Alex Rivera</div>
-                <div class="card-testimonial__role">CISO, TrustLayer</div>
-              </div>
-            </div>
-          </div>
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 7h10v10H7V7Zm-4 5h4m10 0h4M12 3v4m0 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h3>Native system sync</h3>
+            <p>Connect CRM, support, warehouse, billing, and collaboration tools so every workflow runs on trusted business context.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================
-         PRICING
-         ====================================================== -->
-    <section class="section bg-section-alt" id="pricing">
+    <section class="section benefits" id="benefits" aria-labelledby="benefits-title">
+      <div class="container benefits-grid">
+        <div>
+          <div class="section-header reveal">
+            <span class="section-eyebrow">Why teams switch</span>
+            <h2 class="section-title" id="benefits-title">Replace slow handoffs with intelligent operating rhythm.</h2>
+            <p class="section-description">NexaFlow helps leaders turn best practices into consistent execution across every account, deal, and customer moment.</p>
+          </div>
+
+          <div class="benefit-panel">
+            <article class="benefit-item reveal">
+              <span class="benefit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2 4 14h8l-1 8 9-12h-8l1-8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="benefit-copy">
+                <h3>Launch in days, not quarters</h3>
+                <p>Start with proven revenue templates, then tailor each workflow as your process matures.</p>
+              </div>
+            </article>
+
+            <article class="benefit-item reveal">
+              <span class="benefit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12a8 8 0 0 1 14.93-4M20 12a8 8 0 0 1-14.93 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M19 3v5h-5M5 21v-5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="benefit-copy">
+                <h3>Continuously optimize</h3>
+                <p>AI identifies bottlenecks, missed steps, and high-leverage improvements before they become pipeline risk.</p>
+              </div>
+            </article>
+
+            <article class="benefit-item reveal">
+              <span class="benefit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M16 11V7a4 4 0 0 0-8 0v4M5 11h14v10H5V11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="benefit-copy">
+                <h3>Keep humans in control</h3>
+                <p>Escalate sensitive actions, require approvals, and maintain complete visibility into every automated decision.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="stats-card reveal" aria-label="NexaFlow customer results">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value">31%</span>
+              <span class="stat-label">faster sales cycle after 90 days</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">18k</span>
+              <span class="stat-label">manual tasks removed per month</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">$4.2M</span>
+              <span class="stat-label">pipeline risk flagged automatically</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">99.98%</span>
+              <span class="stat-label">workflow execution reliability</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
       <div class="container">
         <div class="section-header reveal">
-          <span class="badge">Pricing</span>
-          <h2 class="section-header__title">Simple, transparent pricing</h2>
-          <p class="section-header__text">No hidden fees, no surprises. Start free and upgrade when you're ready. Every paid plan includes a 14-day trial.</p>
+          <span class="section-eyebrow">Social proof</span>
+          <h2 class="section-title" id="testimonials-title">Loved by teams that cannot afford operational drag.</h2>
+          <p class="section-description">From first automation to company-wide operating layer, NexaFlow gives leaders measurable leverage.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div class="testimonial-grid">
+          <article class="testimonial-card reveal">
+            <div class="rating" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+            </div>
+            <p class="testimonial-quote">“NexaFlow gave us one place to orchestrate revenue processes that used to live in spreadsheets, Slack reminders, and heroic effort.”</p>
+            <div class="testimonial-author">
+              <span class="author-avatar" aria-hidden="true">CM</span>
+              <div>
+                <p class="author-name">Claire Moreno</p>
+                <p class="author-role">VP Revenue Operations, Asteria</p>
+              </div>
+            </div>
+          </article>
 
-          <!-- Starter -->
-          <div class="card card-pricing reveal">
-            <div>
-              <div class="card-pricing__name">Starter</div>
-              <p class="card-pricing__description">For individuals and small side projects.</p>
+          <article class="testimonial-card reveal">
+            <div class="rating" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
             </div>
-            <div class="card-pricing__price">
-              <span class="card-pricing__amount">$0</span>
-              <span class="card-pricing__period">/month</span>
-            </div>
-            <div class="card-pricing__features">
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Up to 3 projects</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Basic analytics dashboard</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Community support</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>1 team member</span>
+            <p class="testimonial-quote">“We automated onboarding, renewal risk, and executive business reviews in the first month. The adoption curve was shockingly fast.”</p>
+            <div class="testimonial-author">
+              <span class="author-avatar" aria-hidden="true">DV</span>
+              <div>
+                <p class="author-name">Daniel Voss</p>
+                <p class="author-role">COO, Northstar Cloud</p>
               </div>
             </div>
-            <a href="#" class="btn btn-outline w-full">Get Started Free</a>
-          </div>
+          </article>
 
-          <!-- Pro (popular) -->
-          <div class="card card-pricing is-popular reveal">
-            <div>
-              <div class="card-pricing__name">Pro</div>
-              <p class="card-pricing__description">For growing teams that need more power.</p>
+          <article class="testimonial-card reveal">
+            <div class="rating" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
             </div>
-            <div class="card-pricing__price">
-              <span class="card-pricing__amount">$49</span>
-              <span class="card-pricing__period">/month</span>
-            </div>
-            <div class="card-pricing__features">
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Unlimited projects</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Advanced analytics &amp; funnels</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Priority email support</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Up to 10 team members</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Custom integrations</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Automated CI/CD pipelines</span>
+            <p class="testimonial-quote">“The analytics finally helped us connect operations work to revenue outcomes. NexaFlow paid for itself before procurement finished.”</p>
+            <div class="testimonial-author">
+              <span class="author-avatar" aria-hidden="true">IA</span>
+              <div>
+                <p class="author-name">Iris Adebayo</p>
+                <p class="author-role">Head of Customer Success, Lumora</p>
               </div>
             </div>
-            <a href="#" class="btn btn-primary w-full">Start Free Trial</a>
-          </div>
-
-          <!-- Enterprise -->
-          <div class="card card-pricing reveal">
-            <div>
-              <div class="card-pricing__name">Enterprise</div>
-              <p class="card-pricing__description">For organizations with advanced needs.</p>
-            </div>
-            <div class="card-pricing__price">
-              <span class="card-pricing__amount">$149</span>
-              <span class="card-pricing__period">/month</span>
-            </div>
-            <div class="card-pricing__features">
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Everything in Pro</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>SSO &amp; SAML authentication</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Dedicated account manager</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Unlimited team members</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>99.99% uptime SLA</span>
-              </div>
-              <div class="card-pricing__feature">
-                <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Custom contracts &amp; invoicing</span>
-              </div>
-            </div>
-            <a href="#" class="btn btn-outline w-full">Contact Sales</a>
-          </div>
-
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================
-         FAQ
-         ====================================================== -->
-    <section class="section" id="faq">
+    <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
       <div class="container">
         <div class="section-header reveal">
-          <span class="badge">FAQ</span>
-          <h2 class="section-header__title">Frequently asked questions</h2>
-          <p class="section-header__text">Got questions? We've got answers. If you don't see what you're looking for, reach out to our support team.</p>
+          <span class="section-eyebrow">Pricing</span>
+          <h2 class="section-title" id="pricing-title">Simple plans that scale with your operating system.</h2>
+          <p class="section-description">Start small, prove impact quickly, then expand automation across every revenue motion.</p>
         </div>
 
-        <div class="accordion max-w-3xl mx-auto reveal">
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              How does the free trial work?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content">
-              <div class="accordion__body">Start with a 14-day free trial of any paid plan — no credit card required. You get full access to every feature. At the end of the trial you can choose a plan or continue on the free Starter tier with up to 3 projects.</div>
-            </div>
-          </div>
+        <div class="pricing-toggle reveal">
+          <span>Monthly</span>
+          <label class="switch" aria-label="Toggle annual billing">
+            <input type="checkbox" data-billing-toggle>
+            <span class="switch-thumb" aria-hidden="true"></span>
+          </label>
+          <span>Annual</span>
+          <span class="save-badge">Save 20%</span>
+        </div>
 
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              Can I change plans later?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content">
-              <div class="accordion__body">Absolutely. You can upgrade, downgrade, or cancel at any time from your billing dashboard. Changes take effect at the start of your next billing cycle, and we prorate upgrades immediately so you only pay for what you use.</div>
-            </div>
-          </div>
+        <div class="pricing-grid">
+          <article class="pricing-card reveal">
+            <h3>Launch</h3>
+            <p>For lean teams building their first automated operating layer.</p>
+            <div class="plan-price"><strong data-price data-monthly="$49" data-yearly="$39">$49</strong><span>/seat/mo</span></div>
+            <a class="btn btn-secondary btn-full" href="#cta">Start trial</a>
+            <ul class="plan-features">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                25 active workflows
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                AI summaries and routing
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Core analytics dashboard
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Email support
+              </li>
+            </ul>
+          </article>
 
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              Is there an annual discount?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content">
-              <div class="accordion__body">Yes — save 20% when you choose annual billing. The discount applies to all paid plans, including Enterprise. You can switch between monthly and annual at any time from your account settings.</div>
-            </div>
-          </div>
+          <article class="pricing-card featured reveal">
+            <span class="plan-badge">Most popular</span>
+            <h3>Scale</h3>
+            <p>For growth companies standardizing revenue execution across teams.</p>
+            <div class="plan-price"><strong data-price data-monthly="$89" data-yearly="$71">$89</strong><span>/seat/mo</span></div>
+            <a class="btn btn-primary btn-full" href="#cta">Start trial</a>
+            <ul class="plan-features">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Unlimited active workflows
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Advanced AI agents
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Revenue impact reporting
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Priority support and onboarding
+              </li>
+            </ul>
+          </article>
 
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              What happens to my data if I cancel?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content">
-              <div class="accordion__body">Your data stays available in read-only mode for 90 days after cancellation. You can export everything — projects, analytics, configurations — at any time. After 90 days, we permanently delete your data per our privacy policy.</div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              Do you offer refunds?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content">
-              <div class="accordion__body">We offer a full refund within 30 days of your first paid charge, no questions asked. After that, you can cancel anytime and continue using the product until the end of your billing period.</div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              How secure is my data?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content">
-              <div class="accordion__body">Velocity is SOC 2 Type II certified. All data is encrypted at rest and in transit. Enterprise plans include SSO, SAML, granular RBAC, and detailed audit logs. We undergo annual third-party penetration testing.</div>
-            </div>
-          </div>
-
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              Can I integrate Velocity with my existing tools?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content">
-              <div class="accordion__body">Yes — Velocity connects with 200+ tools out of the box, including GitHub, GitLab, Slack, Jira, Figma, Linear, Notion, and more. Pro and Enterprise plans also support custom webhooks and our full REST API.</div>
-            </div>
-          </div>
+          <article class="pricing-card reveal">
+            <h3>Enterprise</h3>
+            <p>For organizations requiring custom governance, security, and scale.</p>
+            <div class="plan-price"><strong data-price data-monthly="Custom" data-yearly="Custom">Custom</strong><span></span></div>
+            <a class="btn btn-secondary btn-full" href="#cta">Book demo</a>
+            <ul class="plan-features">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Dedicated solution architect
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Custom data residency options
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SSO, SCIM, and audit exports
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                24/7 premium support
+              </li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================
-         CTA
-         ====================================================== -->
-    <section class="section" id="cta">
-      <div class="container reveal">
-        <div class="cta-section flex flex-col items-center gap-6">
-          <h2 class="cta-section__title">Ready to accelerate your team?</h2>
-          <p class="cta-section__text">Join 12,000+ teams already using Velocity to ship better products, faster. Start your free trial today — no credit card required.</p>
-          <div class="flex flex-wrap gap-3 justify-center">
-            <a href="#pricing" class="btn btn-xl">Start Free Trial</a>
-            <a href="#features" class="btn btn-xl btn-outline border-transparent text-white">Watch Demo</a>
-          </div>
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">FAQ</span>
+          <h2 class="section-title" id="faq-title">Questions before you automate?</h2>
+          <p class="section-description">Here is what revenue and operations leaders usually ask before launching NexaFlow.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item is-open reveal">
+            <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-1">
+              How quickly can we launch our first workflow?
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-1">
+              <div class="faq-answer-inner">
+                <p>Most teams launch their first production workflow within one week. NexaFlow includes templates for lead routing, opportunity handoff, onboarding, renewal risk, and executive escalation.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-2">
+              Does NexaFlow require engineering support?
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-2">
+              <div class="faq-answer-inner">
+                <p>No. Operations teams can design and maintain workflows without code. Technical teams can still extend NexaFlow with secure webhooks and API-based actions when needed.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-3">
+              How do you keep AI automations safe?
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-3">
+              <div class="faq-answer-inner">
+                <p>Every AI action can be governed with permissions, confidence thresholds, approval steps, audit logs, and human review. You decide where AI recommends, drafts, or executes.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4">
+              Which systems can NexaFlow connect to?
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-4">
+              <div class="faq-answer-inner">
+                <p>NexaFlow connects to common CRM, support, billing, data warehouse, and collaboration tools. Enterprise customers can add custom sources through APIs and governed data connectors.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-5">
+              Can we measure the ROI of automation?
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="faq-answer" id="faq-5">
+              <div class="faq-answer-inner">
+                <p>Yes. Impact reporting tracks cycle time, hours saved, SLA adherence, adoption, influenced revenue, and prevented risk so leaders can quantify results over time.</p>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
+    <section class="cta" id="cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-card reveal">
+          <h2 id="cta-title">Build your AI operating layer.</h2>
+          <p>Start free for 14 days. Launch your first workflow, measure the lift, and see why modern teams choose NexaFlow to scale execution.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary btn-large" href="#pricing">Start free trial</a>
+            <a class="btn btn-secondary btn-large" href="#features">Explore platform</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- ======================================================
-       FOOTER
-       ====================================================== -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer__grid">
-        <div class="site-footer__brand">
-          <a href="index.html" class="brand">
-            <span class="brand__icon">V</span>
-            Velocity
+  <footer class="site-footer" aria-labelledby="footer-title">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#hero" aria-label="NexaFlow home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" role="img">
+                <path d="M5 12.7C5 8.4 8.4 5 12.7 5H19v6.3c0 4.3-3.4 7.7-7.7 7.7H5v-6.3Z" fill="currentColor" opacity=".92"/>
+                <path d="M9 14.8 15.8 8M14.8 8h1v1" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="brand-name">NexaFlow</span>
           </a>
-          <p class="site-footer__description">The all-in-one platform for modern product teams. Ship faster, measure smarter, grow together.</p>
+          <p id="footer-title">Premium AI workflow automation for revenue and operations teams that want measurable leverage.</p>
+          <div class="social-links" aria-label="Social links">
+            <a href="#hero" aria-label="NexaFlow on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 10v8M7 7v.01M11 18v-4.5A3.5 3.5 0 0 1 14.5 10v0A3.5 3.5 0 0 1 18 13.5V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+            <a href="#hero" aria-label="NexaFlow on X">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m4 4 16 16M20 4 4 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+            <a href="#hero" aria-label="NexaFlow community">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M16 11a4 4 0 1 0-8 0v1a4 4 0 0 0 8 0v-1Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
         </div>
-        <div>
-          <h4 class="site-footer__column-title">Product</h4>
-          <nav class="site-footer__links">
-            <a href="#features" class="footer-link">Features</a>
-            <a href="#pricing" class="footer-link">Pricing</a>
-            <a href="#" class="footer-link">Changelog</a>
-            <a href="#" class="footer-link">Roadmap</a>
-            <a href="#" class="footer-link">API Docs</a>
-          </nav>
-        </div>
-        <div>
-          <h4 class="site-footer__column-title">Company</h4>
-          <nav class="site-footer__links">
-            <a href="#" class="footer-link">About</a>
-            <a href="#" class="footer-link">Blog</a>
-            <a href="#" class="footer-link">Careers</a>
-            <a href="#" class="footer-link">Contact</a>
-            <a href="#" class="footer-link">Press Kit</a>
-          </nav>
-        </div>
-        <div>
-          <h4 class="site-footer__column-title">Legal</h4>
-          <nav class="site-footer__links">
-            <a href="#" class="footer-link">Privacy Policy</a>
-            <a href="#" class="footer-link">Terms of Service</a>
-            <a href="#" class="footer-link">Cookie Policy</a>
-            <a href="#" class="footer-link">Security</a>
-          </nav>
+
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h2>Product</h2>
+            <ul class="footer-links">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h2>Customers</h2>
+            <ul class="footer-links">
+              <li><a href="#testimonials">Stories</a></li>
+              <li><a href="#benefits">Results</a></li>
+              <li><a href="#cta">Start trial</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h2>Resources</h2>
+            <ul class="footer-links">
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#features">Platform tour</a></li>
+              <li><a href="#hero">Product preview</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h2>Company</h2>
+            <ul class="footer-links">
+              <li><a href="#hero">About</a></li>
+              <li><a href="#pricing">Plans</a></li>
+              <li><a href="#cta">Contact sales</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="site-footer__bottom">
-        <span>&copy; 2025 Velocity, Inc. All rights reserved.</span>
-        <div class="flex gap-4">
-          <a href="#" class="footer-link" aria-label="Twitter / X">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
-          </a>
-          <a href="#" class="footer-link" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          </a>
-          <a href="#" class="footer-link" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-        </div>
+
+      <div class="footer-bottom">
+        <p>© <span data-current-year>2026</span> NexaFlow. All rights reserved.</p>
+        <p>Fast, accessible, and built with vanilla web standards.</p>
       </div>
     </div>
   </footer>
 
-  <!-- ======================================================
-       SCRIPTS
-       ====================================================== -->
-  <script>
-    /* ---- Theme toggle ---- */
-    document.querySelectorAll('[aria-label="Toggle theme"]').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.documentElement.classList.toggle('dark');
-      });
-    });
-
-    /* ---- Mobile nav toggle ---- */
-    (function() {
-      var toggleBtn = document.querySelector('.mobile-toggle');
-      var mobileNav = document.querySelector('.mobile-nav');
-      if (!toggleBtn || !mobileNav) return;
-
-      toggleBtn.addEventListener('click', function() {
-        var isOpen = mobileNav.classList.toggle('is-open');
-        toggleBtn.setAttribute('aria-expanded', isOpen);
-      });
-
-      // Close mobile nav when a link is clicked
-      mobileNav.querySelectorAll('.nav-link, .btn').forEach(function(link) {
-        link.addEventListener('click', function() {
-          mobileNav.classList.remove('is-open');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
-
-    /* ---- Accordion ---- */
-    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
-      trigger.addEventListener('click', function() {
-        var item = this.closest('.accordion__item');
-        var content = item.querySelector('.accordion__content');
-        var isOpen = item.classList.contains('is-open');
-
-        // Close all siblings in this accordion
-        var accordion = item.closest('.accordion');
-        accordion.querySelectorAll('.accordion__item').forEach(function(sibling) {
-          sibling.classList.remove('is-open');
-          sibling.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
-          sibling.querySelector('.accordion__content').style.maxHeight = null;
-        });
-
-        // Toggle current
-        if (!isOpen) {
-          item.classList.add('is-open');
-          this.setAttribute('aria-expanded', 'true');
-          content.style.maxHeight = content.scrollHeight + 'px';
-        }
-      });
-    });
-
-    /* ---- Scroll reveal ---- */
-    (function() {
-      var reveals = document.querySelectorAll('.reveal');
-      if (!reveals.length) return;
-
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        reveals.forEach(function(el) { observer.observe(el); });
-      } else {
-        // Fallback: show everything
-        reveals.forEach(function(el) { el.classList.add('is-visible'); });
-      }
-    })();
-
-    /* ---- Smooth scroll for anchor links (fallback for older browsers) ---- */
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-      anchor.addEventListener('click', function(e) {
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
-
+  <script src="/script.js"></script>
 </body>
 </html>
