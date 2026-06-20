@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docs — Nexus</title>
+  <meta name="description" content="Nexus documentation: guides, API references, and best practices for building with Nexus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER / NAV ================= -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="brand" aria-label="Nexus Home">
+        <span class="brand-mark">N</span>
+        Nexus
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/index.html#features">Features</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/index.html#pricing">Pricing</a>
+        <a href="/index.html#changelog">Changelog</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-search" id="open-cmd-nav" aria-label="Open command palette">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          Search...
+          <span class="kbd">⌘K</span>
+        </button>
+        <a href="#" class="btn btn-ghost">Sign in</a>
+        <a href="#" class="btn btn-primary">Open App</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-drawer" id="nav-drawer" data-open="false">
+      <a href="/index.html#features">Features</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/index.html#pricing">Pricing</a>
+      <a href="/index.html#changelog">Changelog</a>
+      <a href="#">Open App</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container container-wide docs-layout">
+      
+      <!-- ================= DOCS TOC ================= -->
+      <aside class="docs-toc">
+        <h4>Getting Started</h4>
+        <ul>
+          <li><a href="#introduction" class="active">Introduction</a></li>
+          <li><a href="#quickstart">Quickstart</a></li>
+          <li><a href="#installation">Installation</a></li>
+        </ul>
+        <h4>Core Concepts</h4>
+        <ul>
+          <li><a href="#issues">Issues</a></li>
+          <li><a href="#sprints">Sprints</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+        <h4>API Reference</h4>
+        <ul>
+          <li><a href="#authentication">Authentication</a></li>
+          <li><a href="#endpoints">Endpoints</a></li>
+          <li><a href="#webhooks">Webhooks</a></li>
+        </ul>
+      </aside>
+
+      <!-- ================= DOCS MAIN ================= -->
+      <div class="docs-main">
+        <h1 id="introduction">Introduction</h1>
+        <p class="lead">Welcome to the Nexus documentation. Here you'll find guides, API references, and best practices to help you get the most out of Nexus.</p>
+        
+        <p>Nexus is a purpose-built issue tracker and sprint planner for modern engineering teams. It provides a lightning-fast interface, real-time synchronization, and deep integrations with your existing development workflow.</p>
+
+        <div class="callout">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          </div>
+          <p><strong>Just looking around?</strong> Check out our <a href="#" style="color: var(--color-accent-purple);">Quickstart Guide</a> to get a project set up in under 5 minutes.</p>
+        </div>
+
+        <h2 id="quickstart">Quickstart</h2>
+        <p>To get started with Nexus, you'll first need to create a workspace and invite your team. Once your workspace is set up, you can create your first project and start adding issues.</p>
+        
+        <ol>
+          <li>Create a free workspace on <a href="#" style="color: var(--color-accent-purple);">app.nexus.io</a>.</li>
+          <li>Invite your team members via email or a shareable link.</li>
+          <li>Connect your Git provider (GitHub, GitLab, or Bitbucket).</li>
+          <li>Create your first project and define your issue types.</li>
+        </ol>
+
+        <h2 id="installation">Installation (CLI)</h2>
+        <p>For power users, we provide a CLI tool to interact with Nexus directly from your terminal. Install it via npm:</p>
+        <pre><code>npm install -g @nexus/cli</code></pre>
+        <p>Once installed, authenticate with your Nexus account:</p>
+        <pre><code>nexus login
+> Enter your API key: ********************************
+> Successfully authenticated as jane@acme.com</code></pre>
+
+        <h2 id="issues">Issues</h2>
+        <p>Issues are the fundamental building blocks of Nexus. They represent tasks, bugs, features, or any other unit of work that needs to be tracked. Issues can be assigned to team members, labeled, prioritized, and linked to Git commits.</p>
+        
+        <h3>Issue Statuses</h3>
+        <p>Nexus supports customizable workflows, but every project starts with a default set of statuses:</p>
+        <ul>
+          <li><strong>Backlog:</strong> Issues that are not yet ready to be worked on.</li>
+          <li><strong>Todo:</strong> Issues that are ready to be picked up in the current sprint.</li>
+          <li><strong>In Progress:</strong> Issues currently being worked on.</li>
+          <li><strong>In Review:</strong> Issues that have an open Pull Request awaiting review.</li>
+          <li><strong>Done:</strong> Completed issues.</li>
+        </ul>
+
+        <h2 id="sprints">Sprints</h2>
+        <p>Sprints are time-boxed periods (usually 2 weeks) where a team commits to completing a set of issues. Nexus provides visual boards and burndown charts to help you track sprint progress and velocity.</p>
+
+        <h2 id="projects">Projects</h2>
+        <p>Projects are used to group related issues and sprints. You can have multiple projects within a single workspace, and issues can be cross-linked between projects.</p>
+
+        <h2 id="authentication">API Authentication</h2>
+        <p>The Nexus API uses API keys for authentication. You can generate API keys in your workspace settings. All API requests must include your API key in the <code>Authorization</code> header.</p>
+        <pre><code>curl https://api.nexus.io/v2/issues \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"</code></pre>
+
+        <div class="callout">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <p><strong>Security Warning:</strong> Never expose your API key in client-side code or public repositories. Always use a backend proxy for API requests if building client applications.</p>
+        </div>
+
+        <h2 id="endpoints">Endpoints</h2>
+        <p>The API is organized around REST. Our API has predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
+        <ul>
+          <li><code>GET /v2/issues</code> - List all issues</li>
+          <li><code>POST /v2/issues</code> - Create a new issue</li>
+          <li><code>GET /v2/issues/:id</code> - Retrieve a specific issue</li>
+          <li><code>PATCH /v2/issues/:id</code> - Update an issue</li>
+        </ul>
+
+        <h2 id="webhooks">Webhooks</h2>
+        <p>Webhooks allow you to receive real-time HTTP notifications when events happen in Nexus. You can configure webhooks to trigger on issue creation, status changes, sprint completions, and more.</p>
+      </div>
+
+      <!-- ================= DOCS SIDE ================= -->
+      <aside class="docs-side">
+        <div class="card">
+          <h4>On this page</h4>
+          <ul style="display: grid; gap: 8px;">
+            <li><a href="#introduction" style="color: var(--color-text-muted);">Introduction</a></li>
+            <li><a href="#quickstart" style="color: var(--color-text-muted);">Quickstart</a></li>
+            <li><a href="#installation" style="color: var(--color-text-muted);">Installation</a></li>
+            <li><a href="#issues" style="color: var(--color-text-muted);">Issues</a></li>
+            <li><a href="#authentication" style="color: var(--color-text-muted);">Authentication</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Need help?</h4>
+          <p>Can't find what you're looking for?</p>
+          <a href="#">Contact Support →</a>
+        </div>
+        <div class="card">
+          <h4>Contribute</h4>
+          <p>Spot an issue or want to add a section?</p>
+          <a href="#">Edit on GitHub →</a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="brand">
+            <span class="brand-mark">N</span>
+            Nexus
+          </a>
+          <p>The issue tracker built for high-velocity teams. Plan, track, and ship your best work.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="/index.html#features">Features</a></li>
+            <li><a href="/index.html#pricing">Pricing</a></li>
+            <li><a href="/index.html#changelog">Changelog</a></li>
+            <li><a href="#">Integrations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/docs.html">Documentation</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">DPA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2023 Nexus Labs, Inc. All rights reserved.</span>
+        <div class="socials">
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= COMMAND PALETTE ================= -->
+  <div class="cmd-overlay" id="cmd-overlay" data-open="false" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="cmd-panel">
+      <div class="cmd-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <input type="text" class="cmd-input" id="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+        <span class="cmd-esc">ESC</span>
+      </div>
+      <div class="cmd-list" id="cmd-list">
+        <div class="cmd-group-label">Navigation</div>
+        <div class="cmd-item" data-active="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Go to Home
+          <span class="hint"><span class="kbd">G</span><span class="kbd">H</span></span>
+        </div>
+        <div class="cmd-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          Go to Docs
+          <span class="hint"><span class="kbd">G</span><span class="kbd">D</span></span>
+        </div>
+        <div class="cmd-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Go to Pricing
+          <span class="hint"><span class="kbd">G</span><span class="kbd">P</span></span>
+        </div>
+
+        <div class="cmd-group-label">Actions</div>
+        <div class="cmd-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Create new issue
+          <span class="hint"><span class="kbd">C</span></span>
+        </div>
+        <div class="cmd-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+          Change status
+          <span class="hint"><span class="kbd">S</span></span>
+        </div>
+        <div class="cmd-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Assign to...
+          <span class="hint"><span class="kbd">A</span></span>
+        </div>
+      </div>
+      <div class="cmd-foot">
+        <div class="hints">
+          <span><span class="kbd">↑</span><span class="kbd">↓</span> Navigate</span>
+          <span><span class="kbd">↵</span> Select</span>
+        </div>
+        <span>Nexus Command</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
