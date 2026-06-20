@@ -1,702 +1,262 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexaFlow — AI Workflow Automation for High-Growth Teams</title>
-  <meta name="description" content="NexaFlow is a premium AI workflow automation platform that helps revenue and operations teams launch, measure, and optimize critical work in minutes.">
-  <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The Margin Review publishes clean, academic essays on culture, science, history, design, and the public life of ideas." />
+  <title>The Margin Review · Essays for careful readers</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" data-site-header>
-    <div class="container-wide header-inner">
-      <a class="brand" href="#hero" aria-label="NexaFlow home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" role="img">
-            <path d="M5 12.7C5 8.4 8.4 5 12.7 5H19v6.3c0 4.3-3.4 7.7-7.7 7.7H5v-6.3Z" fill="currentColor" opacity=".92"/>
-            <path d="M9 14.8 15.8 8M14.8 8h1v1" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="brand-name">NexaFlow</span>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="The Margin Review home">
+        <span class="brand__mark">M</span>
+        <span>The Margin Review</span>
       </a>
-
-      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-        <a class="nav-link" data-nav-link href="#features">Features</a>
-        <a class="nav-link" data-nav-link href="#benefits">Benefits</a>
-        <a class="nav-link" data-nav-link href="#testimonials">Customers</a>
-        <a class="nav-link" data-nav-link href="#pricing">Pricing</a>
-        <a class="nav-link" data-nav-link href="#faq">FAQ</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html" aria-current="page">Home</a>
+        <a class="nav-link" href="post.html">Featured post</a>
+        <a class="nav-link" href="#topics">Topics</a>
+        <a class="nav-link" href="#latest">Latest</a>
       </nav>
-
-      <div class="header-actions">
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 4V2m0 20v-2M4 12H2m20 0h-2m-2.34-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M21 14.2A8.5 8.5 0 0 1 9.8 3a8.5 8.5 0 1 0 11.2 11.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <a class="btn btn-secondary mobile-hidden" href="#pricing">View plans</a>
-        <a class="btn btn-primary mobile-hidden" href="#cta">Start free</a>
-        <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Open navigation">
-          <span class="nav-toggle-line" aria-hidden="true"></span>
-        </button>
+      <div class="flex items-center gap-2">
+        <button class="btn btn-outline" type="button" aria-label="Toggle theme">Theme</button>
+        <a class="btn btn-primary" href="#subscribe">Subscribe</a>
       </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="hero" aria-labelledby="hero-title">
-      <div class="container-wide hero-grid">
-        <div class="hero-content reveal">
-          <div class="hero-badge">
-            <span class="hero-badge-dot" aria-hidden="true"></span>
-            Trusted by 4,800+ scaling teams
-          </div>
-          <h1 class="hero-title" id="hero-title">Automate revenue work with <span class="gradient-text">AI precision.</span></h1>
-          <p class="hero-description">NexaFlow turns fragmented processes into self-optimizing workflows across sales, success, finance, and operations — so teams move faster without adding headcount.</p>
-          <div class="hero-actions" aria-label="Hero actions">
-            <a class="btn btn-primary btn-large" href="#pricing">
-              Start 14-day trial
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a class="btn btn-secondary btn-large" href="#features">See how it works</a>
-          </div>
-          <div class="hero-proof" aria-label="Customer rating">
-            <div class="avatar-stack" aria-hidden="true">
-              <span class="avatar">AL</span>
-              <span class="avatar">MK</span>
-              <span class="avatar">SP</span>
-              <span class="avatar">JR</span>
-            </div>
-            <span>4.9/5 from operators at Series A to IPO</span>
-          </div>
+  <main>
+    <section class="container featured-hero">
+      <a class="featured-hero__media" href="post.html" aria-label="Read The slow return of the public intellectual">
+        <img class="featured-hero__image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80" alt="Researchers gathered around a table with books, papers, and laptops" />
+      </a>
+      <div class="featured-hero__content">
+        <div class="meta-row">
+          <span class="category-tag category-tag--culture">Culture</span>
+          <span>12 min read</span>
         </div>
-
-        <div class="hero-visual reveal" aria-label="NexaFlow product dashboard preview">
-          <div class="dashboard-shell">
-            <div class="dashboard-topbar">
-              <div class="window-dots" aria-hidden="true">
-                <span class="window-dot"></span>
-                <span class="window-dot"></span>
-                <span class="window-dot"></span>
-              </div>
-              <div class="dashboard-status">
-                <span class="hero-badge-dot" aria-hidden="true"></span>
-                Live automation
-              </div>
-            </div>
-
-            <div class="dashboard-body">
-              <div class="metric-row">
-                <article class="metric-card">
-                  <p class="metric-label">Pipeline velocity</p>
-                  <div class="metric-value">42% <span class="metric-change">+18%</span></div>
-                  <div class="metric-chart" aria-hidden="true">
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                  </div>
-                </article>
-
-                <article class="metric-card">
-                  <p class="metric-label">Hours reclaimed</p>
-                  <div class="metric-value">1,284 <span class="metric-change">this month</span></div>
-                  <div class="metric-chart" aria-hidden="true">
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                    <span class="metric-bar"></span>
-                  </div>
-                </article>
-              </div>
-
-              <article class="pipeline-card">
-                <div class="pipeline-header">
-                  <div>
-                    <h2 class="card-title">Priority workflows</h2>
-                    <p class="card-kicker">AI-ranked by impact</p>
-                  </div>
-                  <span class="pipeline-score">98%</span>
-                </div>
-
-                <ul class="pipeline-list">
-                  <li class="pipeline-item">
-                    <span class="pipeline-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M4 7h16M7 12h10M10 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                    </span>
-                    <div class="pipeline-copy">
-                      <p class="pipeline-name">Enterprise handoff</p>
-                      <p class="pipeline-meta">Sales to success · 12 tasks</p>
-                    </div>
-                    <span class="pipeline-score">Active</span>
-                  </li>
-                  <li class="pipeline-item">
-                    <span class="pipeline-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 3v18m7-9H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                    </span>
-                    <div class="pipeline-copy">
-                      <p class="pipeline-name">Expansion signals</p>
-                      <p class="pipeline-meta">CSM alerts · 8 sources</p>
-                    </div>
-                    <span class="pipeline-score">New</span>
-                  </li>
-                  <li class="pipeline-item">
-                    <span class="pipeline-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none">
-                        <path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </span>
-                    <div class="pipeline-copy">
-                      <p class="pipeline-name">Renewal readiness</p>
-                      <p class="pipeline-meta">Finance sync · 31 accounts</p>
-                    </div>
-                    <span class="pipeline-score">Done</span>
-                  </li>
-                </ul>
-              </article>
-
-              <article class="insight-card">
-                <div class="insight-header">
-                  <h2 class="card-title">AI recommendations</h2>
-                  <p class="card-kicker">Updated 2m ago</p>
-                </div>
-                <ul class="insight-list">
-                  <li class="insight-item"><span class="insight-dot" aria-hidden="true"></span> Route 17 at-risk deals to senior reps.</li>
-                  <li class="insight-item"><span class="insight-dot" aria-hidden="true"></span> Automate approval for low-risk discounts.</li>
-                  <li class="insight-item"><span class="insight-dot" aria-hidden="true"></span> Trigger onboarding plan after legal redlines.</li>
-                </ul>
-              </article>
-
-              <article class="automation-card">
-                <div class="automation-header">
-                  <h2 class="card-title">Next best action</h2>
-                  <p class="card-kicker">Confidence 94%</p>
-                </div>
-                <p class="text-muted">Launch a renewal play for accounts with usage growth over 30% and unresolved executive sponsor gaps.</p>
-              </article>
-            </div>
-          </div>
+        <h1 class="featured-hero__title">The slow return of the public intellectual</h1>
+        <p class="featured-hero__lead">In an age of short posts and fast outrage, patient essays are finding new readers—and a new kind of authority.</p>
+        <div class="author-row">
+          <img class="avatar avatar-lg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=140&q=80" alt="Portrait of Elena Morris" />
+          <span>Elena Morris</span>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a class="btn btn-primary btn-lg" href="post.html">Read featured essay</a>
+          <a class="btn btn-outline btn-lg" href="#latest">Browse latest</a>
         </div>
       </div>
     </section>
 
-    <section class="logo-strip" aria-label="Companies using NexaFlow">
-      <div class="container-wide logo-strip-inner reveal">
-        <p>Built for modern operators at</p>
-        <div class="logo-grid">
-          <div class="logo-item">Asteria</div>
-          <div class="logo-item">Northstar</div>
-          <div class="logo-item">Lumora</div>
-          <div class="logo-item">VantaCore</div>
-          <div class="logo-item">HelioBank</div>
-          <div class="logo-item">Orbital</div>
-        </div>
+    <section class="container py-4 border-t border-b" id="topics" aria-labelledby="topics-heading">
+      <h2 class="sr-only" id="topics-heading">Topics</h2>
+      <div class="topic-strip" aria-label="Scrollable list of topics">
+        <a class="topic-pill" href="#latest">Academia</a>
+        <a class="topic-pill" href="#latest">Reading lists</a>
+        <a class="topic-pill" href="#latest">Field notes</a>
+        <a class="topic-pill" href="#latest">Science studies</a>
+        <a class="topic-pill" href="#latest">Archives</a>
+        <a class="topic-pill" href="#latest">Book criticism</a>
+        <a class="topic-pill" href="#latest">Design history</a>
+        <a class="topic-pill" href="#latest">Public culture</a>
+        <a class="topic-pill" href="#latest">Methods</a>
+        <a class="topic-pill" href="#latest">Universities</a>
       </div>
     </section>
 
-    <section class="section" id="features" aria-labelledby="features-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">Platform</span>
-          <h2 class="section-title" id="features-title">Everything your team needs to ship smarter workflows.</h2>
-          <p class="section-description">Design, deploy, monitor, and improve mission-critical automations from one elegant workspace.</p>
-        </div>
-
-        <div class="features-grid">
-          <article class="feature-card reveal">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3 4 8l8 5 8-5-8-5Zm-8 9 8 5 8-5M4 16l8 5 8-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3>Visual workflow builder</h3>
-            <p>Map complex processes with branching logic, approvals, owners, SLAs, and AI actions — no engineering queue required.</p>
-          </article>
-
-          <article class="feature-card reveal">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <h3>Agentic AI actions</h3>
-            <p>Summarize accounts, draft follow-ups, enrich records, classify intent, and recommend next steps with governed AI agents.</p>
-          </article>
-
-          <article class="feature-card reveal">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 19V5m0 14h16M8 16v-5m4 5V8m4 8v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <h3>Impact analytics</h3>
-            <p>Prove ROI with live dashboards for time saved, cycle time, revenue influenced, risk avoided, and team adoption.</p>
-          </article>
-
-          <article class="feature-card reveal">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="m9 12 2 2 4-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3>Enterprise governance</h3>
-            <p>Role-based permissions, audit trails, human-in-the-loop checkpoints, and approval controls keep automation safe.</p>
-          </article>
-
-          <article class="feature-card reveal">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M8 7a4 4 0 1 1 8 0v2H8V7Zm-2 2h12v11H6V9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M12 14v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <h3>Secure by design</h3>
-            <p>Encryption, granular data controls, session policies, and SOC 2-ready practices support demanding security teams.</p>
-          </article>
-
-          <article class="feature-card reveal">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7 7h10v10H7V7Zm-4 5h4m10 0h4M12 3v4m0 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3>Native system sync</h3>
-            <p>Connect CRM, support, warehouse, billing, and collaboration tools so every workflow runs on trusted business context.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section benefits" id="benefits" aria-labelledby="benefits-title">
-      <div class="container benefits-grid">
+    <section class="container section" id="latest" aria-labelledby="latest-heading">
+      <div class="flex items-end justify-between gap-4 mb-8">
         <div>
-          <div class="section-header reveal">
-            <span class="section-eyebrow">Why teams switch</span>
-            <h2 class="section-title" id="benefits-title">Replace slow handoffs with intelligent operating rhythm.</h2>
-            <p class="section-description">NexaFlow helps leaders turn best practices into consistent execution across every account, deal, and customer moment.</p>
-          </div>
-
-          <div class="benefit-panel">
-            <article class="benefit-item reveal">
-              <span class="benefit-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M13 2 4 14h8l-1 8 9-12h-8l1-8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <div class="benefit-copy">
-                <h3>Launch in days, not quarters</h3>
-                <p>Start with proven revenue templates, then tailor each workflow as your process matures.</p>
-              </div>
-            </article>
-
-            <article class="benefit-item reveal">
-              <span class="benefit-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 12a8 8 0 0 1 14.93-4M20 12a8 8 0 0 1-14.93 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M19 3v5h-5M5 21v-5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <div class="benefit-copy">
-                <h3>Continuously optimize</h3>
-                <p>AI identifies bottlenecks, missed steps, and high-leverage improvements before they become pipeline risk.</p>
-              </div>
-            </article>
-
-            <article class="benefit-item reveal">
-              <span class="benefit-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M16 11V7a4 4 0 0 0-8 0v4M5 11h14v10H5V11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <div class="benefit-copy">
-                <h3>Keep humans in control</h3>
-                <p>Escalate sensitive actions, require approvals, and maintain complete visibility into every automated decision.</p>
-              </div>
-            </article>
-          </div>
+          <span class="badge">Latest</span>
+          <h2 class="text-3xl mt-3" id="latest-heading">Recent essays</h2>
         </div>
+        <a class="cta-link" href="post.html">Start with the feature →</a>
+      </div>
 
-        <aside class="stats-card reveal" aria-label="NexaFlow customer results">
-          <div class="stats-grid">
-            <div class="stat-item">
-              <span class="stat-value">31%</span>
-              <span class="stat-label">faster sales cycle after 90 days</span>
+      <div class="article-grid">
+        <article class="article-card">
+          <a class="article-card__media" href="post.html" aria-label="Read The laboratory notebook as literature">
+            <img class="article-card__image" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80" alt="Reader studying at a long library table" />
+          </a>
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--science">Science</span>
+              <span class="text-sm text-muted-foreground">5 min read</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-value">18k</span>
-              <span class="stat-label">manual tasks removed per month</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">$4.2M</span>
-              <span class="stat-label">pipeline risk flagged automatically</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">99.98%</span>
-              <span class="stat-label">workflow execution reliability</span>
+            <h3 class="article-card__title"><a href="post.html">The laboratory notebook as literature</a></h3>
+            <p class="article-card__excerpt">How observation, doubt, and revision shape the prose of discovery.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=120&q=80" alt="Portrait of Adrian Vale" />
+              <span>Adrian Vale</span>
             </div>
           </div>
-        </aside>
+        </article>
+
+        <article class="article-card">
+          <a class="article-card__media" href="post.html" aria-label="Read When archives learned to speak back">
+            <img class="article-card__image" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80" alt="Tall shelves in an old library" />
+          </a>
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--history">History</span>
+              <span class="text-sm text-muted-foreground">7 min read</span>
+            </div>
+            <h3 class="article-card__title"><a href="post.html">When archives learned to speak back</a></h3>
+            <p class="article-card__excerpt">A brief history of catalogues, marginalia, and the politics of preservation.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Portrait of Leah Grant" />
+              <span>Leah Grant</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <a class="article-card__media" href="post.html" aria-label="Read The interface as an editorial argument">
+            <img class="article-card__image" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Laptop and notes on a writing desk" />
+          </a>
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--design">Design</span>
+              <span class="text-sm text-muted-foreground">4 min read</span>
+            </div>
+            <h3 class="article-card__title"><a href="post.html">The interface as an editorial argument</a></h3>
+            <p class="article-card__excerpt">Digital reading tools quietly decide what feels urgent, credible, and complete.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80" alt="Portrait of Noah Patel" />
+              <span>Noah Patel</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <a class="article-card__media" href="post.html" aria-label="Read The footnote as a civic gesture">
+            <img class="article-card__image" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80" alt="Open books stacked on a library table" />
+          </a>
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--history">History</span>
+              <span class="text-sm text-muted-foreground">6 min read</span>
+            </div>
+            <h3 class="article-card__title"><a href="post.html">The footnote as a civic gesture</a></h3>
+            <p class="article-card__excerpt">Why citation remains one of the quiet rituals of public trust.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Portrait of Jon Bell" />
+              <span>Jon Bell</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <a class="article-card__media" href="post.html" aria-label="Read What peer review cannot measure">
+            <img class="article-card__image" src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=900&q=80" alt="Scientific glassware and notebooks in a laboratory" />
+          </a>
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--science">Science</span>
+              <span class="text-sm text-muted-foreground">8 min read</span>
+            </div>
+            <h3 class="article-card__title"><a href="post.html">What peer review cannot measure</a></h3>
+            <p class="article-card__excerpt">A short inquiry into confidence, uncertainty, and the social life of published research.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Portrait of Mara Chen" />
+              <span>Mara Chen</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <a class="article-card__media" href="post.html" aria-label="Read Reading rooms for the distracted age">
+            <img class="article-card__image" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80" alt="A quiet reading room with bookshelves and tables" />
+          </a>
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--culture">Culture</span>
+              <span class="text-sm text-muted-foreground">5 min read</span>
+            </div>
+            <h3 class="article-card__title"><a href="post.html">Reading rooms for the distracted age</a></h3>
+            <p class="article-card__excerpt">What libraries can teach digital publications about attention, silence, and welcome.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?auto=format&fit=crop&w=120&q=80" alt="Portrait of Nina Okafor" />
+              <span>Nina Okafor</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">Social proof</span>
-          <h2 class="section-title" id="testimonials-title">Loved by teams that cannot afford operational drag.</h2>
-          <p class="section-description">From first automation to company-wide operating layer, NexaFlow gives leaders measurable leverage.</p>
+    <section class="container py-12" id="subscribe" aria-labelledby="subscribe-heading">
+      <div class="subscribe-panel">
+        <div>
+          <span class="badge">Weekly letter</span>
+          <h2 class="subscribe-panel__title mt-3" id="subscribe-heading">Read fewer things, more carefully.</h2>
+          <p class="subscribe-panel__text mt-3">A Friday digest of essays, books, lectures, and arguments worth sitting with—edited for readers who prefer margins to noise.</p>
         </div>
-
-        <div class="testimonial-grid">
-          <article class="testimonial-card reveal">
-            <div class="rating" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-            </div>
-            <p class="testimonial-quote">“NexaFlow gave us one place to orchestrate revenue processes that used to live in spreadsheets, Slack reminders, and heroic effort.”</p>
-            <div class="testimonial-author">
-              <span class="author-avatar" aria-hidden="true">CM</span>
-              <div>
-                <p class="author-name">Claire Moreno</p>
-                <p class="author-role">VP Revenue Operations, Asteria</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="testimonial-card reveal">
-            <div class="rating" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-            </div>
-            <p class="testimonial-quote">“We automated onboarding, renewal risk, and executive business reviews in the first month. The adoption curve was shockingly fast.”</p>
-            <div class="testimonial-author">
-              <span class="author-avatar" aria-hidden="true">DV</span>
-              <div>
-                <p class="author-name">Daniel Voss</p>
-                <p class="author-role">COO, Northstar Cloud</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="testimonial-card reveal">
-            <div class="rating" aria-label="5 out of 5 stars">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 6.8-6.2-3.5L5.8 21l1.4-6.8L2 9.4l7-.8L12 2Z"/></svg>
-            </div>
-            <p class="testimonial-quote">“The analytics finally helped us connect operations work to revenue outcomes. NexaFlow paid for itself before procurement finished.”</p>
-            <div class="testimonial-author">
-              <span class="author-avatar" aria-hidden="true">IA</span>
-              <div>
-                <p class="author-name">Iris Adebayo</p>
-                <p class="author-role">Head of Customer Success, Lumora</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">Pricing</span>
-          <h2 class="section-title" id="pricing-title">Simple plans that scale with your operating system.</h2>
-          <p class="section-description">Start small, prove impact quickly, then expand automation across every revenue motion.</p>
-        </div>
-
-        <div class="pricing-toggle reveal">
-          <span>Monthly</span>
-          <label class="switch" aria-label="Toggle annual billing">
-            <input type="checkbox" data-billing-toggle>
-            <span class="switch-thumb" aria-hidden="true"></span>
-          </label>
-          <span>Annual</span>
-          <span class="save-badge">Save 20%</span>
-        </div>
-
-        <div class="pricing-grid">
-          <article class="pricing-card reveal">
-            <h3>Launch</h3>
-            <p>For lean teams building their first automated operating layer.</p>
-            <div class="plan-price"><strong data-price data-monthly="$49" data-yearly="$39">$49</strong><span>/seat/mo</span></div>
-            <a class="btn btn-secondary btn-full" href="#cta">Start trial</a>
-            <ul class="plan-features">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                25 active workflows
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                AI summaries and routing
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Core analytics dashboard
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Email support
-              </li>
-            </ul>
-          </article>
-
-          <article class="pricing-card featured reveal">
-            <span class="plan-badge">Most popular</span>
-            <h3>Scale</h3>
-            <p>For growth companies standardizing revenue execution across teams.</p>
-            <div class="plan-price"><strong data-price data-monthly="$89" data-yearly="$71">$89</strong><span>/seat/mo</span></div>
-            <a class="btn btn-primary btn-full" href="#cta">Start trial</a>
-            <ul class="plan-features">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Unlimited active workflows
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Advanced AI agents
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Revenue impact reporting
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Priority support and onboarding
-              </li>
-            </ul>
-          </article>
-
-          <article class="pricing-card reveal">
-            <h3>Enterprise</h3>
-            <p>For organizations requiring custom governance, security, and scale.</p>
-            <div class="plan-price"><strong data-price data-monthly="Custom" data-yearly="Custom">Custom</strong><span></span></div>
-            <a class="btn btn-secondary btn-full" href="#cta">Book demo</a>
-            <ul class="plan-features">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Dedicated solution architect
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Custom data residency options
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                SSO, SCIM, and audit exports
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                24/7 premium support
-              </li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq" aria-labelledby="faq-title">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-eyebrow">FAQ</span>
-          <h2 class="section-title" id="faq-title">Questions before you automate?</h2>
-          <p class="section-description">Here is what revenue and operations leaders usually ask before launching NexaFlow.</p>
-        </div>
-
-        <div class="faq-grid">
-          <article class="faq-item is-open reveal">
-            <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-1">
-              How quickly can we launch our first workflow?
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="faq-answer" id="faq-1">
-              <div class="faq-answer-inner">
-                <p>Most teams launch their first production workflow within one week. NexaFlow includes templates for lead routing, opportunity handoff, onboarding, renewal risk, and executive escalation.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item reveal">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-2">
-              Does NexaFlow require engineering support?
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="faq-answer" id="faq-2">
-              <div class="faq-answer-inner">
-                <p>No. Operations teams can design and maintain workflows without code. Technical teams can still extend NexaFlow with secure webhooks and API-based actions when needed.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item reveal">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-3">
-              How do you keep AI automations safe?
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="faq-answer" id="faq-3">
-              <div class="faq-answer-inner">
-                <p>Every AI action can be governed with permissions, confidence thresholds, approval steps, audit logs, and human review. You decide where AI recommends, drafts, or executes.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item reveal">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4">
-              Which systems can NexaFlow connect to?
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="faq-answer" id="faq-4">
-              <div class="faq-answer-inner">
-                <p>NexaFlow connects to common CRM, support, billing, data warehouse, and collaboration tools. Enterprise customers can add custom sources through APIs and governed data connectors.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item reveal">
-            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-5">
-              Can we measure the ROI of automation?
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="faq-answer" id="faq-5">
-              <div class="faq-answer-inner">
-                <p>Yes. Impact reporting tracks cycle time, hours saved, SLA adherence, adoption, influenced revenue, and prevented risk so leaders can quantify results over time.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta" id="cta" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta-card reveal">
-          <h2 id="cta-title">Build your AI operating layer.</h2>
-          <p>Start free for 14 days. Launch your first workflow, measure the lift, and see why modern teams choose NexaFlow to scale execution.</p>
-          <div class="cta-actions">
-            <a class="btn btn-primary btn-large" href="#pricing">Start free trial</a>
-            <a class="btn btn-secondary btn-large" href="#features">Explore platform</a>
+        <form class="form" action="#" method="post">
+          <div class="field">
+            <label class="label" for="email">Email address</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="reader@example.com" required />
           </div>
+          <button class="btn btn-primary" type="submit">Subscribe free</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="container section pt-8" aria-labelledby="notebook-heading">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="stack gap-4">
+          <span class="badge">Notebook</span>
+          <h2 class="text-3xl" id="notebook-heading">Brief notes from the desk</h2>
+          <p class="text-muted-foreground text-lg leading-relaxed">Shorter observations on publishing, pedagogy, research habits, and the ordinary rituals that make intellectual work sustainable.</p>
+        </div>
+        <div class="grid gap-4">
+          <article class="bg-card border rounded-xl p-6 shadow-sm">
+            <div class="flex items-center justify-between gap-3 mb-3">
+              <span class="category-tag category-tag--design">Design</span>
+              <span class="text-sm text-muted-foreground">3 min read</span>
+            </div>
+            <h3 class="font-serif text-xl leading-snug"><a href="post.html">A case for smaller publication menus</a></h3>
+            <p class="text-muted-foreground mt-3">Navigation should promise orientation, not a survey of every possible corridor.</p>
+          </article>
+          <article class="bg-card border rounded-xl p-6 shadow-sm">
+            <div class="flex items-center justify-between gap-3 mb-3">
+              <span class="category-tag category-tag--culture">Culture</span>
+              <span class="text-sm text-muted-foreground">4 min read</span>
+            </div>
+            <h3 class="font-serif text-xl leading-snug"><a href="post.html">How the seminar became a format</a></h3>
+            <p class="text-muted-foreground mt-3">The roundtable persists because it turns reading into a shared risk.</p>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer" aria-labelledby="footer-title">
-    <div class="container-wide">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="brand" href="#hero" aria-label="NexaFlow home">
-            <span class="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" role="img">
-                <path d="M5 12.7C5 8.4 8.4 5 12.7 5H19v6.3c0 4.3-3.4 7.7-7.7 7.7H5v-6.3Z" fill="currentColor" opacity=".92"/>
-                <path d="M9 14.8 15.8 8M14.8 8h1v1" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="brand-name">NexaFlow</span>
-          </a>
-          <p id="footer-title">Premium AI workflow automation for revenue and operations teams that want measurable leverage.</p>
-          <div class="social-links" aria-label="Social links">
-            <a href="#hero" aria-label="NexaFlow on LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 10v8M7 7v.01M11 18v-4.5A3.5 3.5 0 0 1 14.5 10v0A3.5 3.5 0 0 1 18 13.5V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </a>
-            <a href="#hero" aria-label="NexaFlow on X">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="m4 4 16 16M20 4 4 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </a>
-            <a href="#hero" aria-label="NexaFlow community">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M16 11a4 4 0 1 0-8 0v1a4 4 0 0 0 8 0v-1Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-columns">
-          <div class="footer-column">
-            <h2>Product</h2>
-            <ul class="footer-links">
-              <li><a href="#features">Features</a></li>
-              <li><a href="#benefits">Benefits</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h2>Customers</h2>
-            <ul class="footer-links">
-              <li><a href="#testimonials">Stories</a></li>
-              <li><a href="#benefits">Results</a></li>
-              <li><a href="#cta">Start trial</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h2>Resources</h2>
-            <ul class="footer-links">
-              <li><a href="#faq">FAQ</a></li>
-              <li><a href="#features">Platform tour</a></li>
-              <li><a href="#hero">Product preview</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h2>Company</h2>
-            <ul class="footer-links">
-              <li><a href="#hero">About</a></li>
-              <li><a href="#pricing">Plans</a></li>
-              <li><a href="#cta">Contact sales</a></li>
-            </ul>
-          </div>
-        </div>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand__mark">M</span>
+          <span>The Margin Review</span>
+        </a>
+        <p class="text-sm text-muted-foreground mt-3">Essays for readers who still like margins.</p>
       </div>
-
-      <div class="footer-bottom">
-        <p>© <span data-current-year>2026</span> NexaFlow. All rights reserved.</p>
-        <p>Fast, accessible, and built with vanilla web standards.</p>
-      </div>
+      <nav class="flex flex-wrap gap-4" aria-label="Footer navigation">
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="post.html">Featured post</a>
+        <a class="footer-link" href="#topics">Topics</a>
+        <a class="footer-link" href="#subscribe">Subscribe</a>
+      </nav>
     </div>
   </footer>
 
-  <script src="/script.js"></script>
+  <script>
+    const themeButtons = document.querySelectorAll('[aria-label="Toggle theme"]');
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,1620 +1,937 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design System — Velocity SaaS</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design System · The Margin Review</title>
   <link rel="stylesheet" href="/style.css" />
   <style>
-    /* =========================================================
-       Documentation chrome ONLY — not part of the design system.
-       Every rule is prefixed .ds-
-       ========================================================= */
+    /* Documentation chrome only — not part of the design system. Every rule is prefixed .ds-. */
     .ds-page {
-      padding-bottom: var(--space-24);
+      padding-block: 3rem;
     }
+
     .ds-block {
-      padding-top: var(--space-12);
-      padding-bottom: var(--space-12);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      padding-block: 3rem;
     }
-    .ds-block:last-child {
-      border-bottom: none;
+
+    .ds-block:first-child {
+      border-top: 0;
     }
-    .ds-block > h2 {
-      font-size: var(--text-2xl);
-      margin-bottom: var(--space-2);
-    }
+
     .ds-note {
-      font-size: var(--text-sm);
+      max-width: 48rem;
+      margin-top: 0.75rem;
       color: var(--muted-foreground);
-      margin-bottom: var(--space-8);
-      line-height: var(--leading-relaxed);
     }
+
     .ds-subhead {
-      font-size: var(--text-lg);
-      font-weight: var(--font-semibold);
-      margin-top: var(--space-8);
-      margin-bottom: var(--space-4);
-      color: var(--foreground);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
     }
+
     .ds-specimens {
       display: flex;
       flex-wrap: wrap;
+      gap: 1rem;
       align-items: flex-start;
-      gap: var(--space-4);
     }
+
     .ds-specimens--grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: var(--space-6);
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: 1rem;
     }
+
     .ds-specimens--stack {
-      flex-direction: column;
-      align-items: stretch;
+      display: grid;
+      gap: 2rem;
     }
+
     .ds-sections {
-      gap: var(--space-8);
-    }
-    .ds-sections > * {
+      padding: 1rem;
       border: 1px dashed var(--border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-xl);
+      background: var(--secondary);
     }
+
     .ds-swatches {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: var(--space-3);
+      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
+
     .ds-swatch {
-      border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
     }
-    .ds-swatch__color {
-      height: 64px;
-    }
-    .ds-swatch__info {
-      padding: var(--space-2) var(--space-3);
-      font-size: var(--text-xs);
-    }
-    .ds-swatch__label {
-      font-weight: var(--font-semibold);
-      color: var(--foreground);
-    }
-    .ds-swatch__token {
-      color: var(--muted-foreground);
-      font-family: var(--font-mono);
-    }
-    .ds-type-row {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
-      padding: var(--space-3) 0;
+
+    .ds-swatch__chip {
+      min-height: 5rem;
       border-bottom: 1px solid var(--border);
     }
-    .ds-type-row:last-child {
-      border-bottom: none;
+
+    .ds-swatch__body {
+      padding: 0.75rem;
+      font-size: var(--text-sm);
     }
-    .ds-type-meta {
-      font-size: var(--text-xs);
+
+    .ds-type-row {
+      display: grid;
+      gap: 1rem;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ds-type-row code,
+    .ds-swatch code,
+    .ds-scale code {
       color: var(--muted-foreground);
-      font-family: var(--font-mono);
+      font-size: var(--text-xs);
     }
+
     .ds-scale {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-4);
-      align-items: flex-end;
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
     }
-    .ds-scale__item {
-      display: flex;
-      flex-direction: column;
+
+    .ds-scale__row {
+      display: grid;
+      grid-template-columns: 5rem minmax(0, 1fr);
+      gap: 1rem;
       align-items: center;
-      gap: var(--space-2);
     }
-    .ds-scale__block {
-      background-color: var(--primary);
-      border-radius: var(--radius-sm);
+
+    .ds-scale__bar {
+      height: 1rem;
+      border-radius: var(--radius-full);
+      background: var(--primary);
     }
-    .ds-scale__label {
-      font-size: var(--text-xs);
-      color: var(--muted-foreground);
-      font-family: var(--font-mono);
-    }
+
     .ds-radius-row,
     .ds-shadow-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-6);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
-    .ds-radius-item,
-    .ds-shadow-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-2);
-    }
-    .ds-radius-item__box {
-      width: 64px;
-      height: 64px;
-      background-color: var(--primary);
-    }
-    .ds-shadow-item__box {
-      width: 80px;
-      height: 80px;
-      background-color: var(--card);
+
+    .ds-radius-card,
+    .ds-shadow-card {
+      min-height: 6rem;
+      padding: 1rem;
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      background: var(--card);
     }
-    .ds-item-label {
-      font-size: var(--text-xs);
-      color: var(--muted-foreground);
-      font-family: var(--font-mono);
-    }
+
     .ds-showcase-hero {
-      padding: var(--space-20) var(--space-4);
-      text-align: center;
-      background: linear-gradient(135deg, var(--hero-gradient-start), var(--badge-bg), var(--hero-gradient-end));
+      padding-block: 5rem;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 70%, transparent), transparent 36rem),
+        var(--background);
     }
+
     .ds-showcase-hero__inner {
-      max-width: 720px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-6);
+      width: min(100% - 2rem, var(--content-width));
+      margin-inline: auto;
+      display: grid;
+      gap: 1.5rem;
+      text-align: center;
+      justify-items: center;
     }
-    .ds-showcase-hero__badge {
-      /* uses .badge component */
-    }
+
     .ds-showcase-hero__title {
-      font-size: var(--text-4xl);
-      font-weight: var(--font-bold);
+      max-width: 58rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      line-height: 0.98;
       letter-spacing: var(--tracking-tight);
-      line-height: var(--leading-tight);
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
-    @media (min-width: 768px) {
-      .ds-showcase-hero__title {
-        font-size: var(--text-5xl);
-      }
-    }
+
     .ds-showcase-hero__lead {
-      font-size: var(--text-lg);
+      max-width: 42rem;
       color: var(--muted-foreground);
+      font-size: var(--text-xl);
       line-height: var(--leading-relaxed);
     }
-    .ds-showcase-hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
-      justify-content: center;
-    }
+
+    .ds-showcase-hero__actions,
     .ds-showcase-hero__stats {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-8);
+      gap: 0.75rem;
       justify-content: center;
-      padding-top: var(--space-6);
     }
-    .ds-stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-1);
-    }
-    .ds-stat__value {
-      font-size: var(--text-2xl);
-      font-weight: var(--font-bold);
-      color: var(--foreground);
-    }
-    .ds-stat__label {
-      font-size: var(--text-xs);
+
+    .ds-showcase-hero__stats {
+      margin-top: 1rem;
       color: var(--muted-foreground);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-wide);
+      font-size: var(--text-sm);
     }
-    .ds-border-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-6);
-    }
-    .ds-border-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-2);
-    }
-    .ds-border-item__box {
-      width: 80px;
-      height: 48px;
-      border-color: var(--primary);
-      border-radius: var(--radius-md);
-      background-color: var(--card);
+
+    @media (min-width: 768px) {
+      .ds-type-row {
+        grid-template-columns: 12rem minmax(0, 1fr);
+        align-items: baseline;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- ======== Sticky Nav ======== -->
   <header class="site-header">
     <div class="container site-header__inner">
-      <a href="#top" class="brand">
-        <span class="brand__icon">V</span>
-        Design System
+      <a class="brand" href="#top" aria-label="The Margin Review design system">
+        <span class="brand__mark">M</span>
+        <span>The Margin Review</span>
       </a>
-      <nav class="nav">
-        <a href="#colors" class="nav-link">Colors</a>
-        <a href="#typography" class="nav-link">Typography</a>
-        <a href="#spacing" class="nav-link">Spacing</a>
-        <a href="#radius" class="nav-link">Radius &amp; Shadows</a>
-        <a href="#components" class="nav-link">Components</a>
-        <a href="#sections" class="nav-link">Sections</a>
+      <nav class="nav" aria-label="Design system navigation">
+        <a class="nav-link" href="#foundations">Foundations</a>
+        <a class="nav-link" href="#components">Components</a>
+        <a class="nav-link" href="#sections">Sections</a>
       </nav>
-      <div class="header-actions">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </div>
+      <button class="btn btn-outline" type="button" aria-label="Toggle theme">Theme</button>
     </div>
   </header>
 
-  <!-- ======== Showcase Hero ======== -->
   <section class="ds-showcase-hero" id="top">
     <div class="ds-showcase-hero__inner">
-      <span class="badge ds-showcase-hero__badge">Design System v1.0</span>
-      <h1 class="ds-showcase-hero__title">Velocity Design System</h1>
-      <p class="ds-showcase-hero__lead">A token-driven, hand-crafted design system built for a premium SaaS landing page. Every color, component, and section rendered live from <code class="font-mono text-sm">style.css</code>.</p>
+      <span class="badge">Editorial system</span>
+      <h1 class="ds-showcase-hero__title">A quiet, academic design language for long-form publishing.</h1>
+      <p class="ds-showcase-hero__lead">Cream paper surfaces, slate typography, serif headlines, restrained cards, category pills, and article patterns for a clean publication experience.</p>
       <div class="ds-showcase-hero__actions">
-        <a href="#components" class="btn btn-primary btn-lg">Explore Components</a>
-        <a href="#sections" class="btn btn-outline btn-lg">View Sections</a>
+        <a class="btn btn-primary btn-lg" href="#sections">View sections</a>
+        <a class="btn btn-outline btn-lg" href="../index.html">Open site</a>
       </div>
       <div class="ds-showcase-hero__stats">
-        <div class="ds-stat">
-          <span class="ds-stat__value">14</span>
-          <span class="ds-stat__label">Semantic Colors</span>
-        </div>
-        <div class="ds-stat">
-          <span class="ds-stat__value">10</span>
-          <span class="ds-stat__label">Type Steps</span>
-        </div>
-        <div class="ds-stat">
-          <span class="ds-stat__value">12</span>
-          <span class="ds-stat__label">Spacing Tokens</span>
-        </div>
-        <div class="ds-stat">
-          <span class="ds-stat__value">7+</span>
-          <span class="ds-stat__label">Section Patterns</span>
-        </div>
+        <span>2 pages</span>
+        <span>·</span>
+        <span>Light and dark themes</span>
+        <span>·</span>
+        <span>Runtime-editable utilities</span>
       </div>
     </div>
   </section>
 
-  <!-- ======== Main Content ======== -->
   <main class="container ds-page">
+    <section class="ds-block" id="foundations">
+      <h2 class="text-3xl">Foundations</h2>
+      <p class="ds-note">Tokens are rendered through the same CSS variables used by the site. Utilities in the manifest mirror this surface for runtime editing.</p>
 
-    <!-- ============================================
-         FOUNDATIONS — Colors
-         ============================================ -->
-    <section class="ds-block" id="colors">
-      <h2>Colors</h2>
-      <p class="ds-note">Semantic color tokens mapped onto the raw palette. Automatically remapped under <code class="font-mono">.dark</code>.</p>
-
-      <h3 class="ds-subhead">Backgrounds</h3>
+      <h3 class="ds-subhead">Colors</h3>
       <div class="ds-swatches">
-        <div class="ds-swatch"><div class="ds-swatch__color bg-background"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Page</div><div class="ds-swatch__token">bg-background</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-foreground"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Foreground</div><div class="ds-swatch__token">bg-foreground</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-primary"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Primary</div><div class="ds-swatch__token">bg-primary</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-secondary"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Secondary</div><div class="ds-swatch__token">bg-secondary</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-muted"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Muted</div><div class="ds-swatch__token">bg-muted</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-accent"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Accent</div><div class="ds-swatch__token">bg-accent</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-card"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Card</div><div class="ds-swatch__token">bg-card</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-destructive"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Destructive</div><div class="ds-swatch__token">bg-destructive</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-section-alt"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Section Alt</div><div class="ds-swatch__token">bg-section-alt</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-transparent border border-border"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Transparent</div><div class="ds-swatch__token">bg-transparent</div></div></div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-background"></div>
+          <div class="ds-swatch__body"><strong>Background</strong><br><code>bg-background</code></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-foreground"></div>
+          <div class="ds-swatch__body"><strong>Foreground</strong><br><code>bg-foreground</code></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-primary"></div>
+          <div class="ds-swatch__body"><strong>Primary</strong><br><code>bg-primary</code></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-secondary"></div>
+          <div class="ds-swatch__body"><strong>Secondary</strong><br><code>bg-secondary</code></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-muted"></div>
+          <div class="ds-swatch__body"><strong>Muted</strong><br><code>bg-muted</code></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-accent"></div>
+          <div class="ds-swatch__body"><strong>Accent</strong><br><code>bg-accent</code></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-card"></div>
+          <div class="ds-swatch__body"><strong>Card</strong><br><code>bg-card</code></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__chip bg-category-science"></div>
+          <div class="ds-swatch__body"><strong>Science</strong><br><code>bg-category-science</code></div>
+        </div>
       </div>
 
-      <h3 class="ds-subhead">Text</h3>
-      <div class="ds-swatches">
-        <div class="ds-swatch"><div class="ds-swatch__color bg-foreground"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Body</div><div class="ds-swatch__token">text-foreground</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-background border border-border"></div><div class="ds-swatch__info"><div class="ds-swatch__label">On foreground</div><div class="ds-swatch__token">text-background</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-primary"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Primary</div><div class="ds-swatch__token">text-primary</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-white border border-border"></div><div class="ds-swatch__info"><div class="ds-swatch__label">On brand</div><div class="ds-swatch__token">text-primary-foreground</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-muted"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Muted</div><div class="ds-swatch__token">text-muted-foreground</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-accent"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Accent</div><div class="ds-swatch__token">text-accent</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-destructive"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Destructive</div><div class="ds-swatch__token">text-destructive</div></div></div>
+      <h3 class="ds-subhead">Typography</h3>
+      <div class="ds-type-row">
+        <code>Display · text-5xl</code>
+        <div class="font-serif text-5xl font-bold leading-tight tracking-tight">The life of an idea in public.</div>
+      </div>
+      <div class="ds-type-row">
+        <code>Heading · text-3xl</code>
+        <div class="font-serif text-3xl font-bold leading-tight tracking-tight">Notes from the reading room</div>
+      </div>
+      <div class="ds-type-row">
+        <code>Lead · text-xl</code>
+        <div class="text-xl leading-relaxed text-muted-foreground">Essays, reviews, and field notes for careful readers.</div>
+      </div>
+      <div class="ds-type-row">
+        <code>Body · text-base</code>
+        <div class="text-base leading-normal">A restrained sans-serif body face keeps long reading sessions calm, legible, and modern.</div>
+      </div>
+      <div class="ds-type-row">
+        <code>Meta · text-xs</code>
+        <div class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Archive · 5 min read</div>
       </div>
 
-      <h3 class="ds-subhead">Border</h3>
-      <div class="ds-swatches">
-        <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--border)"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Default</div><div class="ds-swatch__token">border-border</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-muted"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Muted</div><div class="ds-swatch__token">border-muted</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-primary"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Primary</div><div class="ds-swatch__token">border-primary</div></div></div>
-        <div class="ds-swatch"><div class="ds-swatch__color bg-foreground"></div><div class="ds-swatch__info"><div class="ds-swatch__label">Foreground</div><div class="ds-swatch__token">border-foreground</div></div></div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         FOUNDATIONS — Typography
-         ============================================ -->
-    <section class="ds-block" id="typography">
-      <h2>Typography</h2>
-      <p class="ds-note">Type scale from <code class="font-mono">text-xs</code> to <code class="font-mono">text-6xl</code>. Font: Inter / system sans-serif.</p>
-
-      <h3 class="ds-subhead">Scale</h3>
-      <div class="ds-type-row"><span class="text-6xl font-bold">Display — 3.75rem</span><span class="ds-type-meta">text-6xl · font-bold · tracking-tight</span></div>
-      <div class="ds-type-row"><span class="text-5xl font-bold tracking-tight">Heading 0 — 3rem</span><span class="ds-type-meta">text-5xl · font-bold · tracking-tight</span></div>
-      <div class="ds-type-row"><span class="text-4xl font-bold tracking-tight">Heading 1 — 2.25rem</span><span class="ds-type-meta">text-4xl · font-bold · tracking-tight</span></div>
-      <div class="ds-type-row"><span class="text-3xl font-bold tracking-tight">Heading 2 — 1.875rem</span><span class="ds-type-meta">text-3xl · font-bold · tracking-tight</span></div>
-      <div class="ds-type-row"><span class="text-2xl font-semibold">Heading 3 — 1.5rem</span><span class="ds-type-meta">text-2xl · font-semibold</span></div>
-      <div class="ds-type-row"><span class="text-xl font-semibold">Heading 4 — 1.25rem</span><span class="ds-type-meta">text-xl · font-semibold</span></div>
-      <div class="ds-type-row"><span class="text-lg leading-relaxed">Lead — 1.125rem</span><span class="ds-type-meta">text-lg · font-normal · leading-relaxed</span></div>
-      <div class="ds-type-row"><span class="text-base leading-normal">Body — 1rem</span><span class="ds-type-meta">text-base · font-normal · leading-normal</span></div>
-      <div class="ds-type-row"><span class="text-sm leading-normal">Small — 0.875rem</span><span class="ds-type-meta">text-sm · font-normal · leading-normal</span></div>
-      <div class="ds-type-row"><span class="text-xs font-medium uppercase tracking-wide">Meta — 0.75rem</span><span class="ds-type-meta">text-xs · font-medium · uppercase · tracking-wide</span></div>
-
-      <h3 class="ds-subhead">Weights</h3>
-      <div class="ds-specimens">
-        <span class="text-lg font-normal">Normal (400)</span>
-        <span class="text-lg font-medium">Medium (500)</span>
-        <span class="text-lg font-semibold">Semibold (600)</span>
-        <span class="text-lg font-bold">Bold (700)</span>
-      </div>
-
-      <h3 class="ds-subhead">Rich text (Prose)</h3>
-      <div class="prose max-w-3xl">
-        <h1>Article Headline One</h1>
-        <p>This is a rich-text content block styled by the <code>.prose</code> wrapper. It demonstrates how long-form content — blog posts, documentation, case studies — will render inside the design system.</p>
-        <h2>A Second-Level Heading</h2>
-        <p>Good typography makes content easy to scan. Each heading level has balanced spacing above and below, and body text has a comfortable <a href="#">line height for reading</a>.</p>
-        <ul>
-          <li>Unordered list items display with disc markers</li>
-          <li>Spacing between items keeps them scannable</li>
-          <li>Nested content inherits the system's tokens</li>
-        </ul>
-        <h3>A Third-Level Heading</h3>
-        <p>Block quotes pull attention to testimonials, callouts, or cited passages:</p>
-        <blockquote>The best design systems are invisible. They make every page feel cohesive without anyone noticing the infrastructure underneath.</blockquote>
-        <ol>
-          <li>Ordered list items use decimal numbering</li>
-          <li>They share the same spacing rhythm</li>
-        </ol>
-        <p>Inline <code>code spans</code> are styled with a subtle background and monospace font. The prose wrapper ensures all descendant elements inherit a consistent look without extra classes.</p>
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop" alt="Code on a screen" />
-      </div>
-    </section>
-
-    <!-- ============================================
-         FOUNDATIONS — Spacing
-         ============================================ -->
-    <section class="ds-block" id="spacing">
-      <h2>Spacing</h2>
-      <p class="ds-note">Opinionated scale from 4 px to 96 px. Used via padding (<code class="font-mono">py-8</code>), margin (<code class="font-mono">mt-4</code>), and gap (<code class="font-mono">gap-6</code>) utilities.</p>
-
-      <h3 class="ds-subhead">Scale</h3>
+      <h3 class="ds-subhead">Spacing</h3>
       <div class="ds-scale">
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:4px;height:4px;"></div><span class="ds-scale__label">1 · 4px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:8px;height:8px;"></div><span class="ds-scale__label">2 · 8px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:12px;height:12px;"></div><span class="ds-scale__label">3 · 12px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:16px;height:16px;"></div><span class="ds-scale__label">4 · 16px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:24px;height:24px;"></div><span class="ds-scale__label">6 · 24px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:32px;height:32px;"></div><span class="ds-scale__label">8 · 32px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:40px;height:40px;"></div><span class="ds-scale__label">10 · 40px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:48px;height:48px;"></div><span class="ds-scale__label">12 · 48px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:64px;height:64px;"></div><span class="ds-scale__label">16 · 64px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:80px;height:40px;"></div><span class="ds-scale__label">20 · 80px</span></div>
-        <div class="ds-scale__item"><div class="ds-scale__block" style="width:96px;height:40px;"></div><span class="ds-scale__label">24 · 96px</span></div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         FOUNDATIONS — Borders, Radius & Shadows
-         ============================================ -->
-    <section class="ds-block" id="radius">
-      <h2>Borders, Radius &amp; Shadows</h2>
-      <p class="ds-note">Border widths, corner radii, and elevation tokens.</p>
-
-      <h3 class="ds-subhead">Border Widths</h3>
-      <div class="ds-border-row">
-        <div class="ds-border-item"><div class="ds-border-item__box border-0"></div><span class="ds-item-label">border-0</span></div>
-        <div class="ds-border-item"><div class="ds-border-item__box border border-primary"></div><span class="ds-item-label">border (1px)</span></div>
-        <div class="ds-border-item"><div class="ds-border-item__box border-2 border-primary"></div><span class="ds-item-label">border-2</span></div>
-        <div class="ds-border-item"><div class="ds-border-item__box border-4 border-primary"></div><span class="ds-item-label">border-4</span></div>
+        <div class="ds-scale__row"><code>space-1</code><div class="ds-scale__bar" style="width: var(--space-1);"></div></div>
+        <div class="ds-scale__row"><code>space-2</code><div class="ds-scale__bar" style="width: var(--space-2);"></div></div>
+        <div class="ds-scale__row"><code>space-3</code><div class="ds-scale__bar" style="width: var(--space-3);"></div></div>
+        <div class="ds-scale__row"><code>space-4</code><div class="ds-scale__bar" style="width: var(--space-4);"></div></div>
+        <div class="ds-scale__row"><code>space-6</code><div class="ds-scale__bar" style="width: var(--space-6);"></div></div>
+        <div class="ds-scale__row"><code>space-8</code><div class="ds-scale__bar" style="width: var(--space-8);"></div></div>
+        <div class="ds-scale__row"><code>space-12</code><div class="ds-scale__bar" style="width: var(--space-12);"></div></div>
+        <div class="ds-scale__row"><code>space-16</code><div class="ds-scale__bar" style="width: var(--space-16);"></div></div>
       </div>
 
-      <h3 class="ds-subhead">Radius</h3>
+      <h3 class="ds-subhead">Borders, radius, and shadows</h3>
       <div class="ds-radius-row">
-        <div class="ds-radius-item"><div class="ds-radius-item__box rounded-none"></div><span class="ds-item-label">none</span></div>
-        <div class="ds-radius-item"><div class="ds-radius-item__box rounded-sm"></div><span class="ds-item-label">sm</span></div>
-        <div class="ds-radius-item"><div class="ds-radius-item__box rounded-md"></div><span class="ds-item-label">md</span></div>
-        <div class="ds-radius-item"><div class="ds-radius-item__box rounded-lg"></div><span class="ds-item-label">lg</span></div>
-        <div class="ds-radius-item"><div class="ds-radius-item__box rounded-xl"></div><span class="ds-item-label">xl</span></div>
-        <div class="ds-radius-item"><div class="ds-radius-item__box rounded-2xl"></div><span class="ds-item-label">2xl</span></div>
-        <div class="ds-radius-item"><div class="ds-radius-item__box rounded-full"></div><span class="ds-item-label">full</span></div>
+        <div class="ds-radius-card rounded-sm"><code>rounded-sm</code></div>
+        <div class="ds-radius-card rounded-md"><code>rounded-md</code></div>
+        <div class="ds-radius-card rounded-lg"><code>rounded-lg</code></div>
+        <div class="ds-radius-card rounded-xl"><code>rounded-xl</code></div>
+      </div>
+      <div class="ds-shadow-row">
+        <div class="ds-shadow-card shadow-none rounded-lg"><code>shadow-none</code></div>
+        <div class="ds-shadow-card shadow-sm rounded-lg"><code>shadow-sm</code></div>
+        <div class="ds-shadow-card shadow-md rounded-lg"><code>shadow-md</code></div>
       </div>
 
-      <h3 class="ds-subhead">Shadows</h3>
-      <div class="ds-shadow-row">
-        <div class="ds-shadow-item"><div class="ds-shadow-item__box shadow-none"></div><span class="ds-item-label">none</span></div>
-        <div class="ds-shadow-item"><div class="ds-shadow-item__box shadow-sm"></div><span class="ds-item-label">sm</span></div>
-        <div class="ds-shadow-item"><div class="ds-shadow-item__box shadow-md"></div><span class="ds-item-label">md</span></div>
-        <div class="ds-shadow-item"><div class="ds-shadow-item__box shadow-lg"></div><span class="ds-item-label">lg</span></div>
-        <div class="ds-shadow-item"><div class="ds-shadow-item__box shadow-xl"></div><span class="ds-item-label">xl</span></div>
-      </div>
+      <h3 class="ds-subhead">Rich text</h3>
+      <article class="prose container-narrow">
+        <h1>The archive as a public room</h1>
+        <p>Good editorial design lowers the temperature around the text. It gives each paragraph enough space to breathe without turning the page into a museum object.</p>
+        <h2>Reading systems</h2>
+        <p>A publication system needs durable defaults for headings, lists, quotations, links, and inline <code>code</code> snippets. Those defaults should work before an editor thinks about them.</p>
+        <ul>
+          <li>Serif headings establish academic rhythm.</li>
+          <li>Slate body text reduces contrast fatigue.</li>
+          <li>Measured widths keep the line length readable.</li>
+        </ul>
+        <blockquote>“The page is not merely a container for argument; it is part of the argument’s pace.”</blockquote>
+        <p>For related essays, visit the <a href="../index.html">home feed</a>.</p>
+      </article>
     </section>
 
-    <!-- ============================================
-         COMPONENT LIBRARY
-         ============================================ -->
     <section class="ds-block" id="components">
-      <h2>Component Library</h2>
-      <p class="ds-note">Semantic components styled entirely from <code class="font-mono">style.css</code>. Each group is registered as a template catalog for the editor.</p>
+      <h2 class="text-3xl">Component Library</h2>
+      <p class="ds-note">Components are semantic and reusable. Link-shaped variants appear first so authors can insert navigational CTAs directly.</p>
 
-      <!-- Buttons -->
-      <h3 class="ds-subhead">Primary Buttons</h3>
-      <div class="ds-specimens" data-klar-ds-elements="primary-buttons" data-klar-ds-label="Primary buttons">
-        <a href="#" class="btn btn-primary" data-klar-ds-label="Primary link">Get Started</a>
-        <button class="btn btn-primary" data-klar-ds-label="Primary button">Get Started</button>
-        <a href="#" class="btn btn-primary btn-lg" data-klar-ds-label="Primary link large">Get Started</a>
-        <button class="btn btn-primary btn-lg" data-klar-ds-label="Primary button large">Get Started</button>
-        <a href="#" class="btn btn-primary btn-sm" data-klar-ds-label="Primary link small">Get Started</a>
-        <button class="btn btn-primary btn-sm" data-klar-ds-label="Primary button small">Get Started</button>
-        <a href="#" class="btn btn-primary btn-xl" data-klar-ds-label="Primary link XL">Get Started</a>
-        <button class="btn btn-primary btn-xl" data-klar-ds-label="Primary button XL">Get Started</button>
+      <h3 class="ds-subhead">Buttons</h3>
+      <div class="ds-specimens" data-klar-ds-elements="buttons" data-klar-ds-label="Buttons">
+        <a class="btn btn-primary" href="#" data-klar-ds-label="Primary link">Read the essay</a>
+        <button class="btn btn-primary" type="button" data-klar-ds-label="Primary button">Read the essay</button>
+        <a class="btn btn-secondary" href="#" data-klar-ds-label="Secondary link">Browse archive</a>
+        <button class="btn btn-secondary" type="button" data-klar-ds-label="Secondary button">Browse archive</button>
+        <a class="btn btn-outline" href="#" data-klar-ds-label="Outline link">Subscribe</a>
+        <button class="btn btn-outline" type="button" data-klar-ds-label="Outline button">Subscribe</button>
+        <a class="btn btn-primary btn-lg" href="#" data-klar-ds-label="Large primary link">Start reading</a>
+        <button class="btn btn-primary btn-lg" type="button" data-klar-ds-label="Large primary button">Start reading</button>
       </div>
 
-      <h3 class="ds-subhead">Secondary Buttons</h3>
-      <div class="ds-specimens" data-klar-ds-elements="secondary-buttons" data-klar-ds-label="Secondary buttons">
-        <a href="#" class="btn btn-secondary" data-klar-ds-label="Secondary link">Learn More</a>
-        <button class="btn btn-secondary" data-klar-ds-label="Secondary button">Learn More</button>
-        <a href="#" class="btn btn-secondary btn-lg" data-klar-ds-label="Secondary link large">Learn More</a>
-        <button class="btn btn-secondary btn-lg" data-klar-ds-label="Secondary button large">Learn More</button>
+      <h3 class="ds-subhead">Anchors</h3>
+      <div class="ds-specimens" data-klar-ds-elements="anchors" data-klar-ds-label="Anchors">
+        <a class="nav-link" href="#" data-klar-ds-label="Navigation link">Essays</a>
+        <a class="cta-link" href="#" data-klar-ds-label="CTA link">Continue reading →</a>
+        <a class="footer-link" href="#" data-klar-ds-label="Footer link">Editorial policy</a>
       </div>
 
-      <h3 class="ds-subhead">Outline Buttons</h3>
-      <div class="ds-specimens" data-klar-ds-elements="outline-buttons" data-klar-ds-label="Outline buttons">
-        <a href="#" class="btn btn-outline" data-klar-ds-label="Outline link">View Demo</a>
-        <button class="btn btn-outline" data-klar-ds-label="Outline button">View Demo</button>
-        <a href="#" class="btn btn-outline btn-lg" data-klar-ds-label="Outline link large">View Demo</a>
-        <button class="btn btn-outline btn-lg" data-klar-ds-label="Outline button large">View Demo</button>
-      </div>
-
-      <h3 class="ds-subhead">Ghost Buttons</h3>
-      <div class="ds-specimens" data-klar-ds-elements="ghost-buttons" data-klar-ds-label="Ghost buttons">
-        <a href="#" class="btn btn-ghost" data-klar-ds-label="Ghost link">Ghost Link</a>
-        <button class="btn btn-ghost" data-klar-ds-label="Ghost button">Ghost Button</button>
-      </div>
-
-      <h3 class="ds-subhead">Accent &amp; Destructive Buttons</h3>
-      <div class="ds-specimens" data-klar-ds-elements="accent-buttons" data-klar-ds-label="Accent buttons">
-        <a href="#" class="btn btn-accent" data-klar-ds-label="Accent link">Accent</a>
-        <button class="btn btn-accent" data-klar-ds-label="Accent button">Accent</button>
-        <a href="#" class="btn btn-destructive" data-klar-ds-label="Destructive link">Delete</a>
-        <button class="btn btn-destructive" data-klar-ds-label="Destructive button">Delete</button>
-      </div>
-
-      <!-- CTA / Nav links -->
-      <h3 class="ds-subhead">Link Components</h3>
-      <div class="ds-specimens" data-klar-ds-elements="links" data-klar-ds-label="Links">
-        <a href="#" class="nav-link" data-klar-ds-label="Nav link">Navigation Link</a>
-        <a href="#" class="cta-link" data-klar-ds-label="CTA link">Learn more →</a>
-        <a href="#" class="footer-link" data-klar-ds-label="Footer link">Footer Link</a>
-      </div>
-
-      <!-- Badges -->
-      <h3 class="ds-subhead">Badges</h3>
+      <h3 class="ds-subhead">Badges and category tags</h3>
       <div class="ds-specimens" data-klar-ds-elements="badges" data-klar-ds-label="Badges">
-        <span class="badge" data-klar-ds-label="Default badge">New Feature</span>
-        <span class="badge badge-primary" data-klar-ds-label="Primary badge">Pro</span>
-        <span class="badge badge-accent" data-klar-ds-label="Accent badge">Popular</span>
-        <span class="badge badge-outline" data-klar-ds-label="Outline badge">Beta</span>
-        <span class="badge badge-success" data-klar-ds-label="Success badge">Active</span>
+        <span class="badge" data-klar-ds-label="Neutral badge">Featured</span>
+        <span class="category-tag category-tag--culture" data-klar-ds-label="Culture tag">Culture</span>
+        <span class="category-tag category-tag--science" data-klar-ds-label="Science tag">Science</span>
+        <span class="category-tag category-tag--history" data-klar-ds-label="History tag">History</span>
+        <span class="category-tag category-tag--design" data-klar-ds-label="Design tag">Design</span>
+        <a class="topic-pill" href="#" data-klar-ds-label="Topic pill">Reading lists</a>
       </div>
 
-      <!-- Tags -->
-      <h3 class="ds-subhead">Tags</h3>
-      <div class="ds-specimens" data-klar-ds-elements="tags" data-klar-ds-label="Tags">
-        <span class="tag" data-klar-ds-label="Default tag">Analytics</span>
-        <span class="tag" data-klar-ds-label="Default tag">Integrations</span>
-        <span class="tag" data-klar-ds-label="Default tag">API</span>
-      </div>
-
-      <!-- Form Elements -->
-      <h3 class="ds-subhead">Form Elements</h3>
-      <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="form-elements" data-klar-ds-label="Form elements">
-        <div class="field" data-klar-ds-label="Text input">
-          <label class="label" for="ds-input-name">Full name</label>
-          <input class="input" type="text" id="ds-input-name" placeholder="Jane Doe" />
-        </div>
-        <div class="field" data-klar-ds-label="Email input">
-          <label class="label" for="ds-input-email">Email</label>
-          <input class="input" type="email" id="ds-input-email" placeholder="jane@example.com" />
-        </div>
-        <div class="field" data-klar-ds-label="Select">
-          <label class="label" for="ds-select">Plan</label>
-          <select class="select" id="ds-select"><option>Starter</option><option>Pro</option><option>Enterprise</option></select>
-        </div>
-        <div class="field" data-klar-ds-label="Textarea">
-          <label class="label" for="ds-textarea">Message</label>
-          <textarea class="textarea" id="ds-textarea" placeholder="How can we help?"></textarea>
-        </div>
-      </div>
-
-      <!-- Cards -->
-      <h3 class="ds-subhead">Cards</h3>
+      <h3 class="ds-subhead">Article cards</h3>
       <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="cards" data-klar-ds-label="Cards">
-        <div class="card" data-klar-ds-label="Default card">
-          <div class="card__header">
-            <h4 class="card__title">Default Card</h4>
-            <p class="card__description">A basic card with header and body content.</p>
-          </div>
-          <div class="card__body">
-            <p class="text-sm text-muted-foreground">Card body content goes here. It can contain text, forms, or any other components.</p>
-          </div>
-          <div class="card__footer">
-            <a href="#" class="btn btn-primary btn-sm">Action</a>
-          </div>
-        </div>
-
-        <div class="card card-feature" data-klar-ds-label="Feature card">
-          <div class="card-feature__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14v-3"/><path d="M14 14v-3"/><path d="M11 19c-1.7 0-3-1.3-3-3v-2h8v2c0 1.7-1.3 3-3 3Z"/><path d="M12 22v-3"/></svg>
-          </div>
-          <h4 class="card-feature__title">Lightning Fast</h4>
-          <p class="card-feature__text">Optimized for speed with sub-second load times and instant interactions across every device.</p>
-        </div>
-
-        <div class="card card-testimonial" data-klar-ds-label="Testimonial card">
-          <div class="card-testimonial__stars">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p class="card-testimonial__text">"Velocity transformed how our team ships product. We went from monthly releases to weekly, and our customers noticed the difference immediately."</p>
-          <div class="card-testimonial__author">
-            <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen" />
-            <div>
-              <div class="card-testimonial__name">Sarah Chen</div>
-              <div class="card-testimonial__role">VP Engineering, Acme Corp</div>
+        <article class="article-card" data-klar-ds-label="Article card">
+          <a class="article-card__media" href="#">
+            <img class="article-card__image" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80" alt="Open books on a library table" />
+          </a>
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--science">Science</span>
+              <span class="text-sm text-muted-foreground">6 min read</span>
+            </div>
+            <h3 class="article-card__title"><a href="#">What peer review cannot measure</a></h3>
+            <p class="article-card__excerpt">A short inquiry into confidence, uncertainty, and the social life of published research.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Mara Chen" />
+              <span>Mara Chen</span>
             </div>
           </div>
-        </div>
-
-        <div class="card card-pricing" data-klar-ds-label="Pricing card">
-          <div>
-            <div class="card-pricing__name">Pro</div>
-            <p class="card-pricing__description">For growing teams that need more power.</p>
-          </div>
-          <div class="card-pricing__price">
-            <span class="card-pricing__amount">$49</span>
-            <span class="card-pricing__period">/month</span>
-          </div>
-          <div class="card-pricing__features">
-            <div class="card-pricing__feature">
-              <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <span>Unlimited projects</span>
+        </article>
+        <article class="article-card" data-klar-ds-label="Compact article card">
+          <div class="article-card__body">
+            <div class="flex items-center justify-between gap-3">
+              <span class="category-tag category-tag--history">History</span>
+              <span class="text-sm text-muted-foreground">4 min read</span>
             </div>
-            <div class="card-pricing__feature">
-              <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <span>Advanced analytics</span>
-            </div>
-            <div class="card-pricing__feature">
-              <svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <span>Priority support</span>
+            <h3 class="article-card__title"><a href="#">The footnote as a civic gesture</a></h3>
+            <p class="article-card__excerpt">Why citation remains one of the quiet rituals of public trust.</p>
+            <div class="author-row mt-2">
+              <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Jon Bell" />
+              <span>Jon Bell</span>
             </div>
           </div>
-          <a href="#" class="btn btn-primary w-full">Choose Pro</a>
-        </div>
+        </article>
       </div>
 
-      <!-- Accordion -->
-      <h3 class="ds-subhead">Accordion</h3>
-      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="accordions" data-klar-ds-label="Accordions">
-        <div class="accordion max-w-3xl" data-klar-ds-label="FAQ accordion">
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              How does the free trial work?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content"><div class="accordion__body">Start with a 14-day free trial — no credit card required. Explore every feature at your own pace. If you decide Velocity is right for your team, choose a plan and keep building.</div></div>
+      <h3 class="ds-subhead">Forms</h3>
+      <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="forms" data-klar-ds-label="Forms">
+        <form class="form" data-klar-ds-label="Subscription form" action="#" method="post">
+          <div class="field">
+            <label class="label" for="ds-email">Email address</label>
+            <input class="input" id="ds-email" name="email" type="email" placeholder="reader@example.com" />
           </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              Can I change plans later?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content"><div class="accordion__body">Absolutely. Upgrade or downgrade at any time from your billing dashboard. Changes take effect at the start of your next billing cycle.</div></div>
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </form>
+        <form class="form" data-klar-ds-label="Message form" action="#" method="post">
+          <div class="field">
+            <label class="label" for="ds-topic">Topic</label>
+            <select class="select" id="ds-topic" name="topic">
+              <option>Essay pitch</option>
+              <option>Reader note</option>
+            </select>
           </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" aria-expanded="false">
-              Is there an annual discount?
-              <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="accordion__content"><div class="accordion__body">Yes — save 20% when you choose annual billing. The discount applies to every plan, including Enterprise.</div></div>
+          <div class="field">
+            <label class="label" for="ds-message">Message</label>
+            <textarea class="textarea" id="ds-message" name="message" placeholder="Write a brief note"></textarea>
           </div>
-        </div>
+        </form>
       </div>
 
-      <!-- Layout Primitives: Container -->
       <h3 class="ds-subhead">Container</h3>
       <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="containers" data-klar-ds-label="Container">
-        <div class="container bg-muted rounded-lg p-6" data-klar-ds-label="Default">
-          <p class="text-sm text-muted-foreground">Default container — max-width 1200 px, centered with horizontal padding.</p>
-        </div>
-        <div class="container-narrow bg-muted rounded-lg p-6" data-klar-ds-label="Narrow">
-          <p class="text-sm text-muted-foreground">Narrow container — max-width 720 px, ideal for article content.</p>
-        </div>
-        <div class="container-wide bg-muted rounded-lg p-6" data-klar-ds-label="Wide">
-          <p class="text-sm text-muted-foreground">Wide container — max-width 1400 px, for full-bleed hero sections.</p>
-        </div>
+        <div class="container bg-card border rounded-lg p-4" data-klar-ds-label="Default">Default editorial container for publication pages.</div>
+        <div class="container-narrow bg-card border rounded-lg p-4" data-klar-ds-label="Narrow">Narrow container for prose and focused reading.</div>
+        <div class="container-wide bg-card border rounded-lg p-4" data-klar-ds-label="Wide">Wide container for richer feed layouts.</div>
       </div>
 
-      <!-- Layout Primitives: Grid -->
       <h3 class="ds-subhead">Grid</h3>
       <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="grids" data-klar-ds-label="Grid">
         <div class="grid grid-cols-2 gap-4" data-klar-ds-label="2 columns">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
+          <div class="bg-card border rounded-lg p-4">Notebook</div>
+          <div class="bg-card border rounded-lg p-4">Dispatch</div>
         </div>
         <div class="grid grid-cols-3 gap-4" data-klar-ds-label="3 columns">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
+          <div class="bg-card border rounded-lg p-4">Essay</div>
+          <div class="bg-card border rounded-lg p-4">Review</div>
+          <div class="bg-card border rounded-lg p-4">Interview</div>
         </div>
-        <div class="grid grid-cols-4 gap-4" data-klar-ds-label="4 columns">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
+        <div class="grid grid-cols-sidebar gap-6" data-klar-ds-label="Sidebar layout">
+          <div class="bg-card border rounded-lg p-4">Contents</div>
+          <div class="bg-card border rounded-lg p-4">Article body</div>
         </div>
       </div>
 
-      <!-- Layout Primitives: Container and Grid -->
       <h3 class="ds-subhead">Container and Grid</h3>
       <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="containers-and-grids" data-klar-ds-label="Container and Grid">
-        <div class="container grid grid-cols-2 gap-4" data-klar-ds-label="Default · 2 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-        </div>
-        <div class="container grid grid-cols-3 gap-4" data-klar-ds-label="Default · 3 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
-        </div>
-        <div class="container grid grid-cols-4 gap-4" data-klar-ds-label="Default · 4 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
-        </div>
-        <div class="container-narrow grid grid-cols-2 gap-4" data-klar-ds-label="Narrow · 2 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-        </div>
-        <div class="container-narrow grid grid-cols-3 gap-4" data-klar-ds-label="Narrow · 3 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
-        </div>
-        <div class="container-narrow grid grid-cols-4 gap-4" data-klar-ds-label="Narrow · 4 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
-        </div>
-        <div class="container-wide grid grid-cols-2 gap-4" data-klar-ds-label="Wide · 2 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-        </div>
-        <div class="container-wide grid grid-cols-3 gap-4" data-klar-ds-label="Wide · 3 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
-        </div>
-        <div class="container-wide grid grid-cols-4 gap-4" data-klar-ds-label="Wide · 4 cols">
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
-          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
-        </div>
+        <div class="container grid grid-cols-2 gap-4" data-klar-ds-label="Default · 2 cols"><div class="bg-card border rounded-lg p-4">Essay</div><div class="bg-card border rounded-lg p-4">Review</div></div>
+        <div class="container grid grid-cols-3 gap-4" data-klar-ds-label="Default · 3 cols"><div class="bg-card border rounded-lg p-4">Essay</div><div class="bg-card border rounded-lg p-4">Review</div><div class="bg-card border rounded-lg p-4">Notes</div></div>
+        <div class="container grid grid-cols-sidebar gap-4" data-klar-ds-label="Default · Sidebar"><div class="bg-card border rounded-lg p-4">TOC</div><div class="bg-card border rounded-lg p-4">Article</div></div>
+        <div class="container-narrow grid grid-cols-2 gap-4" data-klar-ds-label="Narrow · 2 cols"><div class="bg-card border rounded-lg p-4">Point</div><div class="bg-card border rounded-lg p-4">Counterpoint</div></div>
+        <div class="container-narrow grid grid-cols-3 gap-4" data-klar-ds-label="Narrow · 3 cols"><div class="bg-card border rounded-lg p-4">One</div><div class="bg-card border rounded-lg p-4">Two</div><div class="bg-card border rounded-lg p-4">Three</div></div>
+        <div class="container-narrow grid grid-cols-sidebar gap-4" data-klar-ds-label="Narrow · Sidebar"><div class="bg-card border rounded-lg p-4">Index</div><div class="bg-card border rounded-lg p-4">Text</div></div>
+        <div class="container-wide grid grid-cols-2 gap-4" data-klar-ds-label="Wide · 2 cols"><div class="bg-card border rounded-lg p-4">Feature</div><div class="bg-card border rounded-lg p-4">Analysis</div></div>
+        <div class="container-wide grid grid-cols-3 gap-4" data-klar-ds-label="Wide · 3 cols"><div class="bg-card border rounded-lg p-4">Culture</div><div class="bg-card border rounded-lg p-4">Science</div><div class="bg-card border rounded-lg p-4">History</div></div>
+        <div class="container-wide grid grid-cols-sidebar gap-4" data-klar-ds-label="Wide · Sidebar"><div class="bg-card border rounded-lg p-4">Archive</div><div class="bg-card border rounded-lg p-4">Long read</div></div>
       </div>
     </section>
 
-    <!-- ============================================
-         SECTIONS
-         ============================================ -->
     <section class="ds-block" id="sections">
-      <h2>Sections</h2>
-      <p class="ds-note">Full-width, template-ready page-pattern sections. Each one is a self-contained root block that can be dropped into any page.</p>
+      <h2 class="text-3xl">Sections</h2>
+      <p class="ds-note">Template-ready sections for insertion into real pages. Each direct child is self-contained and uses real editorial content.</p>
 
-      <div class="ds-specimens ds-specimens--stack ds-sections" data-klar-ds-elements="Sections">
-
-        <!-- Section: Header -->
+      <div class="ds-specimens ds-specimens--stack ds-sections" data-klar-ds-elements="Sections" data-klar-ds-label="Page sections">
         <header class="site-header" data-klar-ds-label="Header">
           <div class="container site-header__inner">
-            <a href="index.html" class="brand">
-              <span class="brand__icon">V</span>
-              Velocity
+            <a class="brand" href="index.html">
+              <span class="brand__mark">M</span>
+              <span>The Margin Review</span>
             </a>
-            <nav class="nav">
-              <a href="#features" class="nav-link">Features</a>
-              <a href="#benefits" class="nav-link">Benefits</a>
-              <a href="#testimonials" class="nav-link">Testimonials</a>
-              <a href="#pricing" class="nav-link">Pricing</a>
-              <a href="#faq" class="nav-link">FAQ</a>
+            <nav class="nav" aria-label="Primary navigation">
+              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="post.html">Featured post</a>
+              <a class="nav-link" href="index.html#topics">Topics</a>
             </nav>
-            <div class="header-actions">
-              <button class="theme-toggle" aria-label="Toggle theme">
-                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-              </button>
-              <a href="#pricing" class="btn btn-primary btn-sm md:hidden">Get Started</a>
-              <a href="#pricing" class="btn btn-primary hidden md:flex">Get Started Free</a>
-              <button class="mobile-toggle" aria-label="Open menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-              </button>
-            </div>
+            <a class="btn btn-outline" href="#subscribe">Subscribe</a>
           </div>
         </header>
 
-        <!-- Section: Hero -->
-        <section class="hero" data-klar-ds-label="Hero">
-          <div class="container flex flex-col items-center text-center gap-6">
-            <span class="badge hero__badge">Now in Public Beta</span>
-            <h1 class="hero__title">Ship products faster with Velocity</h1>
-            <p class="hero__lead">The all-in-one platform that helps modern teams design, build, and scale software at the speed of thought.</p>
-            <div class="hero__actions">
-              <a href="#pricing" class="btn btn-primary btn-xl">Start Free Trial</a>
-              <a href="#features" class="btn btn-outline btn-xl">See How It Works</a>
+        <section class="container featured-hero" data-klar-ds-label="Featured post hero">
+          <a class="featured-hero__media" href="post.html">
+            <img class="featured-hero__image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Researchers gathered around a table of books and notes" />
+          </a>
+          <div class="featured-hero__content">
+            <div class="meta-row">
+              <span class="category-tag category-tag--culture">Culture</span>
+              <span>12 min read</span>
             </div>
-            <div class="hero__proof">
-              <div class="hero__stat">
-                <span class="hero__stat-value">12,000+</span>
-                <span class="hero__stat-label">Teams</span>
-              </div>
-              <div class="hero__stat">
-                <span class="hero__stat-value">99.9%</span>
-                <span class="hero__stat-label">Uptime</span>
-              </div>
-              <div class="hero__stat">
-                <span class="hero__stat-value">4.9★</span>
-                <span class="hero__stat-label">Rating</span>
-              </div>
+            <h1 class="featured-hero__title">The slow return of the public intellectual</h1>
+            <p class="featured-hero__lead">In an age of short posts and fast outrage, patient essays are finding new readers—and a new kind of authority.</p>
+            <div class="author-row">
+              <img class="avatar avatar-lg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=140&q=80" alt="Elena Morris" />
+              <span>Elena Morris</span>
             </div>
+            <a class="btn btn-primary" href="post.html">Read featured essay</a>
           </div>
         </section>
 
-        <!-- Section: Logo Cloud -->
-        <section class="py-12 bg-section-alt" data-klar-ds-label="Logo cloud">
-          <div class="container">
-            <p class="text-center text-sm text-muted-foreground mb-6">Trusted by forward-thinking companies worldwide</p>
-            <div class="logo-cloud">
-              <span class="logo-cloud__item">Stripe</span>
-              <span class="logo-cloud__item">Vercel</span>
-              <span class="logo-cloud__item">Linear</span>
-              <span class="logo-cloud__item">Notion</span>
-              <span class="logo-cloud__item">Figma</span>
-              <span class="logo-cloud__item">GitHub</span>
-            </div>
+        <section class="container py-4 border-t border-b" id="topics" data-klar-ds-label="Topic strip">
+          <div class="topic-strip" aria-label="Topics">
+            <a class="topic-pill" href="#">Academia</a>
+            <a class="topic-pill" href="#">Reading lists</a>
+            <a class="topic-pill" href="#">Field notes</a>
+            <a class="topic-pill" href="#">Science studies</a>
+            <a class="topic-pill" href="#">Archives</a>
+            <a class="topic-pill" href="#">Book criticism</a>
+            <a class="topic-pill" href="#">Design history</a>
+            <a class="topic-pill" href="#">Public culture</a>
           </div>
         </section>
 
-        <!-- Section: Features Grid -->
-        <section class="section" data-klar-ds-label="Features grid">
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Features</span>
-              <h2 class="section-header__title">Everything you need to ship with confidence</h2>
-              <p class="section-header__text">Velocity gives your team a unified toolkit — from rapid prototyping to production deployment — so nothing slows you down.</p>
+        <section class="container section" data-klar-ds-label="Article grid">
+          <div class="flex items-end justify-between gap-4 mb-8">
+            <div>
+              <span class="badge">Latest</span>
+              <h2 class="text-3xl mt-3">Recent essays</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="card card-feature">
-                <div class="card-feature__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14v-3"/><path d="M14 14v-3"/><path d="M11 19c-1.7 0-3-1.3-3-3v-2h8v2c0 1.7-1.3 3-3 3Z"/><path d="M12 22v-3"/></svg>
-                </div>
-                <h4 class="card-feature__title">Blazing Performance</h4>
-                <p class="card-feature__text">Edge-optimized infrastructure ensures sub-100ms response times globally. Your users never wait.</p>
+            <a class="cta-link" href="index.html">View archive →</a>
+          </div>
+          <div class="article-grid">
+            <article class="article-card">
+              <a class="article-card__media" href="post.html">
+                <img class="article-card__image" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80" alt="Reader studying in a library" />
+              </a>
+              <div class="article-card__body">
+                <div class="flex items-center justify-between gap-3"><span class="category-tag category-tag--science">Science</span><span class="text-sm text-muted-foreground">5 min read</span></div>
+                <h3 class="article-card__title"><a href="post.html">The laboratory notebook as literature</a></h3>
+                <p class="article-card__excerpt">How observation, doubt, and revision shape the prose of discovery.</p>
+                <div class="author-row mt-2"><img class="avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=120&q=80" alt="Adrian Vale" /><span>Adrian Vale</span></div>
               </div>
-              <div class="card card-feature">
-                <div class="card-feature__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                </div>
-                <h4 class="card-feature__title">Modular Components</h4>
-                <p class="card-feature__text">A library of production-ready components that snap together like building blocks. Customize everything.</p>
+            </article>
+            <article class="article-card">
+              <a class="article-card__media" href="post.html">
+                <img class="article-card__image" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80" alt="Tall shelves in an old library" />
+              </a>
+              <div class="article-card__body">
+                <div class="flex items-center justify-between gap-3"><span class="category-tag category-tag--history">History</span><span class="text-sm text-muted-foreground">7 min read</span></div>
+                <h3 class="article-card__title"><a href="post.html">When archives learned to speak back</a></h3>
+                <p class="article-card__excerpt">A brief history of catalogues, marginalia, and the politics of preservation.</p>
+                <div class="author-row mt-2"><img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Leah Grant" /><span>Leah Grant</span></div>
               </div>
-              <div class="card card-feature">
-                <div class="card-feature__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-                </div>
-                <h4 class="card-feature__title">Enterprise Security</h4>
-                <p class="card-feature__text">SOC 2 Type II certified with end-to-end encryption, SSO, and granular role-based access controls.</p>
+            </article>
+            <article class="article-card">
+              <a class="article-card__media" href="post.html">
+                <img class="article-card__image" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Laptop and notes on a desk" />
+              </a>
+              <div class="article-card__body">
+                <div class="flex items-center justify-between gap-3"><span class="category-tag category-tag--design">Design</span><span class="text-sm text-muted-foreground">4 min read</span></div>
+                <h3 class="article-card__title"><a href="post.html">The interface as an editorial argument</a></h3>
+                <p class="article-card__excerpt">Digital reading tools quietly decide what feels urgent, credible, and complete.</p>
+                <div class="author-row mt-2"><img class="avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80" alt="Noah Patel" /><span>Noah Patel</span></div>
               </div>
-              <div class="card card-feature">
-                <div class="card-feature__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-                </div>
-                <h4 class="card-feature__title">Real-Time Analytics</h4>
-                <p class="card-feature__text">Track user behavior, conversion funnels, and product health with dashboards that update in real time.</p>
-              </div>
-              <div class="card card-feature">
-                <div class="card-feature__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                </div>
-                <h4 class="card-feature__title">Flexible Integrations</h4>
-                <p class="card-feature__text">Connect with 200+ tools your team already uses — Slack, Jira, GitHub, Figma, and more.</p>
-              </div>
-              <div class="card card-feature">
-                <div class="card-feature__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <h4 class="card-feature__title">Team Collaboration</h4>
-                <p class="card-feature__text">Real-time multiplayer editing, inline comments, and shared workspaces keep your team aligned.</p>
-              </div>
-            </div>
+            </article>
           </div>
         </section>
 
-        <!-- Section: Benefits Row -->
-        <section class="section bg-section-alt" data-klar-ds-label="Benefits">
-          <div class="container flex flex-col gap-16 lg:gap-24">
-            <div class="benefit-row">
-              <div class="benefit-row__content">
-                <span class="badge">Workflow</span>
-                <h3 class="benefit-row__title">Automate the busywork, focus on what matters</h3>
-                <p class="benefit-row__text">Velocity's intelligent workflow engine handles repetitive tasks so your team can spend time on creative, high-impact work.</p>
-                <div class="benefit-row__list">
-                  <div class="benefit-row__item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    <span>Automated deployments on every push</span>
-                  </div>
-                  <div class="benefit-row__item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    <span>Smart test selection saves 60% CI time</span>
-                  </div>
-                  <div class="benefit-row__item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    <span>One-click rollbacks with zero downtime</span>
-                  </div>
-                </div>
-                <a href="#pricing" class="cta-link mt-2">Start automating →</a>
-              </div>
-              <div class="benefit-row__visual">
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop" alt="Team working on laptops" />
-              </div>
+        <section class="container py-12" id="subscribe" data-klar-ds-label="Subscribe panel">
+          <div class="subscribe-panel">
+            <div>
+              <span class="badge">Weekly letter</span>
+              <h2 class="subscribe-panel__title mt-3">Read fewer things, more carefully.</h2>
+              <p class="subscribe-panel__text mt-3">A Friday digest of essays, books, lectures, and arguments worth sitting with.</p>
             </div>
-
-            <div class="benefit-row benefit-row--reverse">
-              <div class="benefit-row__content">
-                <span class="badge">Insights</span>
-                <h3 class="benefit-row__title">Data-driven decisions at your fingertips</h3>
-                <p class="benefit-row__text">Understand how users interact with every feature. Velocity surfaces the metrics that move the needle — no data science degree required.</p>
-                <div class="benefit-row__list">
-                  <div class="benefit-row__item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    <span>Funnel analysis with cohort breakdowns</span>
-                  </div>
-                  <div class="benefit-row__item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    <span>Anomaly detection alerts you proactively</span>
-                  </div>
-                  <div class="benefit-row__item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    <span>Exportable reports for stakeholders</span>
-                  </div>
-                </div>
-                <a href="#pricing" class="cta-link mt-2">Explore analytics →</a>
-              </div>
-              <div class="benefit-row__visual">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="Analytics dashboard on a screen" />
-              </div>
-            </div>
+            <form class="form" action="#" method="post">
+              <label class="sr-only" for="section-email">Email address</label>
+              <input class="input" id="section-email" name="email" type="email" placeholder="reader@example.com" />
+              <button class="btn btn-primary" type="submit">Subscribe free</button>
+            </form>
           </div>
         </section>
 
-        <!-- Section: Testimonials -->
-        <section class="section" data-klar-ds-label="Testimonials">
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Social Proof</span>
-              <h2 class="section-header__title">Loved by teams who ship fast</h2>
-              <p class="section-header__text">Don't take our word for it — hear from the teams using Velocity to build the future.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="card card-testimonial">
-                <div class="card-testimonial__stars">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
-                <p class="card-testimonial__text">"Velocity transformed how our team ships product. We went from monthly releases to weekly, and our customers noticed the difference immediately."</p>
-                <div class="card-testimonial__author">
-                  <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen" />
-                  <div>
-                    <div class="card-testimonial__name">Sarah Chen</div>
-                    <div class="card-testimonial__role">VP Engineering, Acme Corp</div>
-                  </div>
-                </div>
-              </div>
-              <div class="card card-testimonial">
-                <div class="card-testimonial__stars">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
-                <p class="card-testimonial__text">"The analytics alone are worth the price of admission. We uncovered a conversion bottleneck in the first week that had been invisible for months."</p>
-                <div class="card-testimonial__author">
-                  <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Marcus Johnson" />
-                  <div>
-                    <div class="card-testimonial__name">Marcus Johnson</div>
-                    <div class="card-testimonial__role">Head of Product, Finwave</div>
-                  </div>
-                </div>
-              </div>
-              <div class="card card-testimonial">
-                <div class="card-testimonial__stars">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
-                <p class="card-testimonial__text">"We migrated our entire stack to Velocity in two weeks. The team collaboration features are genuinely best-in-class — it feels like Google Docs for code."</p>
-                <div class="card-testimonial__author">
-                  <img class="card-testimonial__avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Emily Park" />
-                  <div>
-                    <div class="card-testimonial__name">Emily Park</div>
-                    <div class="card-testimonial__role">CTO, Healthbridge</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section: Pricing -->
-        <section class="section bg-section-alt" data-klar-ds-label="Pricing">
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Pricing</span>
-              <h2 class="section-header__title">Simple, transparent pricing</h2>
-              <p class="section-header__text">No hidden fees, no surprises. Start free and upgrade when you're ready. Every plan includes a 14-day trial.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-              <div class="card card-pricing">
-                <div>
-                  <div class="card-pricing__name">Starter</div>
-                  <p class="card-pricing__description">For individuals and small side projects.</p>
-                </div>
-                <div class="card-pricing__price">
-                  <span class="card-pricing__amount">$0</span>
-                  <span class="card-pricing__period">/month</span>
-                </div>
-                <div class="card-pricing__features">
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Up to 3 projects</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Basic analytics</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Community support</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>1 team member</span></div>
-                </div>
-                <a href="#" class="btn btn-outline w-full">Get Started Free</a>
-              </div>
-              <div class="card card-pricing is-popular">
-                <div>
-                  <div class="card-pricing__name">Pro</div>
-                  <p class="card-pricing__description">For growing teams that need more power.</p>
-                </div>
-                <div class="card-pricing__price">
-                  <span class="card-pricing__amount">$49</span>
-                  <span class="card-pricing__period">/month</span>
-                </div>
-                <div class="card-pricing__features">
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Unlimited projects</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Advanced analytics</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Priority email support</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Up to 10 members</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Custom integrations</span></div>
-                </div>
-                <a href="#" class="btn btn-primary w-full">Start Free Trial</a>
-              </div>
-              <div class="card card-pricing">
-                <div>
-                  <div class="card-pricing__name">Enterprise</div>
-                  <p class="card-pricing__description">For organizations with advanced needs.</p>
-                </div>
-                <div class="card-pricing__price">
-                  <span class="card-pricing__amount">$149</span>
-                  <span class="card-pricing__period">/month</span>
-                </div>
-                <div class="card-pricing__features">
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Everything in Pro</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>SSO &amp; SAML</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Dedicated account manager</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Unlimited members</span></div>
-                  <div class="card-pricing__feature"><svg class="card-pricing__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>99.99% SLA</span></div>
-                </div>
-                <a href="#" class="btn btn-outline w-full">Contact Sales</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section: FAQ -->
-        <section class="section" data-klar-ds-label="FAQ">
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">FAQ</span>
-              <h2 class="section-header__title">Frequently asked questions</h2>
-              <p class="section-header__text">Got questions? We've got answers. If you don't see what you're looking for, reach out to our support team.</p>
-            </div>
-            <div class="accordion max-w-3xl mx-auto">
-              <div class="accordion__item">
-                <button class="accordion__trigger" aria-expanded="false">How does the free trial work?<svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-                <div class="accordion__content"><div class="accordion__body">Start with a 14-day free trial of any paid plan — no credit card required. You get full access to every feature. At the end of the trial you can choose a plan or continue on the free Starter tier.</div></div>
-              </div>
-              <div class="accordion__item">
-                <button class="accordion__trigger" aria-expanded="false">Can I change plans later?<svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-                <div class="accordion__content"><div class="accordion__body">Absolutely. You can upgrade, downgrade, or cancel at any time from your billing dashboard. Changes take effect at the start of your next billing cycle, and we prorate upgrades immediately.</div></div>
-              </div>
-              <div class="accordion__item">
-                <button class="accordion__trigger" aria-expanded="false">Is there an annual discount?<svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-                <div class="accordion__content"><div class="accordion__body">Yes — save 20% when you choose annual billing. The discount applies to all paid plans. You can switch between monthly and annual at any time.</div></div>
-              </div>
-              <div class="accordion__item">
-                <button class="accordion__trigger" aria-expanded="false">What happens to my data if I cancel?<svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-                <div class="accordion__content"><div class="accordion__body">Your data stays available in read-only mode for 90 days after cancellation. You can export everything at any time. After 90 days, we permanently delete your data per our privacy policy.</div></div>
-              </div>
-              <div class="accordion__item">
-                <button class="accordion__trigger" aria-expanded="false">Do you offer refunds?<svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-                <div class="accordion__content"><div class="accordion__body">We offer a full refund within 30 days of your first paid charge, no questions asked. After that, you can cancel anytime and continue using the product until the end of your billing period.</div></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section: CTA -->
-        <section class="section" data-klar-ds-label="CTA">
-          <div class="container">
-            <div class="cta-section flex flex-col items-center gap-6">
-              <h2 class="cta-section__title">Ready to accelerate your team?</h2>
-              <p class="cta-section__text">Join 12,000+ teams already using Velocity to ship better products, faster. Start your free trial today — no credit card required.</p>
-              <div class="flex flex-wrap gap-3 justify-center">
-                <a href="#pricing" class="btn btn-xl">Start Free Trial</a>
-                <a href="#features" class="btn btn-xl btn-outline border-white text-white">Watch Demo</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section: Text content (prose) -->
-        <section class="section" data-klar-ds-label="Text content">
-          <div class="container-narrow prose">
-            <h1>Building Better Products Together</h1>
-            <p>At Velocity, we believe that the best software is built by empowered teams — teams that have the right tools, the right data, and the freedom to move fast without breaking things.</p>
-            <h2>Our Approach</h2>
-            <p>We designed Velocity from the ground up to eliminate the friction between idea and execution. Whether you're a solo founder prototyping your first feature or an enterprise team coordinating across time zones, the platform adapts to your workflow — not the other way around.</p>
+        <section class="container-narrow section" data-klar-ds-label="Text content">
+          <article class="prose">
+            <h1>Reading with attention</h1>
+            <p>The best publication pages do not compete with the argument. They create a room around the reader: quiet margins, predictable rhythm, useful signposts, and a sense that the text has been cared for.</p>
+            <h2>A compact editorial checklist</h2>
+            <p>Before an essay is published, the system should already support hierarchy, citation, quotation, and movement between sections.</p>
             <ul>
-              <li>Start with a template or build from scratch</li>
-              <li>Invite collaborators with a single link</li>
-              <li>Deploy to production in under 60 seconds</li>
+              <li>Give headings a clear scale and generous spacing.</li>
+              <li>Keep metadata visible without making it loud.</li>
+              <li>Use links as invitations rather than interruptions.</li>
             </ul>
-            <h3>Why Teams Choose Velocity</h3>
-            <p>Speed matters, but so does reliability. Our infrastructure runs on a globally distributed edge network with <a href="#">99.99% uptime</a>, automatic failover, and built-in DDoS protection.</p>
-            <blockquote>Velocity isn't just a tool — it's the connective tissue between our design, engineering, and product teams.</blockquote>
-            <ol>
-              <li>Design in real time with multiplayer editing</li>
-              <li>Review changes with inline comments and approvals</li>
-              <li>Ship with automated CI/CD pipelines</li>
-            </ol>
-            <p>Ready to see the difference? <a href="#pricing">Start your free trial</a> and experience the future of product development.</p>
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop" alt="Team collaboration" />
+            <blockquote>Careful design makes careful reading feel possible.</blockquote>
+            <p>Continue with the <a href="post.html">sample single post</a>.</p>
+          </article>
+        </section>
+
+        <section class="container section" data-klar-ds-label="Post layout">
+          <div class="post-layout">
+            <aside class="toc" aria-label="Table of contents">
+              <p class="toc__title">Contents</p>
+              <ol class="toc__list">
+                <li><a class="toc__link" href="#argument">The argument</a></li>
+                <li><a class="toc__link" href="#method">Method and mood</a></li>
+                <li><a class="toc__link" href="#notes">Notes for readers</a></li>
+              </ol>
+            </aside>
+            <article class="prose">
+              <h1 id="argument">The argument</h1>
+              <p>A sticky table of contents keeps long essays navigable without pulling attention away from the page.</p>
+              <h2 id="method">Method and mood</h2>
+              <p>In editorial contexts, navigation should feel like a scholarly apparatus: available, precise, and quiet.</p>
+              <h2 id="notes">Notes for readers</h2>
+              <p>The progress bar provides a small sense of orientation as the reader moves through the essay.</p>
+            </article>
           </div>
         </section>
 
-        <!-- Section: Footer -->
         <footer class="site-footer" data-klar-ds-label="Footer">
-          <div class="container">
-            <div class="site-footer__grid">
-              <div class="site-footer__brand">
-                <a href="index.html" class="brand">
-                  <span class="brand__icon">V</span>
-                  Velocity
-                </a>
-                <p class="site-footer__description">The all-in-one platform for modern product teams. Ship faster, measure smarter, grow together.</p>
-              </div>
-              <div>
-                <h4 class="site-footer__column-title">Product</h4>
-                <nav class="site-footer__links">
-                  <a href="#features" class="footer-link">Features</a>
-                  <a href="#pricing" class="footer-link">Pricing</a>
-                  <a href="#" class="footer-link">Changelog</a>
-                  <a href="#" class="footer-link">Roadmap</a>
-                </nav>
-              </div>
-              <div>
-                <h4 class="site-footer__column-title">Company</h4>
-                <nav class="site-footer__links">
-                  <a href="#" class="footer-link">About</a>
-                  <a href="#" class="footer-link">Blog</a>
-                  <a href="#" class="footer-link">Careers</a>
-                  <a href="#" class="footer-link">Contact</a>
-                </nav>
-              </div>
-              <div>
-                <h4 class="site-footer__column-title">Legal</h4>
-                <nav class="site-footer__links">
-                  <a href="#" class="footer-link">Privacy Policy</a>
-                  <a href="#" class="footer-link">Terms of Service</a>
-                  <a href="#" class="footer-link">Cookie Policy</a>
-                </nav>
-              </div>
+          <div class="container site-footer__inner">
+            <div>
+              <a class="brand" href="index.html"><span class="brand__mark">M</span><span>The Margin Review</span></a>
+              <p class="text-sm text-muted-foreground mt-3">Essays for readers who still like margins.</p>
             </div>
-            <div class="site-footer__bottom">
-              <span>&copy; 2025 Velocity. All rights reserved.</span>
-              <div class="flex gap-4">
-                <a href="#" class="footer-link" aria-label="Twitter">Twitter</a>
-                <a href="#" class="footer-link" aria-label="GitHub">GitHub</a>
-                <a href="#" class="footer-link" aria-label="LinkedIn">LinkedIn</a>
-              </div>
-            </div>
+            <nav class="flex flex-wrap gap-4" aria-label="Footer navigation">
+              <a class="footer-link" href="index.html">Home</a>
+              <a class="footer-link" href="post.html">Featured</a>
+              <a class="footer-link" href="index.html#subscribe">Subscribe</a>
+            </nav>
           </div>
         </footer>
-
-      </div><!-- /Sections -->
+      </div>
     </section>
-
   </main>
 
-  <!-- ======== Page Footer ======== -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer__bottom">
-        <span>&copy; 2025 Velocity Design System</span>
-        <a href="#top" class="footer-link">Back to top ↑</a>
-      </div>
+    <div class="container site-footer__inner">
+      <p class="text-sm">Design system for The Margin Review.</p>
+      <nav class="flex flex-wrap gap-4" aria-label="Design footer navigation">
+        <a class="footer-link" href="#top">Top</a>
+        <a class="footer-link" href="../index.html">Site home</a>
+        <a class="footer-link" href="../post.html">Sample post</a>
+      </nav>
     </div>
   </footer>
 
   <!-- Foundation utility manifest for the Klar editor.
        Every value references a class that exists in style.css. -->
   <script type="application/json" data-klar-ds>
-  {
-    "classes": {
-      "Background color": [
-        { "label": "Page",        "value": "bg-background" },
-        { "label": "Foreground",   "value": "bg-foreground" },
-        { "label": "Brand",        "value": "bg-primary" },
-        { "label": "Secondary",    "value": "bg-secondary" },
-        { "label": "Muted",        "value": "bg-muted" },
-        { "label": "Accent",       "value": "bg-accent" },
-        { "label": "Card surface", "value": "bg-card" },
-        { "label": "Destructive",  "value": "bg-destructive" },
-        { "label": "Section alt",  "value": "bg-section-alt" },
-        { "label": "White",        "value": "bg-white" },
-        { "label": "Transparent",  "value": "bg-transparent" }
-      ],
-      "Text color": [
-        { "label": "Body",           "value": "text-foreground" },
-        { "label": "On foreground",  "value": "text-background" },
-        { "label": "Primary",        "value": "text-primary" },
-        { "label": "On brand",       "value": "text-primary-foreground" },
-        { "label": "On secondary",   "value": "text-secondary-foreground" },
-        { "label": "Muted",          "value": "text-muted-foreground" },
-        { "label": "Accent",         "value": "text-accent" },
-        { "label": "On accent",      "value": "text-accent-foreground" },
-        { "label": "Destructive",    "value": "text-destructive" },
-        { "label": "Success",        "value": "text-success" },
-        { "label": "White",          "value": "text-white" },
-        { "label": "Black",          "value": "text-black" }
-      ],
-      "Border": [
-        { "label": "All none",          "value": "border-0" },
-        { "label": "All small",         "value": "border" },
-        { "label": "All medium",        "value": "border-2" },
-        { "label": "All large",         "value": "border-4" },
-        { "label": "Horizontal none",   "value": "border-x-0" },
-        { "label": "Horizontal small",  "value": "border-x" },
-        { "label": "Horizontal medium", "value": "border-x-2" },
-        { "label": "Horizontal large",  "value": "border-x-4" },
-        { "label": "Vertical none",     "value": "border-y-0" },
-        { "label": "Vertical small",    "value": "border-y" },
-        { "label": "Vertical medium",   "value": "border-y-2" },
-        { "label": "Vertical large",    "value": "border-y-4" },
-        { "label": "Top none",          "value": "border-t-0" },
-        { "label": "Top small",         "value": "border-t" },
-        { "label": "Top medium",        "value": "border-t-2" },
-        { "label": "Top large",         "value": "border-t-4" },
-        { "label": "Right none",        "value": "border-r-0" },
-        { "label": "Right small",       "value": "border-r" },
-        { "label": "Right medium",      "value": "border-r-2" },
-        { "label": "Right large",       "value": "border-r-4" },
-        { "label": "Bottom none",       "value": "border-b-0" },
-        { "label": "Bottom small",      "value": "border-b" },
-        { "label": "Bottom medium",     "value": "border-b-2" },
-        { "label": "Bottom large",      "value": "border-b-4" },
-        { "label": "Left none",         "value": "border-l-0" },
-        { "label": "Left small",        "value": "border-l" },
-        { "label": "Left medium",       "value": "border-l-2" },
-        { "label": "Left large",        "value": "border-l-4" }
-      ],
-      "Border color": [
-        { "label": "Default",     "value": "border-border" },
-        { "label": "Muted",       "value": "border-muted" },
-        { "label": "Foreground",  "value": "border-foreground" },
-        { "label": "Primary",     "value": "border-primary" },
-        { "label": "Transparent", "value": "border-transparent" }
-      ],
-      "Font size": [
-        { "label": "XS",    "value": "text-xs" },
-        { "label": "Small", "value": "text-sm" },
-        { "label": "Base",  "value": "text-base" },
-        { "label": "Large", "value": "text-lg" },
-        { "label": "XL",    "value": "text-xl" },
-        { "label": "2XL",   "value": "text-2xl" },
-        { "label": "3XL",   "value": "text-3xl" },
-        { "label": "4XL",   "value": "text-4xl" },
-        { "label": "5XL",   "value": "text-5xl" },
-        { "label": "6XL",   "value": "text-6xl" },
-        { "label": "4XL",   "value": "sm:text-4xl" },
-        { "label": "5XL",   "value": "sm:text-5xl" },
-        { "label": "3XL",   "value": "md:text-3xl" },
-        { "label": "4XL",   "value": "md:text-4xl" },
-        { "label": "5XL",   "value": "md:text-5xl" },
-        { "label": "4XL",   "value": "lg:text-4xl" },
-        { "label": "5XL",   "value": "lg:text-5xl" },
-        { "label": "6XL",   "value": "lg:text-6xl" }
-      ],
-      "Font weight": [
-        { "label": "Normal",   "value": "font-normal" },
-        { "label": "Medium",   "value": "font-medium" },
-        { "label": "Semibold", "value": "font-semibold" },
-        { "label": "Bold",     "value": "font-bold" }
-      ],
-      "Line height": [
-        { "label": "None",    "value": "leading-none" },
-        { "label": "Tight",   "value": "leading-tight" },
-        { "label": "Snug",    "value": "leading-snug" },
-        { "label": "Normal",  "value": "leading-normal" },
-        { "label": "Relaxed", "value": "leading-relaxed" }
-      ],
-      "Letter spacing": [
-        { "label": "Tighter", "value": "tracking-tighter" },
-        { "label": "Tight",   "value": "tracking-tight" },
-        { "label": "Normal",  "value": "tracking-normal" },
-        { "label": "Wide",    "value": "tracking-wide" },
-        { "label": "Wider",   "value": "tracking-wider" }
-      ],
-      "Text": [
-        { "label": "Align left",   "value": "text-left" },
-        { "label": "Align center", "value": "text-center" },
-        { "label": "Align right",  "value": "text-right" },
-        { "label": "Uppercase",    "value": "uppercase" },
-        { "label": "Italic",       "value": "italic" },
-        { "label": "Underline",    "value": "underline" },
-        { "label": "Truncate",     "value": "truncate" },
-        { "label": "Sans font",    "value": "font-sans" },
-        { "label": "Mono font",    "value": "font-mono" },
-        { "label": "Align left",   "value": "md:text-left" },
-        { "label": "Align center", "value": "md:text-center" }
-      ],
-      "Typography": [
-        { "label": "Display",   "value": "text-6xl font-bold tracking-tight leading-tight" },
-        { "label": "Heading 1", "value": "text-4xl font-bold tracking-tight leading-tight" },
-        { "label": "Heading 2", "value": "text-3xl font-bold tracking-tight leading-snug" },
-        { "label": "Heading 3", "value": "text-2xl font-semibold leading-snug" },
-        { "label": "Heading 4", "value": "text-xl font-semibold leading-snug" },
-        { "label": "Lead",      "value": "text-xl font-normal leading-relaxed" },
-        { "label": "Body",      "value": "text-base font-normal leading-normal" },
-        { "label": "Small",     "value": "text-sm font-normal leading-normal" },
-        { "label": "Meta",      "value": "text-xs font-medium uppercase tracking-wide" }
-      ],
-      "Display": [
-        { "label": "Block",       "value": "block" },
-        { "label": "Inline block","value": "inline-block" },
-        { "label": "Inline",      "value": "inline" },
-        { "label": "Flex",        "value": "flex" },
-        { "label": "Inline flex", "value": "inline-flex" },
-        { "label": "Grid",        "value": "grid" },
-        { "label": "Hidden",      "value": "hidden" },
-        { "label": "Flex",        "value": "sm:flex" },
-        { "label": "Hidden",      "value": "sm:hidden" },
-        { "label": "Block",       "value": "md:block" },
-        { "label": "Flex",        "value": "md:flex" },
-        { "label": "Grid",        "value": "md:grid" },
-        { "label": "Hidden",      "value": "md:hidden" },
-        { "label": "Block",       "value": "lg:block" },
-        { "label": "Flex",        "value": "lg:flex" },
-        { "label": "Grid",        "value": "lg:grid" },
-        { "label": "Hidden",      "value": "lg:hidden" }
-      ],
-      "Flexbox": [
-        { "label": "Row",             "value": "flex-row" },
-        { "label": "Column",          "value": "flex-col" },
-        { "label": "Wrap",            "value": "flex-wrap" },
-        { "label": "Flex 1",          "value": "flex-1" },
-        { "label": "No shrink",       "value": "flex-shrink-0" },
-        { "label": "Items start",     "value": "items-start" },
-        { "label": "Items center",    "value": "items-center" },
-        { "label": "Items end",       "value": "items-end" },
-        { "label": "Items stretch",   "value": "items-stretch" },
-        { "label": "Justify start",   "value": "justify-start" },
-        { "label": "Justify center",  "value": "justify-center" },
-        { "label": "Justify between", "value": "justify-between" },
-        { "label": "Justify end",     "value": "justify-end" },
-        { "label": "Row",             "value": "sm:flex-row" },
-        { "label": "Row",             "value": "md:flex-row" },
-        { "label": "Items center",    "value": "md:items-center" },
-        { "label": "Justify between", "value": "md:justify-between" },
-        { "label": "Row",             "value": "lg:flex-row" }
-      ],
-      "Grid columns": [
-        { "label": "1 column",   "value": "grid-cols-1" },
-        { "label": "2 columns",  "value": "grid-cols-2" },
-        { "label": "3 columns",  "value": "grid-cols-3" },
-        { "label": "4 columns",  "value": "grid-cols-4" },
-        { "label": "Span 1",     "value": "col-span-1" },
-        { "label": "Span 2",     "value": "col-span-2" },
-        { "label": "Span full",  "value": "col-span-full" },
-        { "label": "2 columns",  "value": "sm:grid-cols-2" },
-        { "label": "2 columns",  "value": "md:grid-cols-2" },
-        { "label": "3 columns",  "value": "md:grid-cols-3" },
-        { "label": "4 columns",  "value": "md:grid-cols-4" },
-        { "label": "2 columns",  "value": "md:col-span-2" },
-        { "label": "2 columns",  "value": "lg:grid-cols-2" },
-        { "label": "3 columns",  "value": "lg:grid-cols-3" },
-        { "label": "4 columns",  "value": "lg:grid-cols-4" },
-        { "label": "Span 1",     "value": "lg:col-span-1" },
-        { "label": "Span 2",     "value": "lg:col-span-2" }
-      ],
-      "Gap": [
-        { "label": "3XS",    "value": "gap-1" },
-        { "label": "2XS",    "value": "gap-2" },
-        { "label": "XS",     "value": "gap-3" },
-        { "label": "Small",  "value": "gap-4" },
-        { "label": "Medium", "value": "gap-6" },
-        { "label": "Large",  "value": "gap-8" },
-        { "label": "XL",     "value": "gap-10" },
-        { "label": "2XL",    "value": "gap-12" },
-        { "label": "Large",  "value": "md:gap-8" },
-        { "label": "2XL",    "value": "md:gap-12" },
-        { "label": "Large",  "value": "lg:gap-8" },
-        { "label": "2XL",    "value": "lg:gap-12" }
-      ],
-      "Margin": [
-        { "label": "Center horizontal", "value": "mx-auto" },
-        { "label": "All none",          "value": "m-0" },
-        { "label": "All small",         "value": "m-4" },
-        { "label": "All medium",        "value": "m-6" },
-        { "label": "All large",         "value": "m-8" },
-        { "label": "Horizontal none",   "value": "mx-0" },
-        { "label": "Horizontal small",  "value": "mx-4" },
-        { "label": "Horizontal medium", "value": "mx-6" },
-        { "label": "Vertical none",     "value": "my-0" },
-        { "label": "Vertical small",    "value": "my-4" },
-        { "label": "Vertical medium",   "value": "my-6" },
-        { "label": "Vertical large",    "value": "my-8" },
-        { "label": "Vertical XL",       "value": "my-12" },
-        { "label": "Vertical 2XL",      "value": "my-16" },
-        { "label": "Top none",          "value": "mt-0" },
-        { "label": "Top 3XS",           "value": "mt-1" },
-        { "label": "Top 2XS",           "value": "mt-2" },
-        { "label": "Top XS",            "value": "mt-3" },
-        { "label": "Top small",         "value": "mt-4" },
-        { "label": "Top medium",        "value": "mt-6" },
-        { "label": "Top large",         "value": "mt-8" },
-        { "label": "Top XL",            "value": "mt-12" },
-        { "label": "Top 2XL",           "value": "mt-16" },
-        { "label": "Right none",        "value": "mr-0" },
-        { "label": "Right 2XS",         "value": "mr-2" },
-        { "label": "Right small",       "value": "mr-4" },
-        { "label": "Bottom none",       "value": "mb-0" },
-        { "label": "Bottom 3XS",        "value": "mb-1" },
-        { "label": "Bottom 2XS",        "value": "mb-2" },
-        { "label": "Bottom XS",         "value": "mb-3" },
-        { "label": "Bottom small",      "value": "mb-4" },
-        { "label": "Bottom medium",     "value": "mb-6" },
-        { "label": "Bottom large",      "value": "mb-8" },
-        { "label": "Bottom XL",         "value": "mb-12" },
-        { "label": "Left none",         "value": "ml-0" },
-        { "label": "Left 2XS",          "value": "ml-2" },
-        { "label": "Left small",        "value": "ml-4" },
-        { "label": "Vertical 2XL",      "value": "md:my-16" },
-        { "label": "Vertical 2XL",      "value": "lg:my-16" }
-      ],
-      "Padding": [
-        { "label": "All none",          "value": "p-0" },
-        { "label": "All 3XS",           "value": "p-1" },
-        { "label": "All 2XS",           "value": "p-2" },
-        { "label": "All XS",            "value": "p-3" },
-        { "label": "All small",         "value": "p-4" },
-        { "label": "All medium",        "value": "p-6" },
-        { "label": "All large",         "value": "p-8" },
-        { "label": "All XL",            "value": "p-12" },
-        { "label": "Horizontal none",   "value": "px-0" },
-        { "label": "Horizontal 2XS",    "value": "px-2" },
-        { "label": "Horizontal XS",     "value": "px-3" },
-        { "label": "Horizontal small",  "value": "px-4" },
-        { "label": "Horizontal medium", "value": "px-6" },
-        { "label": "Horizontal large",  "value": "px-8" },
-        { "label": "Horizontal XL",     "value": "px-12" },
-        { "label": "Vertical none",     "value": "py-0" },
-        { "label": "Vertical 2XS",      "value": "py-2" },
-        { "label": "Vertical XS",       "value": "py-3" },
-        { "label": "Vertical small",    "value": "py-4" },
-        { "label": "Vertical medium",   "value": "py-6" },
-        { "label": "Vertical large",    "value": "py-8" },
-        { "label": "Vertical XL",       "value": "py-12" },
-        { "label": "Vertical 2XL",      "value": "py-16" },
-        { "label": "Vertical 3XL",      "value": "py-20" },
-        { "label": "Vertical 4XL",      "value": "py-24" },
-        { "label": "Top none",          "value": "pt-0" },
-        { "label": "Top small",         "value": "pt-4" },
-        { "label": "Top medium",        "value": "pt-6" },
-        { "label": "Top large",         "value": "pt-8" },
-        { "label": "Top XL",            "value": "pt-12" },
-        { "label": "Top 2XL",           "value": "pt-16" },
-        { "label": "Right none",        "value": "pr-0" },
-        { "label": "Right small",       "value": "pr-4" },
-        { "label": "Right medium",      "value": "pr-6" },
-        { "label": "Right large",       "value": "pr-8" },
-        { "label": "Bottom none",       "value": "pb-0" },
-        { "label": "Bottom small",      "value": "pb-4" },
-        { "label": "Bottom medium",     "value": "pb-6" },
-        { "label": "Bottom large",      "value": "pb-8" },
-        { "label": "Bottom XL",         "value": "pb-12" },
-        { "label": "Bottom 2XL",        "value": "pb-16" },
-        { "label": "Left none",         "value": "pl-0" },
-        { "label": "Left small",        "value": "pl-4" },
-        { "label": "Left medium",       "value": "pl-6" },
-        { "label": "Left large",        "value": "pl-8" },
-        { "label": "All large",         "value": "md:p-8" },
-        { "label": "Horizontal medium", "value": "md:px-6" },
-        { "label": "Horizontal large",  "value": "md:px-8" },
-        { "label": "Vertical 2XL",      "value": "md:py-16" },
-        { "label": "Vertical 3XL",      "value": "md:py-20" },
-        { "label": "Horizontal large",  "value": "lg:px-8" },
-        { "label": "All XL",            "value": "lg:p-12" },
-        { "label": "Vertical XL",       "value": "lg:py-12" },
-        { "label": "Vertical 2XL",      "value": "lg:py-16" },
-        { "label": "Vertical 3XL",      "value": "lg:py-20" },
-        { "label": "Vertical 4XL",      "value": "lg:py-24" }
-      ],
-      "Sizing": [
-        { "label": "Width full",       "value": "w-full" },
-        { "label": "Height full",      "value": "h-full" },
-        { "label": "Min height screen","value": "min-h-screen" },
-        { "label": "Max width XS",     "value": "max-w-xs" },
-        { "label": "Max width SM",     "value": "max-w-sm" },
-        { "label": "Max width MD",     "value": "max-w-md" },
-        { "label": "Max width LG",     "value": "max-w-lg" },
-        { "label": "Max width XL",     "value": "max-w-xl" },
-        { "label": "Max width 2XL",    "value": "max-w-2xl" },
-        { "label": "Max width 3XL",    "value": "max-w-3xl" },
-        { "label": "Max width 4XL",    "value": "max-w-4xl" },
-        { "label": "Max width 5XL",    "value": "max-w-5xl" },
-        { "label": "Max width 6XL",    "value": "max-w-6xl" }
-      ],
-      "Radius": [
-        { "label": "None",   "value": "rounded-none" },
-        { "label": "Small",  "value": "rounded-sm" },
-        { "label": "Medium", "value": "rounded-md" },
-        { "label": "Large",  "value": "rounded-lg" },
-        { "label": "XL",     "value": "rounded-xl" },
-        { "label": "2XL",    "value": "rounded-2xl" },
-        { "label": "Full",   "value": "rounded-full" }
-      ],
-      "Shadows": [
-        { "label": "None",   "value": "shadow-none" },
-        { "label": "Small",  "value": "shadow-sm" },
-        { "label": "Medium", "value": "shadow-md" },
-        { "label": "Large",  "value": "shadow-lg" },
-        { "label": "XL",     "value": "shadow-xl" }
-      ],
-      "Position": [
-        { "label": "Relative", "value": "relative" },
-        { "label": "Absolute", "value": "absolute" },
-        { "label": "Sticky",   "value": "sticky" },
-        { "label": "Fixed",    "value": "fixed" },
-        { "label": "Inset 0",  "value": "inset-0" },
-        { "label": "Top 0",    "value": "top-0" },
-        { "label": "Right 0",  "value": "right-0" },
-        { "label": "Bottom 0", "value": "bottom-0" },
-        { "label": "Left 0",   "value": "left-0" }
-      ],
-      "Object fit & aspect": [
-        { "label": "Object cover",  "value": "object-cover" },
-        { "label": "Aspect square", "value": "aspect-square" },
-        { "label": "Aspect video",  "value": "aspect-video" }
-      ],
-      "Effects": [
-        { "label": "Overflow hidden",   "value": "overflow-hidden" },
-        { "label": "Transition",        "value": "transition" },
-        { "label": "Cursor pointer",    "value": "cursor-pointer" },
-        { "label": "Screen-reader only","value": "sr-only" },
-        { "label": "Opacity 0",         "value": "opacity-0" },
-        { "label": "Opacity 50",        "value": "opacity-50" },
-        { "label": "Opacity 100",       "value": "opacity-100" },
-        { "label": "Z-index 10",        "value": "z-10" },
-        { "label": "Z-index 50",        "value": "z-50" }
-      ],
-      "Rich text": [
-        { "label": "Prose", "value": "prose" }
-      ],
-      "Container": [
-        { "label": "Default", "value": "container" },
-        { "label": "Narrow",  "value": "container-narrow" },
-        { "label": "Wide",    "value": "container-wide" }
-      ],
-      "Grid": [
-        { "label": "2 columns", "value": "grid grid-cols-2" },
-        { "label": "3 columns", "value": "grid grid-cols-3" },
-        { "label": "4 columns", "value": "grid grid-cols-4" }
-      ],
-      "Container and Grid": [
-        { "label": "Default · 2 cols", "value": "container grid grid-cols-2" },
-        { "label": "Default · 3 cols", "value": "container grid grid-cols-3" },
-        { "label": "Default · 4 cols", "value": "container grid grid-cols-4" },
-        { "label": "Narrow · 2 cols",  "value": "container-narrow grid grid-cols-2" },
-        { "label": "Narrow · 3 cols",  "value": "container-narrow grid grid-cols-3" },
-        { "label": "Narrow · 4 cols",  "value": "container-narrow grid grid-cols-4" },
-        { "label": "Wide · 2 cols",    "value": "container-wide grid grid-cols-2" },
-        { "label": "Wide · 3 cols",    "value": "container-wide grid grid-cols-3" },
-        { "label": "Wide · 4 cols",    "value": "container-wide grid grid-cols-4" }
-      ]
+    {
+      "classes": {
+        "Background color": [
+          { "label": "Page", "value": "bg-background" },
+          { "label": "Foreground", "value": "bg-foreground" },
+          { "label": "Primary", "value": "bg-primary" },
+          { "label": "Secondary", "value": "bg-secondary" },
+          { "label": "Muted", "value": "bg-muted" },
+          { "label": "Accent", "value": "bg-accent" },
+          { "label": "Card", "value": "bg-card" },
+          { "label": "Transparent", "value": "bg-transparent" },
+          { "label": "Culture category", "value": "bg-category-culture" },
+          { "label": "Science category", "value": "bg-category-science" },
+          { "label": "History category", "value": "bg-category-history" },
+          { "label": "Design category", "value": "bg-category-design" }
+        ],
+        "Text color": [
+          { "label": "Body", "value": "text-foreground" },
+          { "label": "Background", "value": "text-background" },
+          { "label": "Primary", "value": "text-primary" },
+          { "label": "On primary", "value": "text-primary-foreground" },
+          { "label": "On secondary", "value": "text-secondary-foreground" },
+          { "label": "Muted", "value": "text-muted-foreground" },
+          { "label": "On accent", "value": "text-accent-foreground" },
+          { "label": "On card", "value": "text-card-foreground" },
+          { "label": "Culture category", "value": "text-category-culture" },
+          { "label": "Science category", "value": "text-category-science" },
+          { "label": "History category", "value": "text-category-history" },
+          { "label": "Design category", "value": "text-category-design" },
+          { "label": "White", "value": "text-white" },
+          { "label": "Black", "value": "text-black" }
+        ],
+        "Border": [
+          { "label": "All none", "value": "border-0" },
+          { "label": "All", "value": "border" },
+          { "label": "All medium", "value": "border-2" },
+          { "label": "Top", "value": "border-t" },
+          { "label": "Right", "value": "border-r" },
+          { "label": "Bottom", "value": "border-b" },
+          { "label": "Left", "value": "border-l" }
+        ],
+        "Border color": [
+          { "label": "Default", "value": "border-border" },
+          { "label": "Primary", "value": "border-primary" },
+          { "label": "Muted", "value": "border-muted" },
+          { "label": "Accent", "value": "border-accent" },
+          { "label": "Transparent", "value": "border-transparent" }
+        ],
+        "Font size": [
+          { "label": "XS", "value": "text-xs" },
+          { "label": "Small", "value": "text-sm" },
+          { "label": "Base", "value": "text-base" },
+          { "label": "Large", "value": "text-lg" },
+          { "label": "XL", "value": "text-xl" },
+          { "label": "2XL", "value": "text-2xl" },
+          { "label": "3XL", "value": "text-3xl" },
+          { "label": "4XL", "value": "text-4xl" },
+          { "label": "5XL", "value": "text-5xl" },
+          { "label": "4XL", "value": "md:text-4xl" },
+          { "label": "5XL", "value": "lg:text-5xl" }
+        ],
+        "Font weight": [
+          { "label": "Normal", "value": "font-normal" },
+          { "label": "Medium", "value": "font-medium" },
+          { "label": "Semibold", "value": "font-semibold" },
+          { "label": "Bold", "value": "font-bold" }
+        ],
+        "Line height": [
+          { "label": "Tight", "value": "leading-tight" },
+          { "label": "Snug", "value": "leading-snug" },
+          { "label": "Normal", "value": "leading-normal" },
+          { "label": "Relaxed", "value": "leading-relaxed" }
+        ],
+        "Letter spacing": [
+          { "label": "Tight", "value": "tracking-tight" },
+          { "label": "Normal", "value": "tracking-normal" },
+          { "label": "Wide", "value": "tracking-wide" }
+        ],
+        "Text": [
+          { "label": "Align left", "value": "text-left" },
+          { "label": "Align center", "value": "text-center" },
+          { "label": "Align right", "value": "text-right" },
+          { "label": "Uppercase", "value": "uppercase" },
+          { "label": "Italic", "value": "italic" },
+          { "label": "Underline", "value": "underline" },
+          { "label": "No underline", "value": "no-underline" },
+          { "label": "Sans font", "value": "font-sans" },
+          { "label": "Serif font", "value": "font-serif" },
+          { "label": "Align left", "value": "md:text-left" }
+        ],
+        "Typography": [
+          { "label": "Display", "value": "text-5xl font-bold tracking-tight leading-tight" },
+          { "label": "Heading 1", "value": "text-4xl font-bold tracking-tight leading-tight" },
+          { "label": "Heading 2", "value": "text-3xl font-bold tracking-tight leading-snug" },
+          { "label": "Heading 3", "value": "text-2xl font-semibold leading-snug" },
+          { "label": "Lead", "value": "text-xl font-normal leading-relaxed" },
+          { "label": "Body", "value": "text-base font-normal leading-normal" },
+          { "label": "Small", "value": "text-sm font-normal leading-normal" },
+          { "label": "Meta", "value": "text-xs font-semibold uppercase tracking-wide" }
+        ],
+        "Display": [
+          { "label": "Block", "value": "block" },
+          { "label": "Inline block", "value": "inline-block" },
+          { "label": "Inline", "value": "inline" },
+          { "label": "Flex", "value": "flex" },
+          { "label": "Inline flex", "value": "inline-flex" },
+          { "label": "Grid", "value": "grid" },
+          { "label": "Hidden", "value": "hidden" },
+          { "label": "Block", "value": "lg:block" },
+          { "label": "Hidden", "value": "lg:hidden" }
+        ],
+        "Flexbox": [
+          { "label": "Row", "value": "flex-row" },
+          { "label": "Column", "value": "flex-col" },
+          { "label": "Wrap", "value": "flex-wrap" },
+          { "label": "No wrap", "value": "flex-nowrap" },
+          { "label": "Flex 1", "value": "flex-1" },
+          { "label": "No shrink", "value": "flex-shrink-0" },
+          { "label": "Items start", "value": "items-start" },
+          { "label": "Items center", "value": "items-center" },
+          { "label": "Items end", "value": "items-end" },
+          { "label": "Items stretch", "value": "items-stretch" },
+          { "label": "Justify start", "value": "justify-start" },
+          { "label": "Justify center", "value": "justify-center" },
+          { "label": "Justify between", "value": "justify-between" },
+          { "label": "Justify end", "value": "justify-end" },
+          { "label": "Row", "value": "md:flex-row" }
+        ],
+        "Grid columns": [
+          { "label": "1 column", "value": "grid-cols-1" },
+          { "label": "2 columns", "value": "grid-cols-2" },
+          { "label": "3 columns", "value": "grid-cols-3" },
+          { "label": "Sidebar", "value": "grid-cols-sidebar" },
+          { "label": "Span full", "value": "col-span-full" },
+          { "label": "2 columns", "value": "md:grid-cols-2" },
+          { "label": "2 columns", "value": "lg:grid-cols-2" },
+          { "label": "3 columns", "value": "lg:grid-cols-3" },
+          { "label": "Sidebar", "value": "lg:grid-cols-sidebar" }
+        ],
+        "Gap": [
+          { "label": "3XS", "value": "gap-1" },
+          { "label": "2XS", "value": "gap-2" },
+          { "label": "XS", "value": "gap-3" },
+          { "label": "Small", "value": "gap-4" },
+          { "label": "Medium small", "value": "gap-5" },
+          { "label": "Medium", "value": "gap-6" },
+          { "label": "Large", "value": "gap-8" },
+          { "label": "XL", "value": "gap-10" },
+          { "label": "2XL", "value": "gap-12" },
+          { "label": "2XL", "value": "lg:gap-12" }
+        ],
+        "Margin": [
+          { "label": "Center horizontal", "value": "mx-auto" },
+          { "label": "All none", "value": "m-0" },
+          { "label": "Vertical none", "value": "my-0" },
+          { "label": "Vertical small", "value": "my-4" },
+          { "label": "Vertical large", "value": "my-8" },
+          { "label": "Vertical XL", "value": "my-12" },
+          { "label": "Top none", "value": "mt-0" },
+          { "label": "Top 2XS", "value": "mt-2" },
+          { "label": "Top XS", "value": "mt-3" },
+          { "label": "Top small", "value": "mt-4" },
+          { "label": "Top medium", "value": "mt-6" },
+          { "label": "Top large", "value": "mt-8" },
+          { "label": "Top XL", "value": "mt-10" },
+          { "label": "Top 2XL", "value": "mt-12" },
+          { "label": "Bottom none", "value": "mb-0" },
+          { "label": "Bottom 2XS", "value": "mb-2" },
+          { "label": "Bottom XS", "value": "mb-3" },
+          { "label": "Bottom small", "value": "mb-4" },
+          { "label": "Bottom medium", "value": "mb-6" },
+          { "label": "Bottom large", "value": "mb-8" },
+          { "label": "Bottom XL", "value": "mb-10" },
+          { "label": "Bottom 2XL", "value": "mb-12" }
+        ],
+        "Padding": [
+          { "label": "All none", "value": "p-0" },
+          { "label": "All XS", "value": "p-3" },
+          { "label": "All small", "value": "p-4" },
+          { "label": "All medium small", "value": "p-5" },
+          { "label": "All medium", "value": "p-6" },
+          { "label": "All large", "value": "p-8" },
+          { "label": "All XL", "value": "p-10" },
+          { "label": "All 2XL", "value": "p-12" },
+          { "label": "Horizontal none", "value": "px-0" },
+          { "label": "Horizontal XS", "value": "px-3" },
+          { "label": "Horizontal small", "value": "px-4" },
+          { "label": "Horizontal medium small", "value": "px-5" },
+          { "label": "Horizontal medium", "value": "px-6" },
+          { "label": "Vertical none", "value": "py-0" },
+          { "label": "Vertical 3XS", "value": "py-1" },
+          { "label": "Vertical 2XS", "value": "py-2" },
+          { "label": "Vertical XS", "value": "py-3" },
+          { "label": "Vertical small", "value": "py-4" },
+          { "label": "Vertical medium", "value": "py-6" },
+          { "label": "Vertical large", "value": "py-8" },
+          { "label": "Vertical XL", "value": "py-10" },
+          { "label": "Vertical 2XL", "value": "py-12" },
+          { "label": "Vertical 3XL", "value": "py-16" },
+          { "label": "Top small", "value": "pt-4" },
+          { "label": "Top large", "value": "pt-8" },
+          { "label": "Top XL", "value": "pt-10" },
+          { "label": "Bottom small", "value": "pb-4" },
+          { "label": "Bottom large", "value": "pb-8" },
+          { "label": "Bottom 2XL", "value": "pb-12" },
+          { "label": "Vertical 3XL", "value": "md:py-16" },
+          { "label": "Vertical 4XL", "value": "lg:py-20" }
+        ],
+        "Sizing": [
+          { "label": "Width full", "value": "w-full" },
+          { "label": "Height full", "value": "h-full" },
+          { "label": "Min height screen", "value": "min-h-screen" },
+          { "label": "Max width XL", "value": "max-w-xl" },
+          { "label": "Max width 2XL", "value": "max-w-2xl" },
+          { "label": "Max width 3XL", "value": "max-w-3xl" },
+          { "label": "Max width 4XL", "value": "max-w-4xl" },
+          { "label": "Max width 5XL", "value": "max-w-5xl" },
+          { "label": "Max width 6XL", "value": "max-w-6xl" },
+          { "label": "Size 8", "value": "size-8" },
+          { "label": "Size 10", "value": "size-10" }
+        ],
+        "Radius": [
+          { "label": "None", "value": "rounded-none" },
+          { "label": "Small", "value": "rounded-sm" },
+          { "label": "Medium", "value": "rounded-md" },
+          { "label": "Large", "value": "rounded-lg" },
+          { "label": "XL", "value": "rounded-xl" },
+          { "label": "Full", "value": "rounded-full" }
+        ],
+        "Shadows": [
+          { "label": "None", "value": "shadow-none" },
+          { "label": "Small", "value": "shadow-sm" },
+          { "label": "Medium", "value": "shadow-md" }
+        ],
+        "Position": [
+          { "label": "Relative", "value": "relative" },
+          { "label": "Absolute", "value": "absolute" },
+          { "label": "Sticky", "value": "sticky" },
+          { "label": "Fixed", "value": "fixed" },
+          { "label": "Inset 0", "value": "inset-0" },
+          { "label": "Top 0", "value": "top-0" },
+          { "label": "Top 20", "value": "top-20" },
+          { "label": "Left 0", "value": "left-0" },
+          { "label": "Z 10", "value": "z-10" },
+          { "label": "Z 50", "value": "z-50" },
+          { "label": "Sticky", "value": "lg:sticky" }
+        ],
+        "Object fit & aspect": [
+          { "label": "Object cover", "value": "object-cover" },
+          { "label": "Aspect video", "value": "aspect-video" },
+          { "label": "Aspect 4:3", "value": "aspect-4-3" }
+        ],
+        "Effects": [
+          { "label": "Overflow hidden", "value": "overflow-hidden" },
+          { "label": "Overflow x auto", "value": "overflow-x-auto" },
+          { "label": "Transition", "value": "transition" },
+          { "label": "Cursor pointer", "value": "cursor-pointer" },
+          { "label": "No wrap", "value": "whitespace-nowrap" },
+          { "label": "Screen-reader only", "value": "sr-only" }
+        ],
+        "Rich text": [
+          { "label": "Prose", "value": "prose" }
+        ],
+        "Container": [
+          { "label": "Default", "value": "container" },
+          { "label": "Narrow", "value": "container-narrow" },
+          { "label": "Wide", "value": "container-wide" }
+        ],
+        "Grid": [
+          { "label": "2 columns", "value": "grid grid-cols-2" },
+          { "label": "3 columns", "value": "grid grid-cols-3" },
+          { "label": "Sidebar", "value": "grid grid-cols-sidebar" }
+        ],
+        "Container and Grid": [
+          { "label": "Default · 2 cols", "value": "container grid grid-cols-2" },
+          { "label": "Default · 3 cols", "value": "container grid grid-cols-3" },
+          { "label": "Default · Sidebar", "value": "container grid grid-cols-sidebar" },
+          { "label": "Narrow · 2 cols", "value": "container-narrow grid grid-cols-2" },
+          { "label": "Narrow · 3 cols", "value": "container-narrow grid grid-cols-3" },
+          { "label": "Narrow · Sidebar", "value": "container-narrow grid grid-cols-sidebar" },
+          { "label": "Wide · 2 cols", "value": "container-wide grid grid-cols-2" },
+          { "label": "Wide · 3 cols", "value": "container-wide grid grid-cols-3" },
+          { "label": "Wide · Sidebar", "value": "container-wide grid grid-cols-sidebar" }
+        ]
+      }
     }
-  }
   </script>
 
-  <!-- Theme toggle + accordion script -->
   <script>
-    /* Theme toggle */
-    document.querySelectorAll('[aria-label="Toggle theme"]').forEach(function(btn) {
-      btn.addEventListener('click', function() {
+    const themeButtons = document.querySelectorAll('[aria-label="Toggle theme"]');
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
         document.documentElement.classList.toggle('dark');
       });
     });
-
-    /* Accordion */
-    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
-      trigger.addEventListener('click', function() {
-        var item = this.closest('.accordion__item');
-        var content = item.querySelector('.accordion__content');
-        var isOpen = item.classList.contains('is-open');
-
-        /* Close all siblings */
-        var accordion = item.closest('.accordion');
-        accordion.querySelectorAll('.accordion__item').forEach(function(sibling) {
-          sibling.classList.remove('is-open');
-          sibling.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
-          sibling.querySelector('.accordion__content').style.maxHeight = null;
-        });
-
-        if (!isOpen) {
-          item.classList.add('is-open');
-          this.setAttribute('aria-expanded', 'true');
-          content.style.maxHeight = content.scrollHeight + 'px';
-        }
-      });
-    });
-
-    /* Mobile nav toggle */
-    document.querySelectorAll('.mobile-toggle').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var nav = document.querySelector('.mobile-nav');
-        if (nav) {
-          nav.classList.toggle('is-open');
-        }
-      });
-    });
   </script>
-
 </body>
 </html>
