@@ -1,557 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Flux — The developer-first project management platform. Lightning-fast issue tracking, beautiful dashboards, and seamless team collaboration.">
-  <title>Flux — Developer-first project management</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Preload fonts for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flowtic — The platform that helps teams ship faster, collaborate better, and build products users love." />
+  <title>Flowtic — Modern team platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235e6ad2'/%3E%3Cpath d='M10 16l4 4 8-8' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 </head>
 <body>
-
-  <!-- ========================================================================
-       NAVIGATION
-       ======================================================================== -->
-  <header class="site-header" id="siteHeader">
-    <nav class="navbar" aria-label="Main navigation">
-      <a href="#" class="navbar-logo" aria-label="Flux home">
-        <span class="navbar-logo-icon" aria-hidden="true">⚡</span>
-        <span>Flux</span>
+  <!-- Header / Navigation -->
+  <header class="site-header" role="banner">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="#" class="navbar-logo" aria-label="Flowtic home">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="currentColor" />
+          <path d="M10 16l4 4 8-8" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Flowtic
       </a>
-
-      <div class="navbar-links" id="navbarLinks" role="navigation">
+      <div class="navbar-links" id="navLinks">
         <a href="#features">Features</a>
-        <a href="#docs">Docs</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#testimonials">Testimonials</a>
         <a href="#pricing">Pricing</a>
-        <a href="#changelog">Changelog</a>
+        <a href="#faq">FAQ</a>
       </div>
-
       <div class="navbar-actions">
-        <button class="btn btn-ghost btn-sm" id="cmdKTrigger" aria-label="Open command palette (⌘K)">
-          <span>⌘K</span>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
         </button>
-        <a href="#" class="btn btn-primary btn-sm">Open App</a>
-        <button class="navbar-hamburger" id="navbarHamburger" aria-label="Toggle menu" aria-expanded="false">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="4" y1="6" x2="20" y2="6"/>
-            <line x1="4" y1="12" x2="20" y2="12"/>
-            <line x1="4" y1="18" x2="20" y2="18"/>
+        <a href="#" class="btn btn-primary btn-sm">Get started</a>
+        <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
         </button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile menu overlay -->
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
-  <!-- ========================================================================
-       HERO SECTION
-       ======================================================================== -->
   <main>
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-content">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container hero-content">
         <div class="hero-badge">
-          <span class="hero-badge-dot" aria-hidden="true"></span>
-          Now in public beta — Free for teams up to 5
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Now in public beta
         </div>
-
-        <h1 class="hero-title" id="heroTitle">
-          Project management
-          <span class="hero-title-highlight">built for developers</span>
+        <h1>
+          Ship faster.<br />
+          <span class="highlight">Collaborate better.</span>
         </h1>
-
-        <p class="hero-subtitle">
-          Flux is the lightning-fast issue tracker and project planner designed
-          for engineering teams who demand speed, clarity, and keyboard-first
-          workflows.
+        <p>
+          Flowtic brings your team together in a single workspace — plan, build, and launch products users love, without the chaos.
         </p>
-
         <div class="hero-actions">
-          <a href="#" class="btn btn-primary btn-lg">Start for free</a>
-          <a href="#dashboard-preview" class="btn btn-secondary btn-lg">See it in action</a>
+          <a href="#" class="btn btn-primary btn-lg">Start free trial</a>
+          <a href="#" class="btn btn-secondary btn-lg">Watch demo</a>
         </div>
-
-        <p class="hero-hint">
-          Press <kbd>⌘</kbd> + <kbd>K</kbd> to try the command palette
-        </p>
+      </div>
+      <div class="container hero-visual">
+        <img
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&q=80&auto=format&fit=crop"
+          alt="Flowtic dashboard showing project analytics"
+          loading="lazy"
+        />
       </div>
     </section>
 
-    <!-- ========================================================================
-         DASHBOARD PREVIEW
-         ======================================================================== -->
-    <section class="dashboard-preview section" id="dashboard-preview" aria-labelledby="dashboardTitle">
+    <!-- Features Section -->
+    <section class="section" id="features">
       <div class="container">
-        <div class="section-label reveal">Interactive Preview</div>
-        <h2 class="features-title text-center reveal" id="dashboardTitle">See what Flux looks like in action</h2>
-        <p class="features-subtitle text-center reveal">A real dashboard. No mockups. No fluff.</p>
-
-        <div class="dashboard-mockup reveal" aria-label="Flux dashboard preview">
-          <!-- Toolbar dots -->
-          <div class="dashboard-toolbar">
-            <span class="toolbar-dot" aria-hidden="true"></span>
-            <span class="toolbar-dot" aria-hidden="true"></span>
-            <span class="toolbar-dot" aria-hidden="true"></span>
-            <span class="toolbar-title">Flux — Project Mercury</span>
-          </div>
-
-          <!-- Dashboard body -->
-          <div class="dashboard-body">
-            <!-- Sidebar -->
-            <aside class="dashboard-sidebar" aria-label="Project sidebar">
-              <div class="sidebar-item active">
-                <svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="5"/></svg>
-                Overview
-              </div>
-              <div class="sidebar-item">
-                <svg class="sidebar-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="14" rx="2"/><line x1="4" y1="5" x2="12" y2="5"/><line x1="4" y1="8" x2="12" y2="8"/><line x1="4" y1="11" x2="8" y2="11"/></svg>
-                Issues
-                <span class="sidebar-badge">24</span>
-              </div>
-              <div class="sidebar-item">
-                <svg class="sidebar-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
-                Board
-              </div>
-              <div class="sidebar-item">
-                <svg class="sidebar-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2"/><path d="M1 14c0-3 2-5 5-5s5 2 5 5"/><line x1="12" y1="4" x2="15" y2="7"/><line x1="15" y1="4" x2="12" y2="7"/></svg>
-                Team
-              </div>
-              <div class="sidebar-item">
-                <svg class="sidebar-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><polyline points="8 4 8 8 11 10"/></svg>
-                Cycles
-              </div>
-            </aside>
-
-            <!-- Main content -->
-            <div class="dashboard-main">
-              <div class="dashboard-header-row">
-                <span class="dashboard-heading">Active Issues</span>
-                <div class="dashboard-filters">
-                  <span class="filter-chip active">All</span>
-                  <span class="filter-chip">Open</span>
-                  <span class="filter-chip">In Progress</span>
-                  <span class="filter-chip">Done</span>
-                </div>
-              </div>
-
-              <!-- Task list -->
-              <div class="task-list" role="list" aria-label="Issue list">
-                <div class="task-item" role="listitem">
-                  <span class="task-check" aria-hidden="true"></span>
-                  <span class="task-title">Implement OAuth2 SSO integration</span>
-                  <span class="task-meta">
-                    <span class="badge badge-progress">In Progress</span>
-                    <span class="task-avatar" aria-label="Assigned to Alex">AK</span>
-                  </span>
-                </div>
-                <div class="task-item done" role="listitem">
-                  <span class="task-check" aria-hidden="true">✓</span>
-                  <span class="task-title">Fix 500 error on dashboard load</span>
-                  <span class="task-meta">
-                    <span class="badge badge-done">Done</span>
-                    <span class="task-avatar" aria-label="Assigned to Maria">MR</span>
-                  </span>
-                </div>
-                <div class="task-item" role="listitem">
-                  <span class="task-check" aria-hidden="true"></span>
-                  <span class="task-title">Add rate limiting to public API</span>
-                  <span class="task-meta">
-                    <span class="badge badge-todo">Todo</span>
-                    <span class="task-avatar" aria-label="Unassigned">—</span>
-                  </span>
-                </div>
-                <div class="task-item" role="listitem">
-                  <span class="task-check" aria-hidden="true"></span>
-                  <span class="task-title">Database query performance audit</span>
-                  <span class="task-meta">
-                    <span class="badge badge-review">Review</span>
-                    <span class="task-avatar" aria-label="Assigned to James">JC</span>
-                  </span>
-                </div>
-                <div class="task-item" role="listitem">
-                  <span class="task-check" aria-hidden="true"></span>
-                  <span class="task-title">Dark mode polish for modals</span>
-                  <span class="task-meta">
-                    <span class="badge badge-bug">Bug</span>
-                    <span class="task-avatar" aria-label="Assigned to Priya">PP</span>
-                  </span>
-                </div>
-              </div>
-
-              <!-- Mini table -->
-              <table class="dashboard-table" aria-label="Recent activity">
-                <thead>
-                  <tr>
-                    <th>Event</th>
-                    <th>User</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Deployment v2.8.1</td>
-                    <td>@alexk</td>
-                    <td>Oct 28</td>
-                    <td><span class="badge badge-done">Success</span></td>
-                  </tr>
-                  <tr>
-                    <td>PR #342 merged</td>
-                    <td>@mariar</td>
-                    <td>Oct 27</td>
-                    <td><span class="badge badge-done">Merged</span></td>
-                  </tr>
-                  <tr>
-                    <td>Incident #1024</td>
-                    <td>@jamesc</td>
-                    <td>Oct 26</td>
-                    <td><span class="badge badge-bug">Resolved</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="section-header fade-in">
+          <h2>Everything you need to ship</h2>
+          <p>From planning to deployment, Flowtic gives your team one source of truth.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         FEATURES SECTION
-         ======================================================================== -->
-    <section class="features-section" id="features" aria-labelledby="featuresTitle">
-      <div class="container">
-        <div class="features-header">
-          <span class="section-label reveal">Why Flux</span>
-          <h2 class="features-title reveal" id="featuresTitle">Everything your dev team needs</h2>
-          <p class="features-subtitle reveal">Purpose-built tools that fit your engineering workflow perfectly.</p>
-        </div>
-
         <div class="features-grid">
-          <!-- Feature 1 -->
-          <article class="feature-card reveal reveal-delay-1">
-            <div class="feature-icon feature-icon-purple" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <article class="feature-card fade-in">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+              </svg>
             </div>
-            <h3 class="feature-card-title">Keyboard-first design</h3>
-            <p class="feature-card-desc">Navigate, create, and close issues without ever touching your mouse. Flux is built for power users who live in the terminal.</p>
+            <h3>Real-time analytics</h3>
+            <p>Understand every metric that matters with dashboards that update as your team works.</p>
           </article>
-
-          <!-- Feature 2 -->
-          <article class="feature-card reveal reveal-delay-2">
-            <div class="feature-icon feature-icon-blue" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          <article class="feature-card fade-in">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
             </div>
-            <h3 class="feature-card-title">Real-time insights</h3>
-            <p class="feature-card-desc">Live dashboards, velocity charts, and burn-down metrics keep your team aligned without a single meeting.</p>
+            <h3>Team collaboration</h3>
+            <p>Built-in chat, comments, and async updates keep everyone aligned without meetings.</p>
           </article>
-
-          <!-- Feature 3 -->
-          <article class="feature-card reveal reveal-delay-3">
-            <div class="feature-icon feature-icon-green" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          <article class="feature-card fade-in">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+              </svg>
             </div>
-            <h3 class="feature-card-title">Powerful API & webhooks</h3>
-            <p class="feature-card-desc">Integrate Flux with your entire toolchain. REST and GraphQL APIs with first-class webhook support.</p>
+            <h3>Smart boards</h3>
+            <p>Visual project boards that adapt to your workflow — Kanban, timeline, or list view.</p>
           </article>
-
-          <!-- Feature 4 -->
-          <article class="feature-card reveal reveal-delay-4">
-            <div class="feature-icon feature-icon-amber" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <article class="feature-card fade-in">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
             </div>
-            <h3 class="feature-card-title">Smart notifications</h3>
-            <p class="feature-card-desc">Get notified about what matters. Custom rules, priority routing, and Slack/Discord integration built in.</p>
+            <h3>Automated workflows</h3>
+            <p>Eliminate repetitive tasks with custom triggers and actions across your tools.</p>
           </article>
-
-          <!-- Feature 5 -->
-          <article class="feature-card reveal reveal-delay-5">
-            <div class="feature-icon feature-icon-purple" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <article class="feature-card fade-in">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
             </div>
-            <h3 class="feature-card-title">Team collaboration</h3>
-            <p class="feature-card-desc">Threaded discussions, @mentions, and shared views keep everyone in the loop without cluttering your inbox.</p>
+            <h3>Integrations</h3>
+            <p>Connect with 200+ tools your team already uses — from GitHub to Slack to Figma.</p>
           </article>
-
-          <!-- Feature 6 -->
-          <article class="feature-card reveal reveal-delay-6">
-            <div class="feature-icon feature-icon-blue" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <article class="feature-card fade-in">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
             </div>
-            <h3 class="feature-card-title">Custom workflows</h3>
-            <p class="feature-card-desc">Define your own issue states, automations, and templates. Flux adapts to your process, not the other way around.</p>
+            <h3>Time tracking</h3>
+            <p>Built-in time logs and capacity planning so you always know where the hours go.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ========================================================================
-         DOCS PREVIEW (linked via #docs)
-         ======================================================================== -->
-    <section class="section" id="docs" aria-labelledby="docsTitle" style="background: var(--color-bg-secondary);">
-      <div class="container container-narrow text-center">
-        <span class="section-label reveal">Documentation</span>
-        <h2 class="features-title reveal" id="docsTitle">Developer docs, done right</h2>
-        <p class="features-subtitle reveal" style="margin-bottom: var(--space-2xl);">
-          Flux's documentation is written by engineers, for engineers. Clear, concise, and always up-to-date.
-        </p>
-        <div class="reveal">
-          <a href="#" class="btn btn-primary btn-lg">Browse the docs →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         PRICING SECTION
-         ======================================================================== -->
-    <section class="pricing-section" id="pricing" aria-labelledby="pricingTitle">
+    <!-- Benefits Section -->
+    <section class="section" id="benefits">
       <div class="container">
-        <div class="pricing-header">
-          <span class="section-label reveal">Pricing</span>
-          <h2 class="pricing-title reveal" id="pricingTitle">Simple, transparent pricing</h2>
-          <p class="pricing-subtitle reveal">Start free, scale as you grow. No hidden fees.</p>
+        <div class="section-header fade-in">
+          <h2>Why teams choose Flowtic</h2>
+          <p>Thousands of teams have transformed the way they work.</p>
         </div>
+        <div class="benefits-grid">
+          <div class="benefits-image fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80&auto=format&fit=crop"
+              alt="Team collaborating around a table"
+              loading="lazy"
+            />
+          </div>
+          <div class="benefits-list fade-in">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h3>50% faster delivery</h3>
+                <p>Teams using Flowtic report cutting their average cycle time in half within the first quarter.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h3>Reduced meeting load</h3>
+                <p>Async updates and real-time dashboards eliminate the need for daily stand-ups.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h3>Higher team morale</h3>
+                <p>Clear ownership, less context-switching, and a shared sense of progress every day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2>Loved by product teams</h2>
+          <p>See what our customers are saying about Flowtic.</p>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card fade-in">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <blockquote class="testimonial-quote">
+              “Flowtic completely changed how we ship. We went from 2-week sprints to continuous delivery in under a month.”
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&auto=format&fit=crop" alt="Portrait of Sarah Chen" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <p class="testimonial-name">Sarah Chen</p>
+                <p class="testimonial-role">VP of Product, Lattice</p>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial-card fade-in">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <blockquote class="testimonial-quote">
+              “The best decision we made this year was moving to Flowtic. It’s the single source of truth our team needed.”
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80&auto=format&fit=crop" alt="Portrait of Marcus Rivera" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <p class="testimonial-name">Marcus Rivera</p>
+                <p class="testimonial-role">Engineering Manager, Vercel</p>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial-card fade-in">
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <blockquote class="testimonial-quote">
+              “Flowtic’s analytics alone save us hours every week. We actually enjoy looking at our data now.”
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80&auto=format&fit=crop" alt="Portrait of Emily Nakamura" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <p class="testimonial-name">Emily Nakamura</p>
+                <p class="testimonial-role">Product Designer, Stripe</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2>Simple, transparent pricing</h2>
+          <p>No hidden fees. No surprises. Scale as you grow.</p>
+        </div>
         <div class="pricing-grid">
-          <!-- Free -->
-          <div class="pricing-card reveal reveal-delay-1">
+          <article class="pricing-card fade-in">
             <h3 class="pricing-name">Starter</h3>
-            <div class="pricing-price">$0 <span>/month</span></div>
-            <p class="pricing-desc">Perfect for small teams and side projects.</p>
+            <p class="pricing-desc">For small teams getting started.</p>
+            <p class="pricing-amount">$19 <span>/month</span></p>
+            <p class="pricing-period">Billed monthly</p>
             <ul class="pricing-features">
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                 Up to 5 team members
               </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                500 issues
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                10 active projects
               </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                Basic integrations
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Basic analytics
               </li>
-            </ul>
-            <a href="#" class="btn btn-secondary">Get started</a>
-          </div>
-
-          <!-- Pro (highlighted) -->
-          <div class="pricing-card pricing-card-highlighted reveal reveal-delay-2">
-            <span class="pricing-badge">Most popular</span>
-            <h3 class="pricing-name">Pro</h3>
-            <div class="pricing-price">$12 <span>/seat/month</span></div>
-            <p class="pricing-desc">For growing teams that need power and flexibility.</p>
-            <ul class="pricing-features">
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                Unlimited team members
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                5 GB storage
               </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                Unlimited issues
+              <li class="disabled">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Advanced automations
               </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                Advanced workflows
-              </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+              <li class="disabled">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 Priority support
               </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                API access
+            </ul>
+            <a href="#" class="btn btn-secondary">Start free trial</a>
+          </article>
+          <article class="pricing-card featured fade-in">
+            <div class="pricing-badge">Most popular</div>
+            <h3 class="pricing-name">Pro</h3>
+            <p class="pricing-desc">For growing teams that need more power.</p>
+            <p class="pricing-amount">$49 <span>/month</span></p>
+            <p class="pricing-period">Billed monthly</p>
+            <ul class="pricing-features">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited team members
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited projects
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Advanced analytics
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                50 GB storage
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Advanced automations
+              </li>
+              <li class="disabled">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Priority support
               </li>
             </ul>
             <a href="#" class="btn btn-primary">Start free trial</a>
-          </div>
-
-          <!-- Enterprise -->
-          <div class="pricing-card reveal reveal-delay-3">
+          </article>
+          <article class="pricing-card fade-in">
             <h3 class="pricing-name">Enterprise</h3>
-            <div class="pricing-price">Custom</div>
-            <p class="pricing-desc">For large organizations with advanced needs.</p>
+            <p class="pricing-desc">For large organizations with custom needs.</p>
+            <p class="pricing-amount">$149 <span>/month</span></p>
+            <p class="pricing-period">Billed monthly</p>
             <ul class="pricing-features">
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                 Everything in Pro
               </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                SSO & SAML
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited storage
               </li>
-              <li class="pricing-feature">
-                <svg class="pricing-feature-check" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-                Dedicated support
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Custom integrations
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Dedicated success manager
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Priority support
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                SSO &amp; audit logs
               </li>
             </ul>
             <a href="#" class="btn btn-secondary">Contact sales</a>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ========================================================================
-         CHANGELOG / TIMELINE
-         ======================================================================== -->
-    <section class="changelog-section" id="changelog" aria-labelledby="changelogTitle">
-      <div class="container container-narrow">
-        <div class="changelog-header">
-          <span class="section-label reveal">Changelog</span>
-          <h2 class="changelog-title reveal" id="changelogTitle">What's new in Flux</h2>
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2>Frequently asked questions</h2>
+          <p>Everything you need to know about Flowtic.</p>
         </div>
-
-        <div class="timeline">
-          <!-- Entry 1 -->
-          <div class="timeline-item reveal">
-            <span class="timeline-dot timeline-dot-green" aria-hidden="true"></span>
-            <p class="timeline-date">October 28, 2025</p>
-            <span class="timeline-version">v2.8.1</span>
-            <h3 class="timeline-heading">Performance improvements & bug fixes</h3>
-            <p class="timeline-body">
-              Reduced dashboard load time by 40% and fixed the pesky 500 error when filtering by multiple labels simultaneously.
-            </p>
-            <div class="timeline-tags">
-              <span class="timeline-tag">performance</span>
-              <span class="timeline-tag">bugfix</span>
-            </div>
-          </div>
-
-          <!-- Entry 2 -->
-          <div class="timeline-item reveal">
-            <span class="timeline-dot timeline-dot-blue" aria-hidden="true"></span>
-            <p class="timeline-date">October 14, 2025</p>
-            <span class="timeline-version">v2.8</span>
-            <h3 class="timeline-heading">Custom workflow builder</h3>
-            <p class="timeline-body">
-              Define your own issue states, transitions, and automations. The new visual workflow editor makes it trivial to model any engineering process.
-            </p>
-            <div class="timeline-tags">
-              <span class="timeline-tag">feature</span>
-              <span class="timeline-tag">workflows</span>
-            </div>
-          </div>
-
-          <!-- Entry 3 -->
-          <div class="timeline-item reveal">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <p class="timeline-date">September 30, 2025</p>
-            <span class="timeline-version">v2.7</span>
-            <h3 class="timeline-heading">GraphQL API goes GA</h3>
-            <p class="timeline-body">
-              Our GraphQL API is now generally available with full documentation, rate limiting controls, and a brand new playground for exploration.
-            </p>
-            <div class="timeline-tags">
-              <span class="timeline-tag">api</span>
-              <span class="timeline-tag">release</span>
-            </div>
-          </div>
-
-          <!-- Entry 4 -->
-          <div class="timeline-item reveal">
-            <span class="timeline-dot timeline-dot-green" aria-hidden="true"></span>
-            <p class="timeline-date">September 15, 2025</p>
-            <span class="timeline-version">v2.6.3</span>
-            <h3 class="timeline-heading">Dark mode refinements</h3>
-            <p class="timeline-body">
-              Polished every modal, dropdown, and tooltip to look stunning in dark mode. Squashed 12 UI inconsistencies reported by the community.
-            </p>
-            <div class="timeline-tags">
-              <span class="timeline-tag">ui</span>
-              <span class="timeline-tag">polish</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         FAQ ACCORDION
-         ======================================================================== -->
-    <section class="faq-section" id="faq" aria-labelledby="faqTitle">
-      <div class="container container-narrow">
-        <div class="faq-header">
-          <span class="section-label reveal">FAQ</span>
-          <h2 class="faq-title reveal" id="faqTitle">Frequently asked questions</h2>
-        </div>
-
-        <div class="faq-list">
-          <!-- FAQ 1 -->
-          <div class="accordion-item reveal">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span>How is Flux different from Linear or Jira?</span>
-              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 6 8 10 12 6"/>
-              </svg>
+        <div class="faq-list fade-in">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What is Flowtic?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-content">
-                Flux combines Linear's speed and keyboard-first philosophy with the extensibility of Jira's ecosystem — but without the bloat. We focus on what dev teams actually use, and strip away everything else.
-              </div>
+            <div class="faq-answer" role="region">
+              <p>Flowtic is a modern team platform that combines project management, real-time collaboration, analytics, and automation in one place. It helps teams ship faster and reduce chaos.</p>
             </div>
           </div>
-
-          <!-- FAQ 2 -->
-          <div class="accordion-item reveal">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span>Can I migrate my existing issues?</span>
-              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 6 8 10 12 6"/>
-              </svg>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How does the free trial work?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-content">
-                Yes. We provide one-click importers for Jira, Linear, GitHub Issues, and Asana. Your data comes over with full history, attachments, and relationships intact.
-              </div>
+            <div class="faq-answer" role="region">
+              <p>You get 14 days of full Pro access with no credit card required. After the trial, you can choose a plan that fits your team or downgrade to the free Starter plan.</p>
             </div>
           </div>
-
-          <!-- FAQ 3 -->
-          <div class="accordion-item reveal">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span>Is there an on-premise deployment option?</span>
-              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 6 8 10 12 6"/>
-              </svg>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can I switch plans later?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-content">
-                Enterprise customers can deploy Flux on their own infrastructure. We support Docker, Kubernetes, and bare-metal setups with full documentation and dedicated onboarding support.
-              </div>
+            <div class="faq-answer" role="region">
+              <p>Absolutely. You can upgrade or downgrade your plan at any time. Changes take effect immediately and we’ll prorate your billing.</p>
             </div>
           </div>
-
-          <!-- FAQ 4 -->
-          <div class="accordion-item reveal">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span>What integrations are available?</span>
-              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 6 8 10 12 6"/>
-              </svg>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Is my data secure?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-content">
-                Flux integrates natively with GitHub, GitLab, Slack, Discord, Sentry, Datadog, and 50+ other tools. Our webhook system and API make custom integrations straightforward.
-              </div>
+            <div class="faq-answer" role="region">
+              <p>Yes. We use encryption at rest and in transit, SOC 2 compliant infrastructure, and regular security audits. Enterprise plans include SSO and audit logs.</p>
             </div>
           </div>
-
-          <!-- FAQ 5 -->
-          <div class="accordion-item reveal">
-            <button class="accordion-trigger" aria-expanded="false">
-              <span>Is there a free plan for open-source projects?</span>
-              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 6 8 10 12 6"/>
-              </svg>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What integrations are available?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="accordion-body">
-              <div class="accordion-content">
-                Absolutely. Open-source teams get the Pro plan for free, forever. Just verify your repo and we'll upgrade you within 24 hours.
-              </div>
+            <div class="faq-answer" role="region">
+              <p>Flowtic integrates with 200+ tools including GitHub, GitLab, Slack, Figma, Jira, Linear, Notion, and more. We also offer a REST API and webhooks for custom integrations.</p>
             </div>
           </div>
         </div>
@@ -559,37 +431,31 @@
     </section>
   </main>
 
-  <!-- ========================================================================
-       FOOTER
-       ======================================================================== -->
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
-        <!-- Brand column -->
         <div class="footer-brand">
-          <a href="#" class="footer-logo" aria-label="Flux home">
-            <span class="navbar-logo-icon" aria-hidden="true">⚡</span>
-            <span>Flux</span>
+          <a href="#" class="navbar-logo" aria-label="Flowtic home">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="currentColor" />
+              <path d="M10 16l4 4 8-8" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Flowtic
           </a>
-          <p class="footer-desc">
-            The developer-first project management platform. Built for speed, designed for clarity.
-          </p>
+          <p>The modern platform for teams that ship. Plan, build, and launch together — faster.</p>
         </div>
-
-        <!-- Product links -->
         <div>
-          <h4 class="footer-col-title">Product</h4>
+          <p class="footer-heading">Product</p>
           <ul class="footer-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#changelog">Changelog</a></li>
-            <li><a href="#">Roadmap</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Changelog</a></li>
           </ul>
         </div>
-
-        <!-- Company links -->
         <div>
-          <h4 class="footer-col-title">Company</h4>
+          <p class="footer-heading">Company</p>
           <ul class="footer-links">
             <li><a href="#">About</a></li>
             <li><a href="#">Blog</a></li>
@@ -597,105 +463,35 @@
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
-
-        <!-- Legal links -->
         <div>
-          <h4 class="footer-col-title">Legal</h4>
+          <p class="footer-heading">Legal</p>
           <ul class="footer-links">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
             <li><a href="#">Security</a></li>
+            <li><a href="#">Cookies</a></li>
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2025 Flux Technologies, Inc. All rights reserved.</p>
+        <p>&copy; 2026 Flowtic, Inc. All rights reserved.</p>
         <div class="footer-social">
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
           <a href="#" aria-label="GitHub">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
-          <a href="#" aria-label="Twitter / X">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" aria-label="Discord">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ========================================================================
-       COMMAND PALETTE MODAL
-       ======================================================================== -->
-  <div class="modal-overlay" id="commandPaletteOverlay" role="dialog" aria-modal="true" aria-labelledby="cpTitle" aria-hidden="true">
-    <div class="command-palette">
-      <div class="cp-input-wrap">
-        <svg class="cp-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input
-          type="text"
-          class="cp-input"
-          id="cpInput"
-          placeholder="Type a command or search..."
-          autocomplete="off"
-          aria-label="Search commands"
-        >
-        <span class="cp-hint">
-          <kbd>esc</kbd> to close
-        </span>
-      </div>
-      <div class="cp-results" id="cpResults" role="listbox" aria-label="Command results">
-        <div class="cp-result-item selected" role="option" aria-selected="true">
-          <div class="cp-result-icon feature-icon-purple" aria-hidden="true">⚡</div>
-          <div class="cp-result-info">
-            <div class="cp-result-title">Go to Dashboard</div>
-            <div class="cp-result-desc">Open your project overview</div>
-          </div>
-          <span class="cp-result-shortcut">G D</span>
-        </div>
-        <div class="cp-result-item" role="option" aria-selected="false">
-          <div class="cp-result-icon feature-icon-blue" aria-hidden="true">＋</div>
-          <div class="cp-result-info">
-            <div class="cp-result-title">Create New Issue</div>
-            <div class="cp-result-desc">Add a new task to the current project</div>
-          </div>
-          <span class="cp-result-shortcut">C</span>
-        </div>
-        <div class="cp-result-item" role="option" aria-selected="false">
-          <div class="cp-result-icon feature-icon-green" aria-hidden="true">🔍</div>
-          <div class="cp-result-info">
-            <div class="cp-result-title">Search Issues</div>
-            <div class="cp-result-desc">Find issues across all projects</div>
-          </div>
-          <span class="cp-result-shortcut">/</span>
-        </div>
-        <div class="cp-result-item" role="option" aria-selected="false">
-          <div class="cp-result-icon feature-icon-amber" aria-hidden="true">⚙</div>
-          <div class="cp-result-info">
-            <div class="cp-result-title">Open Settings</div>
-            <div class="cp-result-desc">Manage your workspace preferences</div>
-          </div>
-          <span class="cp-result-shortcut">G S</span>
-        </div>
-        <div class="cp-result-item" role="option" aria-selected="false">
-          <div class="cp-result-icon" aria-hidden="true" style="background:var(--color-bg-hover);color:var(--color-text-tertiary);">📄</div>
-          <div class="cp-result-info">
-            <div class="cp-result-title">View Documentation</div>
-            <div class="cp-result-desc">Browse the developer docs</div>
-          </div>
-          <span class="cp-result-shortcut">?</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================
-       SCRIPTS
-       ======================================================================== -->
   <script src="script.js"></script>
 </body>
 </html>
